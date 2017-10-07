@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/WxTools.Theme;component/Control/FButton.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WxTools.Theme;component/Control/ProgressRing.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WxTools.Theme;component/Control/BusyBox.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WxTools.Theme;component/Control/BulletCheckBox.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WxTools.Theme;component/Control/ButtonCheckBox.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WxTools.Theme;component/Control/MultiComboBox.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WxTools.Theme;component/Control/HighTextBlock.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

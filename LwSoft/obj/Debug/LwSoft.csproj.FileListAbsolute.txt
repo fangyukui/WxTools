@@ -1,0 +1,5 @@
+C:\Users\Administrator\Desktop\Project\WxTools\LwSoft\bin\Debug\LwSoft.dll
+C:\Users\Administrator\Desktop\Project\WxTools\LwSoft\bin\Debug\LwSoft.pdb
+C:\Users\Administrator\Desktop\Project\WxTools\LwSoft\obj\Debug\LwSoft.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Project\WxTools\LwSoft\obj\Debug\LwSoft.dll
+C:\Users\Administrator\Desktop\Project\WxTools\LwSoft\obj\Debug\LwSoft.pdb

@@ -1,0 +1,132 @@
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\bin\Debug\XLY.Framework.Controls.dll
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\bin\Debug\XLY.Framework.Controls.pdb
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\bin\Debug\Microsoft.Expression.Drawing.dll
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\bin\Debug\Microsoft.Expression.Effects.dll
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\bin\Debug\Microsoft.Expression.Interactions.dll
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\bin\Debug\Microsoft.Windows.Shell.dll
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\bin\Debug\PresentationCore.dll
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\bin\Debug\PresentationFramework.Aero.dll
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\bin\Debug\PresentationFramework.dll
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\bin\Debug\System.Utility.dll
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\bin\Debug\System.Windows.Interactivity.dll
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\bin\Debug\NHibernate.dll
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\bin\Debug\System.Data.SQLite.dll
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\bin\Debug\Spring.Core.dll
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\bin\Debug\Iesi.Collections.dll
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\bin\Debug\Antlr3.Runtime.dll
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\bin\Debug\Remotion.Data.Linq.dll
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\bin\Debug\Common.Logging.dll
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\bin\Debug\System.Utility.pdb
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\bin\Debug\Spring.Core.xml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\XLY.Framework.Controls.csprojResolveAssemblyReference.cache
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\WaitingBox.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Colors.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Style.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\DataGrid.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\FIcon.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\ListBox.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\ListView.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\Separator.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Themes\Generic.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\FImage.g.cs
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\MessageBoxX.g.cs
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\WaitingBox.g.cs
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\XLY.Framework.Controls_MarkupCompile.cache
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\XLY.Framework.Controls_MarkupCompile.lref
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\BulletCheckBox.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\BusyBox.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\FButton.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\HighTextBlock.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\FImage.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\MessageBoxX.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\MultiComboBox.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\ProgressRing.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\WindowBase.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\Calendar.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\ComboBox.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\DatePicker.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\CheckBox.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\LoopProcessBar.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\Menu.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\PasswordBox.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\ProgressBar.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\RadioButton.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\Share.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\TabControl.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\ToggleButton.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\TreeView.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Global.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\ScrollViewer.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\TextBox.baml
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\XLY.Framework.Controls.g.resources
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\XLY.Framework.Controls.Properties.Resources.resources
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\XLY.Framework.Controls.csproj.GenerateResource.Cache
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\XLY.Framework.Controls.dll
+D:\XLYCodes\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\XLY.Framework.Controls.pdb
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\bin\Debug\XLY.Framework.Controls.dll
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\bin\Debug\XLY.Framework.Controls.pdb
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\bin\Debug\Microsoft.Expression.Drawing.dll
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\bin\Debug\Microsoft.Expression.Effects.dll
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\bin\Debug\Microsoft.Expression.Interactions.dll
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\bin\Debug\Microsoft.Windows.Shell.dll
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\bin\Debug\PresentationCore.dll
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\bin\Debug\PresentationFramework.Aero.dll
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\bin\Debug\PresentationFramework.dll
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\bin\Debug\System.Utility.dll
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\bin\Debug\System.Windows.Interactivity.dll
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\bin\Debug\NHibernate.dll
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\bin\Debug\System.Data.SQLite.dll
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\bin\Debug\Spring.Core.dll
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\bin\Debug\Iesi.Collections.dll
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\bin\Debug\Antlr3.Runtime.dll
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\bin\Debug\Remotion.Data.Linq.dll
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\bin\Debug\Common.Logging.dll
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\bin\Debug\System.Utility.pdb
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\bin\Debug\Spring.Core.xml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\XLY.Framework.Controls.csprojResolveAssemblyReference.cache
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\WaitingBox.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Colors.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Style.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\DataGrid.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\FIcon.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\ListBox.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\ListView.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\Separator.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Themes\Generic.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\FImage.g.cs
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\MessageBoxX.g.cs
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\WaitingBox.g.cs
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\XLY.Framework.Controls_MarkupCompile.cache
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\XLY.Framework.Controls_MarkupCompile.lref
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\BulletCheckBox.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\BusyBox.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\FButton.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\HighTextBlock.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\FImage.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\MessageBoxX.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\MultiComboBox.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\ProgressRing.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Control\WindowBase.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\Calendar.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\ComboBox.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\DatePicker.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\CheckBox.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\LoopProcessBar.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\Menu.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\PasswordBox.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\ProgressBar.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\RadioButton.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\Share.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\TabControl.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\ToggleButton.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\TreeView.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Global.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\ScrollViewer.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\Style\Themes\TextBox.baml
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\XLY.Framework.Controls.g.resources
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\XLY.Framework.Controls.Properties.Resources.resources
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\XLY.Framework.Controls.csproj.GenerateResource.Cache
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\XLY.Framework.Controls.dll
+D:\Doc\XLY Work\UFED Cellebrite 报告\mmss\Platformframework\Framework\XLY.Framework.Control\obj\x86\Debug\XLY.Framework.Controls.pdb

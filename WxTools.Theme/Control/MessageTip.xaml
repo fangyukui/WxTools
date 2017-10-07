@@ -1,0 +1,46 @@
+﻿<Window x:Class="WxTools.Theme.Control.MessageTip"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" WindowStartupLocation="Manual" WindowStyle="None" 
+        ShowInTaskbar="False" ResizeMode="NoResize" SizeToContent="WidthAndHeight" MinWidth="200"
+        Title="MessageTip" AllowsTransparency="True" >
+    <Window.Background>
+        <SolidColorBrush Color="#0CFFFFFF"/>
+    </Window.Background>
+    
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="White"></Setter>
+        </Style>
+
+        <Storyboard x:Key="CloseStoryboard">
+            <DoubleAnimation Storyboard.TargetProperty="Top" To="{Binding OffsetTop}" Duration="0:0:1"></DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.5" BeginTime="{Binding Delay}"></DoubleAnimation>
+        </Storyboard>
+        
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="Background" Value="#FF49E041"></Setter>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Type}" Value="1">
+                    <Setter Property="Background" Value="#FF49E041"></Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Type}" Value="2">
+                    <Setter Property="Background" Value="#FFE0B541"></Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Type}" Value="3">
+                    <Setter Property="Background" Value="#FFE04141"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Border CornerRadius="10" Padding="20,5">
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock HorizontalAlignment="Right" FontSize="30" Text="{Binding IconText,FallbackValue=&#xe62a;,Mode=OneWay}" Style="{StaticResource FIcon}" Margin="0,0,10,0"/>
+            <TextBlock FontSize="19" Text="{Binding ContentText,FallbackValue=MessageTip,Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+        </StackPanel>
+    </Border>
+</Window>
