@@ -4,6 +4,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using log4net;
 using LwSoft;
 using LwSoft.Enums;
 using WxTools.Annotations;
@@ -49,6 +50,8 @@ namespace WxTools
         private string _logs;
         private string _name;
 
+        private readonly ILog _log = LogManager.GetLogger(typeof(OperaDal));
+
         public OperaDal(Lwsoft3 lw)
         {
             Lw = lw;
@@ -78,12 +81,11 @@ namespace WxTools
             //绑定
             Lw.BindWindow(this.Hwnd, DisplayBindKey.Gdi, MouseBindKey.Windows, KeypadBindKey.Windows, 1);
             //设置窗体大小
-            Lw.SetWindowSize(this.Hwnd, 888, 625);
-            //获取窗体大小
-            Common.WinRect = Lw.GetWindowInfo(this.Hwnd).WindowRect;
+            Lw.SetWindowSize(this.Hwnd, Common.Width, Common.Height);
             Log("绑定成功");
             //关闭错误消息
-            //Lw.SetShowErrorMsg(0);
+            Lw.SetShowErrorMsg(0);
+            Lw.SetShowErrorMsg(0);
         }
 
         public void SetWindowsHandle(int parent)
@@ -162,7 +164,7 @@ namespace WxTools
         /// <param name="fileName"></param>
         public void Capture(string fileName = null)
         {
-            Lw.Capture(0, 0, (int)Common.WinRect.Width, (int)Common.WinRect.Height,
+            Lw.Capture(0, 0, Common.Width, Common.Height,
                 fileName ?? DateTime.Now.Ticks + ".bmp");
         }
 
@@ -174,7 +176,7 @@ namespace WxTools
         /// <param name="dir"></param>
         public void FindPic(string name, bool isClick = true, int dir = 0)
         {
-            Lw.FindPic(0, 0, (int) Common.WinRect.Width, (int) Common.WinRect.Height - 50,
+            Lw.FindPic(0, 0, Common.Width, Common.Height - 50,
                 name, "000000", 0.8, dir, 0, isClick ? 1 : 0);
         }
 
@@ -214,6 +216,7 @@ namespace WxTools
                 if (Common.SessionCount > 0)
                     while (Common.SessionCount >= Common.MaxSessionCount)
                     {
+                        _log.Info("窗口数较多，等待处理中");
                         //超过窗口数，等待处理
                         Thread.Sleep(1000);
                     }
@@ -226,17 +229,15 @@ namespace WxTools
                 //进入聊天首页
                 RecoverAction();
 
-                var width = (int)Common.WinRect.Width;
-                var height = (int)Common.WinRect.Height;
                 while (!_source.IsCancellationRequested)
                 {
                     //判断新的消息
-                    if (Lw.FindPic(70, 50, 160, height, "new.bmp", "000000", 0.85, 0, 0, 1))
+                    if (Lw.FindPic(70, 50, 160, Common.Height, "new.bmp", "000000", 0.85, 0, 0, 1))
                     {
                         Log("发现新消息");
                         //找到会话消息
                         Thread.Sleep(2000);
-                        if (Lw.FindPic(400, 80, 600, height - 165, "dh.bmp", "000000", 0.95, 1, 0, 1, 100, 13))
+                        if (Lw.FindPic(400, 80, 600, Common.Height - 165, "dh.bmp", "000000", 0.95, 1, 0, 1, 100, 13))
                         {
                             //Console.WriteLine($"{_lw.X()},{_lw.Y()}");
                             Task.Factory.StartNew(() =>
@@ -245,6 +246,7 @@ namespace WxTools
                                 var hwnd = Lw.FindWindow("图片查看器", "ImagePreviewWnd", null);
                                 if (hwnd > 0)
                                 {
+                                    Log("发现图片，等待关闭");
                                     WinApi.SendMessage(new IntPtr(hwnd), 0x0010, 0, 0);
                                 }
                                 else

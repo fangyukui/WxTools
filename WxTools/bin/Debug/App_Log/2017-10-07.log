@@ -1,0 +1,19 @@
+2017-10-07 14:10:10,455 [1] INFO  WxTools.ViewModel.MainViewModel - 启动完成
+ WxTools.ViewModel.MainViewModelname2017-10-07 14:10:10,455 [检测状态改变线程] INFO  WxTools.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.ViewModel.MainViewModelname2017-10-07 14:10:29,472 [检测状态改变线程] WARN  WxTools.ViewModel.MainViewModel - 微信被窗体最小化了，已经恢复，hwnd=524792
+ WxTools.ViewModel.MainViewModelname2017-10-07 14:10:35,475 [检测状态改变线程] WARN  WxTools.ViewModel.MainViewModel - 微信被窗体最小化了，已经恢复，hwnd=524792
+ WxTools.ViewModel.MainViewModelname2017-10-07 14:10:48,504 [1] INFO  WxTools.ViewModel.MainViewModel - 关闭完成
+ WxTools.ViewModel.MainViewModelname2017-10-07 14:10:49,423 [1] INFO  WxTools.ViewModel.MainViewModel - 启动完成
+ WxTools.ViewModel.MainViewModelname2017-10-07 14:10:50,684 [1] INFO  WxTools.ViewModel.MainViewModel - 关闭完成
+ WxTools.ViewModel.MainViewModelname2017-10-07 14:17:52,299 [1] INFO  WxTools.ViewModel.MainViewModel - 启动完成
+ WxTools.ViewModel.MainViewModelname2017-10-07 14:17:52,300 [检测状态改变线程] INFO  WxTools.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.ViewModel.MainViewModelname2017-10-07 14:18:01,366 [检测状态改变线程] WARN  WxTools.ViewModel.MainViewModel - 微信窗体大小被用户拖动，已经恢复
+ WxTools.ViewModel.MainViewModelname2017-10-07 14:18:05,369 [检测状态改变线程] WARN  WxTools.ViewModel.MainViewModel - 微信被窗体最小化了，已经恢复，hwnd=524792
+ WxTools.ViewModel.MainViewModelname2017-10-07 14:18:08,504 [检测状态改变线程] WARN  WxTools.ViewModel.MainViewModel - 微信窗体大小被用户拖动，已经恢复
+ WxTools.ViewModel.MainViewModelname2017-10-07 14:18:09,508 [检测状态改变线程] WARN  WxTools.ViewModel.MainViewModel - 微信窗体大小被用户拖动，已经恢复
+ WxTools.ViewModel.MainViewModelname2017-10-07 14:18:10,718 [检测状态改变线程] WARN  WxTools.ViewModel.MainViewModel - 微信窗体大小被用户拖动，已经恢复
+ WxTools.ViewModel.MainViewModelname2017-10-07 14:18:12,757 [检测状态改变线程] WARN  WxTools.ViewModel.MainViewModel - 微信窗体大小被用户拖动，已经恢复
+ WxTools.ViewModel.MainViewModelname2017-10-07 14:18:16,094 [检测状态改变线程] WARN  WxTools.ViewModel.MainViewModel - 微信窗体大小被用户拖动，已经恢复
+ WxTools.ViewModel.MainViewModelname2017-10-07 14:18:17,134 [检测状态改变线程] WARN  WxTools.ViewModel.MainViewModel - 微信窗体大小被用户拖动，已经恢复
+ WxTools.ViewModel.MainViewModelname2017-10-07 14:18:31,408 [1] INFO  WxTools.ViewModel.MainViewModel - 关闭完成
+ WxTools.ViewModel.MainViewModelname

@@ -33,3 +33,6 @@ C:\Users\Administrator\Desktop\Project\WxTools\WxTools\bin\Debug\System.Utility.
 C:\Users\Administrator\Desktop\Project\WxTools\WxTools\bin\Debug\WxTools.Theme.pdb
 C:\Users\Administrator\Desktop\Project\WxTools\WxTools\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Administrator\Desktop\Project\WxTools\WxTools\obj\Debug\WxTools_MarkupCompile.lref
+C:\Users\Administrator\Desktop\Project\WxTools\WxTools\bin\Debug\log4net.config
+C:\Users\Administrator\Desktop\Project\WxTools\WxTools\bin\Debug\log4net.dll
+C:\Users\Administrator\Desktop\Project\WxTools\WxTools\bin\Debug\log4net.xml

@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Windows;
+using log4net;
 using WxTools.Annotations;
 using WxTools.Helper;
 using WxTools.Theme;
@@ -41,6 +42,8 @@ namespace WxTools.ViewModel
                 OnPropertyChanged();
             }
         }
+
+        private readonly ILog _log = LogManager.GetLogger(typeof(MainViewModel));
 
         private ObservableCollection<OperaDal> _operas;
 
@@ -142,6 +145,8 @@ namespace WxTools.ViewModel
 
                 if (Common.SessionCount >= Common.MaxSessionCount || Common.SessionCount == Operas.Count)
                 {
+                    _log.Info($"清理一次窗口; SessionCount:{Common.SessionCount};" +
+                              $" Operas.Count:{Operas.Count}; MaxSessionCount:{Common.MaxSessionCount};");
                     //超过窗口数 或者 正好
                     Thread.Sleep(4000);
                     Common.SessionCount = 0;
@@ -171,6 +176,7 @@ namespace WxTools.ViewModel
             if (_thread != null) return;
             _thread = new Thread(() =>
             {
+                _log.Info("监测线程启动成功");
                 Thread.Sleep(8000);
                 var list = new List<OperaDal>();
                 while (true)
@@ -190,12 +196,22 @@ namespace WxTools.ViewModel
                                 if (opera.Lw.GetWindowState(opera.Hwnd, 3) == 1)
                                 {
                                     //窗体最小化了
+                                    _log.Warn($"微信被窗体最小化了，已经恢复，hwnd={opera.Hwnd}");
                                     opera.Lw.SetWindowState(opera.Hwnd, 7);
+                                }
+                                if (opera.Lw.GetClientSize(opera.Hwnd) == 1)
+                                {
+                                    if (opera.Lw.X() != Common.Width || opera.Lw.Y() != Common.Height)
+                                    {
+                                        opera.Lw.SetWindowSize(opera.Hwnd, Common.Width, Common.Height);
+                                        _log.Warn("微信窗体大小被用户拖动，已经恢复");
+                                    }
                                 }
                             }
                         }
                         foreach (var dal in list)
                         {
+                            _log.Warn($"微信窗口出错了，hwnd={dal.Hwnd}");
                             dal.Dispose();
                             Application.Current.Dispatcher.Invoke(() =>
                             {
@@ -206,6 +222,7 @@ namespace WxTools.ViewModel
                         //防止文章窗口打开过久
                         if (Common.SessionCount > 0 && (DateTime.Now - _lasTime).Seconds > 30)
                         {
+                            _log.Warn($"文章窗口打开过久，已经关闭");
                             Common.SessionCount = 0;
                             CloseCefWebViewWnd();
                         }
@@ -230,6 +247,7 @@ namespace WxTools.ViewModel
                 if (hwnds == null || hwnds.Length == 0)
                 {
                     IsChecked = false;
+                    _log.Info("未找到微信(先运行微信)");
                     MessageBox.Show("未找到微信(先运行微信)", "提示");
                     return;
                 }
@@ -252,11 +270,14 @@ namespace WxTools.ViewModel
                         {
                             opera.Load(int.Parse(hwnds[j++]));
                             opera.Lw.SetWindowState(opera.Hwnd, 1);
-                            Common.WinRect = opera.Lw.GetWindowInfo(opera.Hwnd).WindowRect;
-                            opera.CheckNewMessage();
+                            if (!opera.CheckNewMessage())
+                            {
+                                _log.Error($"{opera.Hwnd}启动线程出现错误，被跳过");
+                            }
                         }
-                        catch (Exception)
+                        catch (Exception e)
                         {
+                            _log.Error($"{opera.Hwnd}加载出错", e);
                             MessageBox.Show($"{opera.Hwnd}加载出错", "提示");
                         }
                     });
@@ -265,6 +286,7 @@ namespace WxTools.ViewModel
                 }
                 //开启状态监测线程
                 CheckHwndStateThread();
+                _log.Info("启动完成");
             }
             else
             {
@@ -276,6 +298,7 @@ namespace WxTools.ViewModel
                 Operas.Clear();
                 LwFactory.Clear();
                 GC.Collect();
+                _log.Info("关闭完成");
             }
         }
 
