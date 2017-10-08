@@ -3,12 +3,14 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Windows;
 using log4net;
 using Newtonsoft.Json;
 using SimpleTCP;
 using WxTools.Common;
 using WxTools.Server.Annotations;
+using WxTools.Server.Dal;
 using WxTools.Theme;
 
 namespace WxTools.Server.ViewModel
@@ -16,9 +18,9 @@ namespace WxTools.Server.ViewModel
     public class MainViewModel : INotifyPropertyChanged
     {
         private readonly ILog _log = LogManager.GetLogger(typeof(MainViewModel));
-        private SimpleTcpServer _server;
+        private TcpServerDal _tcpServerDal;
         private string _url;
-        public ObservableCollection<ClientInfo> ClientInfos { get; }
+        public ObservableCollection<ClientInfo> ClientInfos { get; set; }
 
         public string Url
         {
@@ -33,94 +35,54 @@ namespace WxTools.Server.ViewModel
 
         public MainViewModel()
         {
-            ClientInfos = new ObservableCollection<ClientInfo>();
-            StartServer();
-
             Url =
                 "https://mp.weixin.qq.com/s?src=11&timestamp=1507368444&ver=438&signature=82XVDEO4Ms7JSHg6-iPZuLdSG6NhGCiYzmzZSTBn9TLYd-RXmYK8gV9wRcgq9feHnm1fXs5zB1KZnHxzOuoL*ORFxwngLoLo9zWVRAXVOjuwrARnlkFvOcj2cFFcN7qS&new=1";
+
+            InitTcp();
+            InitCommand();
+            StartHeartbeatThread();
+        }
+
+        public RelayCommand SendUrlCommand { get; private set; }
+
+        private void InitTcp()
+        {
+            ClientInfos = new ObservableCollection<ClientInfo>();
+            _tcpServerDal = new TcpServerDal(ClientInfos);
+            _tcpServerDal.StartServer();
+        }
+
+        private void InitCommand()
+        {
             SendUrlCommand = new RelayCommand(() =>
             {
-                SendUrl(Url);
+                _tcpServerDal.SendUrl(Url);
             });
         }
 
-        public RelayCommand SendUrlCommand { get; } 
-
-        public void StartServer()
+        private void StartHeartbeatThread()
         {
-            _server = new SimpleTcpServer().Start(8910);
-            _server.DataReceived += Received;
-        }
-
-        public void SendUrl(string url)
-        {
-            try
-            {
-                var tcpmsg = new TcpMessage
+            //心跳包线程
+            new Thread(() =>
                 {
-                    MsgType = MsgType.Url,
-                    Action = ActionType.Execute,
-                    IsServer = true,
-                    Msg = url
-                };
-                _server.Broadcast(JsonConvert.SerializeObject(tcpmsg));
-                MessageBox.Show("发送成功", "提示");
-            }
-            catch (Exception e)
-            {
-                _log.Error(e);
-            }
-        }
-
-        public void Received(object sender, Message msg)
-        {
-            try
-            {
-                var tcpmsg = JsonConvert.DeserializeObject<TcpMessage>(msg.MessageString);
-                _log.Info("收到一条消息");
-                switch (tcpmsg.MsgType)
-                {
-                    case MsgType.Url:
-                        break;
-                    case MsgType.Log:
-                        var info = ClientInfos.FirstOrDefault(c => c.Ip == tcpmsg.Ip);
-                        Application.Current.Dispatcher.Invoke(() =>
+                    while (true)
+                    {
+                        foreach (var client in ClientInfos)
                         {
-                            if (info != null) info.Logs += tcpmsg.Msg + "\r\n";
-                        });
-                        _log.Info("Log");
-                        break;
-                    case MsgType.Login:
-                        _log.Info("Login");
-                        if (ClientInfos.All(c => c.Ip != tcpmsg.Ip))
-                        {
-                            Application.Current.Dispatcher.Invoke(() =>
+                            if ((client.HeartbeatTime - DateTime.Now).TotalSeconds >= 60)
                             {
-                                ClientInfos.Add(new ClientInfo
+                                _log.Warn("客户端超时" + client.Ip);
+                                Application.Current.Dispatcher.Invoke(() =>
                                 {
-                                    Ip = tcpmsg.Ip,
-                                    Client = msg.TcpClient,
-                                    PcName = tcpmsg.PcName,
-                                    OsName = tcpmsg.OsName,
-                                    Screen = tcpmsg.Screen
+                                    ClientInfos.Remove(client);
                                 });
-                            });
+                            }
                         }
-                        break;
-                    case MsgType.Logout:
-                        _log.Info("Logout");
-                        var logoutInfo = ClientInfos.FirstOrDefault(c => c.Ip == tcpmsg.Ip);
-                        Application.Current.Dispatcher.Invoke(() =>
-                        {
-                            if (logoutInfo != null) ClientInfos.Remove(logoutInfo);
-                        });
-                        break;
-                }
-            }
-            catch (Exception e)
-            {
-                _log.Error(e);
-            }
+                        Thread.Sleep(2000);
+                        _tcpServerDal.SendHeartbeat();
+                    }
+                })
+                { IsBackground = true, Name = "心跳包线程" }.Start();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

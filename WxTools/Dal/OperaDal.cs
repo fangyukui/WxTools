@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,8 +12,9 @@ using LwSoft.Enums;
 using WxTools.Annotations;
 using WxTools.Client.Helper;
 using WxTools.Client.Model;
+using WxTools.Client.ViewModel;
 
-namespace WxTools.Client
+namespace WxTools.Client.Dal
 {
     public class OperaDal : INotifyPropertyChanged, IDisposable
     {
@@ -62,9 +64,9 @@ namespace WxTools.Client
 
         #region 初始化
 
-        public void Load(int hwnd)
+        public void Load()
         {
-            LoadWindowsHandle(hwnd);
+            LoadWindowsHandle(Hwnd);
             Bindinged = true;
         }
 
@@ -244,6 +246,8 @@ namespace WxTools.Client
         //自己发送链接 自己打开
         public void SendMyMessage(string message)
         {
+            Log("开始执行链接");
+            RunState = RunState.Busy;
             Point row = WxPoints.FirstRow;
             Lw.ClickOnce(WxPoints.WeiXin).ClickOnce(row).Delay();
             //找到一个能发送的聊天窗口
@@ -268,6 +272,7 @@ namespace WxTools.Client
                 OpenAction();
             }
             RunState = RunState.Idle;
+            Log("链接执行完毕");
         }
 
         public void GoOnceAction(Action action)
@@ -289,7 +294,7 @@ namespace WxTools.Client
                 var hwnd = Lw.FindWindow("图片查看器", "ImagePreviewWnd", null);
                 if (hwnd > 0)
                 {
-                    Log("发现图片，等待关闭");
+                    Log("发现图片/视频");
                     WinApi.SendMessage(new IntPtr(hwnd), 0x0010, 0, 0);
                 }
                 else
@@ -339,6 +344,17 @@ namespace WxTools.Client
         private void Log(string log)
         {
             Logs += $"{DateTime.Now:HH:mm:ss}: {log}\r\n";
+            var lines = Logs.Split("\r\n".ToCharArray(),StringSplitOptions.RemoveEmptyEntries);
+            if (lines.Length > 10)
+            {
+                StringBuilder strb = new StringBuilder();
+                for (int i = lines.Length - 10; i < lines.Length; i++)
+                {
+                    strb.Append(lines[i]);
+                }
+                Logs = strb.ToString();
+            }
+            MainViewModel.Instance.TcpClientDal.SendLog(Logs);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

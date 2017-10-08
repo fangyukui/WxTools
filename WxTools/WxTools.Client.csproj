@@ -98,9 +98,9 @@
     <Compile Include="Model\RunState.cs" />
     <Compile Include="Model\WindowInfo.cs" />
     <Compile Include="Model\WxPoints.cs" />
-    <Compile Include="OperaDal.cs" />
+    <Compile Include="Dal\OperaDal.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="TcpDal.cs" />
+    <Compile Include="Dal\TcpClientDal.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

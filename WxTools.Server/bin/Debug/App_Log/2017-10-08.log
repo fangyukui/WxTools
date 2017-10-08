@@ -119,4 +119,295 @@
  WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:40:53,547 [5] INFO  WxTools.Server.ViewModel.MainViewModel - Logout
  WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:51:12,825 [6] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
  WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:51:12,848 [6] INFO  WxTools.Server.ViewModel.MainViewModel - Login
- WxTools.Server.ViewModel.MainViewModelname
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 21:31:48,074 [4] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 21:31:48,091 [4] INFO  WxTools.Server.ViewModel.MainViewModel - Login
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 21:36:06,016 [6] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 21:36:06,030 [6] INFO  WxTools.Server.ViewModel.MainViewModel - Login
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 21:37:46,878 [6] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 21:37:46,878 [6] INFO  WxTools.Server.ViewModel.MainViewModel - Logout
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 21:44:43,009 [5] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 21:44:43,023 [5] INFO  WxTools.Server.ViewModel.MainViewModel - Login
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 21:45:47,193 [5] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 21:45:47,197 [5] INFO  WxTools.Server.ViewModel.MainViewModel - Log
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 21:45:50,555 [5] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 21:45:50,559 [5] INFO  WxTools.Server.ViewModel.MainViewModel - Log
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 22:15:18,476 [4] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 22:15:18,492 [4] INFO  WxTools.Server.ViewModel.MainViewModel - Login
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 22:41:33,875 [4] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 22:41:33,890 [4] INFO  WxTools.Server.ViewModel.MainViewModel - Login
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 22:43:00,403 [6] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 22:43:00,417 [6] INFO  WxTools.Server.ViewModel.MainViewModel - Login
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 22:52:22,541 [4] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 22:53:47,457 [5] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 22:55:27,788 [5] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 22:56:41,639 [7] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 22:57:27,280 [4] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 22:57:29,038 [4] INFO  WxTools.Server.Dal.TcpServerDal - Logout
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 22:59:25,666 [4] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 214.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:00:13,983 [4] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:00:17,749 [4] INFO  WxTools.Server.Dal.TcpServerDal - Log
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:02:22,859 [5] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:03:13,754 [5] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 181.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:03:24,924 [5] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 181.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:03:28,971 [5] INFO  WxTools.Server.Dal.TcpServerDal - Logout
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:03:52,310 [6] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:04:00,442 [6] INFO  WxTools.Server.Dal.TcpServerDal - Logout
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:04:31,828 [4] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:05:37,750 [4] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 285.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:07:23,393 [4] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:07:27,304 [4] INFO  WxTools.Server.Dal.TcpServerDal - Logout
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:07:37,101 [5] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:08:09,145 [5] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:09:13,724 [5] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 145.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:09:32,892 [4] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:09:39,294 [4] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 145.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:10:03,299 [7] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:10:07,000 [7] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:10:13,305 [7] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 145.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:10:17,778 [7] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 161.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:10:19,786 [7] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 177.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:10:21,788 [7] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 193.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:10:23,816 [7] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 209.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:10:27,799 [7] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 241.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:10:29,799 [7] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 257.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:10:31,800 [7] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 273.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:10:33,799 [7] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 295.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:10:35,692 [7] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 180.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:11:44,299 [4] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:11:47,912 [4] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:11:59,492 [4] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 161.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:12:01,486 [4] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 177.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:12:03,487 [4] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 193.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:12:05,501 [4] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 209.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:12:07,505 [4] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 225.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:12:09,500 [4] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 241.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:12:11,505 [4] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 257.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:12:13,506 [4] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 273.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:12:15,515 [4] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 295.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:12:17,523 [4] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 299.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:14:51,317 [5] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:14:55,143 [5] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:16:07,427 [5] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 165.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:16:09,336 [5] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 183.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:17:20,565 [6] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:17:24,394 [6] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:19:37,812 [4] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:19:41,649 [4] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:21:17,496 [5] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:21:21,374 [5] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:21:54,264 [5] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:22:20,811 [4] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:22:27,485 [4] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:23:45,059 [4] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:25:34,290 [6] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:28:23,999 [7] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:28:43,883 [7] INFO  WxTools.Server.Dal.TcpServerDal - Logout
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:30:45,184 [5] ERROR WxTools.Server.Dal.TcpServerDal - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 150.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.Dal.TcpServerDal.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\Dal\TcpServerDal.cs:行号 75
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:30:45,324 [5] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:31:15,209 [4] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:33:34,994 [5] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-08 23:34:21,891 [5] INFO  WxTools.Server.Dal.TcpServerDal - Logout
+ WxTools.Server.Dal.TcpServerDalname

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
@@ -13,6 +14,7 @@ namespace WxTools.Server
         private string _osName;
         private string _logs;
         private string _ip;
+        public DateTime HeartbeatTime;
 
         public string Ip
         {

@@ -11,13 +11,7 @@ namespace WxTools.Common
         public string OsName { get; set; } = "";
         public Point Screen { get; set; } = new Point();
         public ActionType Action { get; set; } = ActionType.None;
-
         public string Msg { get; set; } = "";
-        public string MsgExt { get; set; } = "";
-        public int State { get; set; } = 0;
-        public int Ext1 { get; set; } = 0;
-        public int Ext2 { get; set; } = 0;
-        public object Data { get; set; }
         public string Ip { get; set; } = "";
     }
 
@@ -33,6 +27,7 @@ namespace WxTools.Common
         Log,
         Url,
         Login,
-        Logout
+        Logout,
+        Heartbeat
     }
 }

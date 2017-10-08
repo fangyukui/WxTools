@@ -10,7 +10,9 @@ using System.Text;
 using System.Threading;
 using System.Windows;
 using log4net;
+using LwSoft;
 using WxTools.Annotations;
+using WxTools.Client.Dal;
 using WxTools.Client.Helper;
 using WxTools.Client.Model;
 using WxTools.Theme;
@@ -34,7 +36,7 @@ namespace WxTools.Client.ViewModel
             }
         }
 
-        public bool IsChecked
+       /* public bool IsChecked
         {
             get => _isChecked;
             set
@@ -43,19 +45,23 @@ namespace WxTools.Client.ViewModel
                 _isChecked = value;
                 OnPropertyChanged();
             }
-        }
+        }*/
 
         private readonly ILog _log = LogManager.GetLogger(typeof(MainViewModel));
 
         private ObservableCollection<OperaDal> _operas;
 
-        private bool _isChecked;
+        //private bool _isChecked;
 
         private Thread _thread;
 
         private DateTime _lasTime;
 
-        public TcpDal TcpDal { get; } = new TcpDal();
+        private bool _runstate;
+
+        private bool _isExit;
+
+        public TcpClientDal TcpClientDal { get; } = new TcpClientDal();
 
         #endregion
 
@@ -66,7 +72,8 @@ namespace WxTools.Client.ViewModel
             Operas = new ObservableCollection<OperaDal>();
             RegisterMessenger();
             CheckUpdate();
-            TcpDal.Connect();
+            TcpClientDal.ConnectedAction = Run;
+            TcpClientDal.Connect();
         }
 
         #endregion
@@ -78,13 +85,14 @@ namespace WxTools.Client.ViewModel
         /// </summary>
         public RelayCommand ClosedCommand { get; } = new RelayCommand(() =>
         {
-            Instance.IsChecked = false;
+            Instance._isExit = true;
+            //Instance.IsChecked = false;
             foreach (var opera in Instance.Operas)
             {
                 opera.StopThread();
                 opera.Dispose();
             }
-            Instance.TcpDal.Dispose();
+            Instance.TcpClientDal.Dispose();
             Instance.Operas.Clear();
             LwFactory.Clear();
         });
@@ -188,8 +196,9 @@ namespace WxTools.Client.ViewModel
                 var list = new List<OperaDal>();
                 while (true)
                 {
-                    Thread.Sleep(1000);
-                    if (IsChecked)
+                    if (_isExit) return;
+                    Thread.Sleep(2000);
+                    if (TcpClientDal.Connected)
                     {
                         foreach (var opera in Operas)
                         {
@@ -233,6 +242,54 @@ namespace WxTools.Client.ViewModel
                             Client.Common.SessionCount = 0;
                             CloseCefWebViewWnd();
                         }
+
+                        //新开了微信
+                        var hwndstr = LwFactory.GetDefault().EnumWindow(null, "WeChatMainWndForPC", null);
+                        var hwnds = hwndstr?.Split(',');
+                        if (hwnds?.Length > Operas.Count)
+                        {
+                            foreach (var hwnd in hwnds)
+                            {
+                                if (Operas.All(o => o.Hwnd != int.Parse(hwnd)))
+                                {
+                                    _log.Info("新开了微信");
+                                    var newlw = Operas.Count == 0 ? LwFactory.GetDefault() : LwFactory.GetNew();
+                                    Application.Current.Dispatcher.Invoke(() =>
+                                    {
+                                        var opera = new OperaDal(newlw);
+                                        try
+                                        {
+                                            opera.Hwnd = int.Parse(hwnd);
+                                            opera.Load();
+                                            opera.Lw.SetWindowState(opera.Hwnd, 1);
+                                            if (!opera.RunThread())
+                                            {
+                                                _log.Error($"{opera.Hwnd}启动线程出现错误，被跳过");
+                                            }
+                                            Operas.Add(opera);
+                                        }
+                                        catch (Exception e)
+                                        {
+                                            _log.Error($"{opera.Hwnd}加载出错", e);
+                                            MessageBox.Show($"{opera.Hwnd}加载出错", "提示");
+                                        }
+                                    });
+                                }
+                            }
+                        }
+
+                        if (_isExit) return;
+                        if (TcpClientDal.CheckIsConnected())
+                        {
+                            //心跳包
+                            TcpClientDal.SendHeartbeat();
+                        }
+                        else
+                        {
+                            //服务器被断开
+                            TcpClientDal.Connect();
+                            Thread.Sleep(5000);
+                        }
                     }
                 }
             })
@@ -250,6 +307,7 @@ namespace WxTools.Client.ViewModel
             {
                 while (true)
                 {
+                    if (_isExit) return;
                     if (Operas != null && Operas.All(o => o.RunState == RunState.Idle))
                     {
                         Client.Common.StartUpdate();
@@ -262,26 +320,36 @@ namespace WxTools.Client.ViewModel
         //执行线程启动
         private void Run()
         {
-            if (IsChecked)
+            if (TcpClientDal.Connected)
             {
+                if (_runstate) return;
+                _runstate = true;
+                //开启状态监测线程
+                CheckHwndStateThread();
                 var lw = LwFactory.GetDefault();
                 var hwndstr = lw.EnumWindow(null, "WeChatMainWndForPC", null);
                 var hwnds = hwndstr?.Split(',');
                 if (hwnds == null || hwnds.Length == 0)
                 {
-                    IsChecked = false;
-                    _log.Info("未找到微信(先运行微信)");
-                    MessageBox.Show("未找到微信(先运行微信)", "提示");
+                    _log.Info("未找到微信");
+                    /*IsChecked = false;
+                    MessageBox.Show("未找到微信(先运行微信)", "提示");*/
                     return;
                 }
                 //默认添加一个
                 if (Operas.Count == 0)
-                    Operas.Add(new OperaDal(LwFactory.GetDefault()));
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        Operas.Add(new OperaDal(LwFactory.GetDefault()));
+                    });
                 if (hwnds.Length != Operas.Count)
                 {
                     for (int i = 0; i < hwnds.Length - 1; i++)
                     {
-                        Operas.Add(new OperaDal(LwFactory.GetNew()));
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            Operas.Add(new OperaDal(LwFactory.GetNew()));
+                        });
                     }
                 }
                 var j = 0;
@@ -291,7 +359,8 @@ namespace WxTools.Client.ViewModel
                     {
                         try
                         {
-                            opera.Load(int.Parse(hwnds[j++]));
+                            opera.Hwnd = int.Parse(hwnds[j++]);
+                            opera.Load();
                             opera.Lw.SetWindowState(opera.Hwnd, 1);
                             if (!opera.RunThread())
                             {
@@ -307,8 +376,6 @@ namespace WxTools.Client.ViewModel
                     mythread.SetApartmentState(ApartmentState.STA);
                     mythread.Start();
                 }
-                //开启状态监测线程
-                CheckHwndStateThread();
                 _log.Info("启动完成");
             }
             else

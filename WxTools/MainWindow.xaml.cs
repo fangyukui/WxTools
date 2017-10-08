@@ -2,7 +2,7 @@
 using System.Windows.Media;
 using WxTools.Client.ViewModel;
 
-namespace WxTools
+namespace WxTools.Client
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑

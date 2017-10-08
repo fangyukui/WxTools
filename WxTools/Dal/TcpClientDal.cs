@@ -12,13 +12,17 @@ using WxTools.Client.Helper;
 using WxTools.Client.ViewModel;
 using WxTools.Common;
 
-namespace WxTools.Client
+namespace WxTools.Client.Dal
 {
-    public class TcpDal : INotifyPropertyChanged,IDisposable
+    public class TcpClientDal : INotifyPropertyChanged,IDisposable
     {
-        private readonly ILog _log = LogManager.GetLogger(typeof(TcpDal));
+        private readonly ILog _log = LogManager.GetLogger(typeof(TcpClientDal));
+        private DateTime _heartbeatTime;
         private SimpleTcpClient _client;
         private bool _connected;
+        public Action ConnectedAction;
+        private bool _connecting;
+        private string _ip;
 
         public bool Connected
         {
@@ -31,28 +35,54 @@ namespace WxTools.Client
             }
         }
 
+        public bool CheckIsConnected()
+        {
+            if (_client != null)
+            {
+                if (_client.TcpClient.Connected)
+                {
+                    if ((DateTime.Now - _heartbeatTime).TotalSeconds >= 60)
+                    {
+                        //超时
+                        Connected = false;
+                        return false;
+                    }
+                    Connected = true;
+                    return true;
+                }
+            }
+            Connected = false;
+            return false;
+        }
+
         public void Connect()
         {
+            if (_connecting) return;
+            _connecting = true;
             Task.Factory.StartNew(() =>
             {
-                while (_client == null || !_client.TcpClient.Connected)
+                while (!Connected)
                 {
                     try
                     {
                         _client = new SimpleTcpClient().Connect("127.0.0.1", 8910);
-                        _client.DataReceived += Received;
-                        SendLogin();
+                        _client.DelimiterDataReceived += Received;
+                        _ip = LwFactory.GetDefault().GetNetIp();
+                        _heartbeatTime = DateTime.Now;
                         Connected = true;
+                        ConnectedAction?.Invoke();
+                        SendLogin();
                         Console.WriteLine("登录成功");
                         break;
                     }
-                    catch (Exception)
+                    catch (Exception e)
                     {
                         Connected = false;
                         Console.WriteLine("登录失败");
                     }
                     Thread.Sleep(2000);
                 }
+                _connecting = false;
             });
         }
 
@@ -67,12 +97,12 @@ namespace WxTools.Client
                     MsgType = MsgType.Login,
                     Action = ActionType.None,
                     IsServer = false,
-                    Ip= lw.GetNetIp(),
+                    Ip= _ip,
                     PcName = computer.GetComputerName(),
                     OsName = computer.GetSystemType(),
                     Screen = new Point(lw.GetScreenWidth(), lw.GetScreenHeight())
                 };
-                _client.Write(JsonConvert.SerializeObject(tcpmsg));
+                _client.WriteLine(JsonConvert.SerializeObject(tcpmsg));
             }
             catch (Exception e)
             {
@@ -86,16 +116,36 @@ namespace WxTools.Client
             {
                 var tcpmsg = new TcpMessage
                 {
-                    Ip = LwFactory.GetDefault().GetNetIp(),
+                    Ip = _ip,
                     MsgType = MsgType.Logout,
                     Action = ActionType.None,
                     IsServer = false,
                 };
-                _client.Write(JsonConvert.SerializeObject(tcpmsg));
+                _client.WriteLine(JsonConvert.SerializeObject(tcpmsg));
             }
             catch (Exception e)
             {
                 _log.Error(e);
+            }
+        }
+
+        public void SendHeartbeat()
+        {
+            try
+            {
+                var tcpmsg = new TcpMessage
+                {
+                    Ip = _ip,
+                    MsgType = MsgType.Heartbeat,
+                    Action = ActionType.None,
+                    IsServer = false,
+                    Msg = ""
+                };
+                _client.WriteLine(JsonConvert.SerializeObject(tcpmsg));
+            }
+            catch (Exception)
+            {
+                //_log.Error(e);
             }
         }
 
@@ -105,13 +155,13 @@ namespace WxTools.Client
             {
                 var tcpmsg = new TcpMessage
                 {
-                    Ip = LwFactory.GetDefault().GetNetIp(),
+                    Ip = _ip,
                     MsgType = MsgType.Log,
                     Action = ActionType.None,
                     IsServer = false,
                     Msg = log
                 };
-                _client.Write(JsonConvert.SerializeObject(tcpmsg));
+                _client.WriteLine(JsonConvert.SerializeObject(tcpmsg));
             }
             catch (Exception e)
             {
@@ -124,7 +174,7 @@ namespace WxTools.Client
             try
             {
                 var tcpmsg = JsonConvert.DeserializeObject<TcpMessage>(msg.MessageString);
-                _log.Info("收到一条消息");
+                //_log.Info("收到一条消息");
                 switch (tcpmsg.MsgType)
                 {
                     case MsgType.Url:
@@ -133,6 +183,9 @@ namespace WxTools.Client
                             _log.Info("执行URl");
                             MainViewModel.Instance.ExecuteUrl(tcpmsg.Msg);
                         }
+                        break;
+                    case MsgType.Heartbeat:
+                        _heartbeatTime = DateTime.Now;
                         break;
                 }
             }

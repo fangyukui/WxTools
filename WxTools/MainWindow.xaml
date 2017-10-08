@@ -1,4 +1,4 @@
-﻿<Window x:Class="WxTools.MainWindow"
+﻿<Window x:Class="WxTools.Client.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -13,6 +13,18 @@
         MinHeight="200"
         MinWidth="580"
         Title="Weixin" Height="350" Width="580">
+    <Window.Resources>
+        <Style x:Key="StateStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Text" Value="等待连接"/>
+            <Setter Property="Foreground" Value="DarkGray"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding TcpClientDal.Connected}" Value="True">
+                    <Setter Property="Foreground" Value="ForestGreen"/>
+                    <Setter Property="Text" Value="连接成功"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closed">
             <i:InvokeCommandAction Command="{Binding ClosedCommand}"/>
@@ -26,15 +38,18 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="服务器连接" VerticalAlignment="Center" Margin="5,2" Foreground="LightSlateGray"/>
-            <control:BulletCheckBox FocusVisualStyle="{x:Null}" 
+            <TextBlock Style="{StaticResource StateStyle}" VerticalAlignment="Center" Margin="5,2"/>
+            <TextBlock Text="微信数：" VerticalAlignment="Center" Margin="10,2,0,2"/>
+            <TextBlock Text="{Binding Operas.Count}" VerticalAlignment="Center" Margin="2"/>
+            <!--  <control:BulletCheckBox FocusVisualStyle="{x:Null}" 
                                     IsChecked="{Binding TcpDal.Connected}"
-                                    Margin="2"/> 
-            <TextBlock Text="一键启动/关闭" VerticalAlignment="Center" Margin="5,2" Foreground="LightSlateGray"/>
+                                    Margin="2"/> -->
+ <!--           <TextBlock Text="一键启动/关闭" VerticalAlignment="Center" Margin="5,2" Foreground="LightSlateGray"/>
             <control:BulletCheckBox FocusVisualStyle="{x:Null}" 
                                     IsChecked="{Binding IsChecked,Mode=TwoWay}"
                                     Margin="2"
                                     HorizontalAlignment="Left"
-                                    Command="{Binding RunCommand}"/>
+                                    Command="{Binding RunCommand}"/>-->
             
             <TextBlock Text="要求分辨率: 1920*1080；微信不可最小化；" Foreground="Red" VerticalAlignment="Center" Margin="20,0"/>
             <!--<Button Content="打开电脑微信" Command="{Binding OpenWeixinCommand}" Margin="2"></Button>-->

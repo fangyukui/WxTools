@@ -12,7 +12,7 @@ namespace WxTools.Server.Converters
             if (value != null)
             {
                 var p =(Point)value;
-                return p.X + "," + p.Y;
+                return p.X + "x" + p.Y;
             }
             return "";
         }

@@ -14,16 +14,21 @@
     <Grid x:Name="GridRoot" Loaded="GridRoot_OnLoaded">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" >
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock Text="电脑数：" VerticalAlignment="Center" Margin="10,2,0,2"/>
+            <TextBlock Text="{Binding ClientInfos.Count}" VerticalAlignment="Center" Margin="2"/>
+        </StackPanel>
+        <Grid Grid.Row="1">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="发送连接" VerticalAlignment="Center" Margin="5"></TextBlock>
-                <TextBox Text="{Binding Url}" Width="500" Margin="1"></TextBox>
-                <Button Margin="5,1" Content="发送" Width="40" Command="{Binding SendUrlCommand}"></Button>
+                <TextBlock Text="发送连接" VerticalAlignment="Center" Margin="10,2,0,2"></TextBlock>
+                <TextBox Text="{Binding Url}" Width="500" Margin="10,1"></TextBox>
+                <Button Margin="1" Content="发送" Width="50" Command="{Binding SendUrlCommand}"></Button>
             </StackPanel>
         </Grid>
-        <ItemsControl Grid.Row="1" ItemsSource="{Binding ClientInfos}" Margin="2">
+        <ItemsControl Grid.Row="2" ItemsSource="{Binding ClientInfos}" Margin="2">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"/>
@@ -35,9 +40,10 @@
                             Margin="2"
                             BorderThickness="1" 
                             Background="White"
-                            BorderBrush="#FF89D95E" Width="250" Height="300">
+                            BorderBrush="#FF89D95E" Width="220" Height="250">
                         <Grid>
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
@@ -51,24 +57,25 @@
                                            Margin="2"/>
                             </Border>
                             <DockPanel Grid.Row="1">
-                                <TextBlock Text="PcName:" Margin="2,0,10,0"/>
+                                <TextBlock Text="计算机名:" Margin="2,0,10,0"/>
                                 <TextBlock Text="{Binding PcName}" 
                                            Foreground="DarkSlateGray"
                                            HorizontalAlignment="Center" Margin="2"/>
                             </DockPanel>
                             <DockPanel Grid.Row="2">
-                                <TextBlock Text="OsName:" Margin="2,0,10,0"/>
+                                <TextBlock Text="电脑系统:" Margin="2,0,10,0"/>
                                 <TextBlock Text="{Binding OsName}" 
                                            Foreground="DarkSlateGray"
                                            HorizontalAlignment="Center" Margin="2"/>
                             </DockPanel>
                             <DockPanel Grid.Row="3">
-                                <TextBlock Text="Screen:" Margin="2,0,10,0"/>
+                                <TextBlock Text="分辨率:" Margin="2,0,10,0"/>
                                 <TextBlock Text="{Binding Screen,Converter={StaticResource PointToStrConverter}}" 
                                            Foreground="DarkSlateGray"
                                            HorizontalAlignment="Center" Margin="2"/>
                             </DockPanel>
-                            <ScrollViewer Grid.Row="4" 
+                            <TextBlock Grid.Row="4" Text="日志:" Margin="2,0,10,0"/>
+                            <ScrollViewer Grid.Row="5" 
                                           helper:ScrollViewerExtensions.AlwaysScrollToEnd="True"
                                           VerticalScrollBarVisibility="Auto"
                                           Height="Auto" 
