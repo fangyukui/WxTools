@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace WxTools.Helper
+namespace WxTools.Client.Helper
 {
     public class PxConvert
     {
@@ -16,7 +16,7 @@ namespace WxTools.Helper
 
         public static Point To(int x, int y)
         {
-            return To(new Point(x, y), Common.Width, Common.Height);
+            return To(new Point(x, y), Client.Common.Width, Client.Common.Height);
         }
     }
 }

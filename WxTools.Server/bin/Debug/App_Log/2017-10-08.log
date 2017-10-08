@@ -1,0 +1,122 @@
+2017-10-08 16:29:48,228 [4] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:29:52,354 [4] INFO  WxTools.Server.ViewModel.MainViewModel - Login
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:31:36,364 [1] ERROR WxTools.Client.App - System.InvalidOperationException: 无法对“WxTools.Server.ViewModel.MainViewModel”类型的只读属性“ClientInfos”进行 TwoWay 或 OneWayToSource 绑定。
+   在 MS.Internal.Data.PropertyPathWorker.CheckReadOnly(Object item, Object info)
+   在 MS.Internal.Data.PropertyPathWorker.ReplaceItem(Int32 k, Object newO, Object parent)
+   在 MS.Internal.Data.PropertyPathWorker.UpdateSourceValueState(Int32 k, ICollectionView collectionView, Object newValue, Boolean isASubPropertyChange)
+   在 MS.Internal.Data.ClrBindingWorker.AttachDataItem()
+   在 System.Windows.Data.BindingExpression.Activate(Object item)
+   在 System.Windows.Data.BindingExpression.AttachToContext(AttachAttempt attempt)
+   在 System.Windows.Data.BindingExpression.MS.Internal.Data.IDataBindEngineClient.AttachToContext(Boolean lastChance)
+   在 MS.Internal.Data.DataBindEngine.Task.Run(Boolean lastChance)
+   在 MS.Internal.Data.DataBindEngine.Run(Object arg)
+   在 MS.Internal.Data.DataBindEngine.OnLayoutUpdated(Object sender, EventArgs e)
+   在 System.Windows.ContextLayoutManager.fireLayoutUpdateEvent()
+   在 System.Windows.ContextLayoutManager.UpdateLayout()
+   在 System.Windows.UIElement.UpdateLayout()
+   在 System.Windows.Interop.HwndSource.SetLayoutSize()
+   在 System.Windows.Interop.HwndSource.set_RootVisualInternal(Visual value)
+   在 System.Windows.Interop.HwndSource.set_RootVisual(Visual value)
+   在 System.Windows.Window.SetRootVisual()
+   在 System.Windows.Window.SetRootVisualAndUpdateSTC()
+   在 System.Windows.Window.SetupInitialState(Double requestedTop, Double requestedLeft, Double requestedWidth, Double requestedHeight)
+   在 System.Windows.Window.CreateSourceWindow(Boolean duringShow)
+   在 System.Windows.Window.CreateSourceWindowDuringShow()
+   在 System.Windows.Window.SafeCreateWindowDuringShow()
+   在 System.Windows.Window.ShowHelper(Object booleanBox)
+   在 System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   在 System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+ WxTools.Client.Appname2017-10-08 16:31:39,296 [4] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:31:39,296 [4] INFO  WxTools.Server.ViewModel.MainViewModel - Login
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:32:35,259 [1] ERROR WxTools.Client.App - System.InvalidOperationException: 无法对“WxTools.Server.ViewModel.MainViewModel”类型的只读属性“ClientInfos”进行 TwoWay 或 OneWayToSource 绑定。
+   在 MS.Internal.Data.PropertyPathWorker.CheckReadOnly(Object item, Object info)
+   在 MS.Internal.Data.PropertyPathWorker.ReplaceItem(Int32 k, Object newO, Object parent)
+   在 MS.Internal.Data.PropertyPathWorker.UpdateSourceValueState(Int32 k, ICollectionView collectionView, Object newValue, Boolean isASubPropertyChange)
+   在 MS.Internal.Data.ClrBindingWorker.AttachDataItem()
+   在 System.Windows.Data.BindingExpression.Activate(Object item)
+   在 System.Windows.Data.BindingExpression.AttachToContext(AttachAttempt attempt)
+   在 System.Windows.Data.BindingExpression.MS.Internal.Data.IDataBindEngineClient.AttachToContext(Boolean lastChance)
+   在 MS.Internal.Data.DataBindEngine.Task.Run(Boolean lastChance)
+   在 MS.Internal.Data.DataBindEngine.Run(Object arg)
+   在 MS.Internal.Data.DataBindEngine.OnLayoutUpdated(Object sender, EventArgs e)
+   在 System.Windows.ContextLayoutManager.fireLayoutUpdateEvent()
+   在 System.Windows.ContextLayoutManager.UpdateLayout()
+   在 System.Windows.UIElement.UpdateLayout()
+   在 System.Windows.Interop.HwndSource.SetLayoutSize()
+   在 System.Windows.Interop.HwndSource.set_RootVisualInternal(Visual value)
+   在 System.Windows.Interop.HwndSource.set_RootVisual(Visual value)
+   在 System.Windows.Window.SetRootVisual()
+   在 System.Windows.Window.SetRootVisualAndUpdateSTC()
+   在 System.Windows.Window.SetupInitialState(Double requestedTop, Double requestedLeft, Double requestedWidth, Double requestedHeight)
+   在 System.Windows.Window.CreateSourceWindow(Boolean duringShow)
+   在 System.Windows.Window.CreateSourceWindowDuringShow()
+   在 System.Windows.Window.SafeCreateWindowDuringShow()
+   在 System.Windows.Window.ShowHelper(Object booleanBox)
+   在 System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   在 System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+ WxTools.Client.Appname2017-10-08 16:32:37,916 [5] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:32:37,917 [5] INFO  WxTools.Server.ViewModel.MainViewModel - Login
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:33:14,643 [4] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:33:14,659 [4] INFO  WxTools.Server.ViewModel.MainViewModel - Login
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:33:14,692 [4] ERROR WxTools.Server.ViewModel.MainViewModel - System.NotSupportedException: 该类型的 CollectionView 不支持从调度程序线程以外的线程对其 SourceCollection 进行的更改。
+   在 System.Windows.Data.CollectionView.OnCollectionChanged(Object sender, NotifyCollectionChangedEventArgs args)
+   在 System.Collections.ObjectModel.ObservableCollection`1.OnCollectionChanged(NotifyCollectionChangedEventArgs e)
+   在 System.Collections.ObjectModel.ObservableCollection`1.InsertItem(Int32 index, T item)
+   在 System.Collections.ObjectModel.Collection`1.Add(T item)
+   在 WxTools.Server.ViewModel.MainViewModel.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\ViewModel\MainViewModel.cs:行号 70
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:33:59,696 [5] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:33:59,711 [5] INFO  WxTools.Server.ViewModel.MainViewModel - Login
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:34:22,297 [5] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:34:22,297 [5] INFO  WxTools.Server.ViewModel.MainViewModel - Logout
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:34:31,826 [5] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:34:31,842 [5] INFO  WxTools.Server.ViewModel.MainViewModel - Login
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:34:33,604 [5] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:34:33,604 [5] INFO  WxTools.Server.ViewModel.MainViewModel - Logout
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:35:47,060 [6] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:35:47,078 [6] INFO  WxTools.Server.ViewModel.MainViewModel - Login
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:35:48,484 [6] ERROR WxTools.Server.ViewModel.MainViewModel - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 176.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.ViewModel.MainViewModel.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\ViewModel\MainViewModel.cs:行号 56
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:36:27,794 [5] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:36:29,555 [5] INFO  WxTools.Server.ViewModel.MainViewModel - Login
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:36:31,933 [5] ERROR WxTools.Server.ViewModel.MainViewModel - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 176.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.ViewModel.MainViewModel.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\ViewModel\MainViewModel.cs:行号 56
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:36:50,803 [7] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:36:50,817 [7] INFO  WxTools.Server.ViewModel.MainViewModel - Login
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:37:33,204 [7] ERROR WxTools.Server.ViewModel.MainViewModel - Newtonsoft.Json.JsonReaderException: Additional text encountered after finished reading JSON content: {. Path '', line 1, position 176.
+   在 Newtonsoft.Json.JsonTextReader.Read()
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   在 WxTools.Server.ViewModel.MainViewModel.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\ViewModel\MainViewModel.cs:行号 56
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:39:23,741 [5] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:39:23,759 [5] INFO  WxTools.Server.ViewModel.MainViewModel - Login
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:39:39,085 [5] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:39:40,851 [5] INFO  WxTools.Server.ViewModel.MainViewModel - Logout
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:39:48,219 [5] ERROR WxTools.Server.ViewModel.MainViewModel - System.NotSupportedException: 该类型的 CollectionView 不支持从调度程序线程以外的线程对其 SourceCollection 进行的更改。
+   在 System.Windows.Data.CollectionView.OnCollectionChanged(Object sender, NotifyCollectionChangedEventArgs args)
+   在 System.Collections.ObjectModel.ObservableCollection`1.OnCollectionChanged(NotifyCollectionChangedEventArgs e)
+   在 System.Collections.ObjectModel.ObservableCollection`1.RemoveItem(Int32 index)
+   在 System.Collections.ObjectModel.Collection`1.Remove(T item)
+   在 WxTools.Server.ViewModel.MainViewModel.Received(Object sender, Message msg) 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\ViewModel\MainViewModel.cs:行号 87
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:39:52,585 [5] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:40:46,325 [5] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:40:46,340 [5] INFO  WxTools.Server.ViewModel.MainViewModel - Login
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:40:53,547 [5] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:40:53,547 [5] INFO  WxTools.Server.ViewModel.MainViewModel - Logout
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:51:12,825 [6] INFO  WxTools.Server.ViewModel.MainViewModel - 收到一条消息
+ WxTools.Server.ViewModel.MainViewModelname2017-10-08 16:51:12,848 [6] INFO  WxTools.Server.ViewModel.MainViewModel - Login
+ WxTools.Server.ViewModel.MainViewModelname

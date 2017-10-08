@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WxTools", "WxTools\WxTools.csproj", "{F9D00C96-F104-4F1E-BA55-5B6E35B401C0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WxTools.Client", "WxTools\WxTools.Client.csproj", "{F9D00C96-F104-4F1E-BA55-5B6E35B401C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LwSoft", "LwSoft\LwSoft.csproj", "{08521E2E-97EB-4CA1-A77B-7418533F3B98}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WxTools.Theme", "WxTools.Theme\WxTools.Theme.csproj", "{343F577E-6388-442C-B725-2EA6893AB221}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WxTools.Common", "WxTools.Common\WxTools.Common.csproj", "{C3A8EF89-6328-43E6-8BE6-FF0D31A0C340}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WxTools.Server", "WxTools.Server\WxTools.Server.csproj", "{5A60DE9F-E9E3-4367-8429-B09D6E28590B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +45,22 @@ Global
 		{343F577E-6388-442C-B725-2EA6893AB221}.Release|Any CPU.Build.0 = Release|Any CPU
 		{343F577E-6388-442C-B725-2EA6893AB221}.Release|x86.ActiveCfg = Release|x86
 		{343F577E-6388-442C-B725-2EA6893AB221}.Release|x86.Build.0 = Release|x86
+		{C3A8EF89-6328-43E6-8BE6-FF0D31A0C340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3A8EF89-6328-43E6-8BE6-FF0D31A0C340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3A8EF89-6328-43E6-8BE6-FF0D31A0C340}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C3A8EF89-6328-43E6-8BE6-FF0D31A0C340}.Debug|x86.Build.0 = Debug|Any CPU
+		{C3A8EF89-6328-43E6-8BE6-FF0D31A0C340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3A8EF89-6328-43E6-8BE6-FF0D31A0C340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3A8EF89-6328-43E6-8BE6-FF0D31A0C340}.Release|x86.ActiveCfg = Release|Any CPU
+		{C3A8EF89-6328-43E6-8BE6-FF0D31A0C340}.Release|x86.Build.0 = Release|Any CPU
+		{5A60DE9F-E9E3-4367-8429-B09D6E28590B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A60DE9F-E9E3-4367-8429-B09D6E28590B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A60DE9F-E9E3-4367-8429-B09D6E28590B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5A60DE9F-E9E3-4367-8429-B09D6E28590B}.Debug|x86.Build.0 = Debug|Any CPU
+		{5A60DE9F-E9E3-4367-8429-B09D6E28590B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A60DE9F-E9E3-4367-8429-B09D6E28590B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A60DE9F-E9E3-4367-8429-B09D6E28590B}.Release|x86.ActiveCfg = Release|Any CPU
+		{5A60DE9F-E9E3-4367-8429-B09D6E28590B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

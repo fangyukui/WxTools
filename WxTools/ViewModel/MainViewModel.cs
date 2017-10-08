@@ -4,16 +4,18 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Windows;
 using log4net;
 using WxTools.Annotations;
-using WxTools.Helper;
+using WxTools.Client.Helper;
+using WxTools.Client.Model;
 using WxTools.Theme;
 
-namespace WxTools.ViewModel
+namespace WxTools.Client.ViewModel
 {
     public class MainViewModel : INotifyPropertyChanged
     {
@@ -53,6 +55,8 @@ namespace WxTools.ViewModel
 
         private DateTime _lasTime;
 
+        public TcpDal TcpDal { get; } = new TcpDal();
+
         #endregion
 
         #region 构造函数
@@ -61,6 +65,8 @@ namespace WxTools.ViewModel
         {
             Operas = new ObservableCollection<OperaDal>();
             RegisterMessenger();
+            CheckUpdate();
+            TcpDal.Connect();
         }
 
         #endregion
@@ -75,9 +81,10 @@ namespace WxTools.ViewModel
             Instance.IsChecked = false;
             foreach (var opera in Instance.Operas)
             {
-                opera.StopCheckNewMessage();
+                opera.StopThread();
                 opera.Dispose();
             }
+            Instance.TcpDal.Dispose();
             Instance.Operas.Clear();
             LwFactory.Clear();
         });
@@ -137,19 +144,19 @@ namespace WxTools.ViewModel
         //注册消息监听
         private void RegisterMessenger()
         {
-            Common.Messenger.Register("CefWebViewWnd", () =>
+            Client.Common.Messenger.Register("CefWebViewWnd", () =>
             {
                 _lasTime = DateTime.Now;
                 //Interlocked.Increment(ref Common.SessionCount);
-                Common.SessionCount += 1;
+                Client.Common.SessionCount += 1;
 
-                if (Common.SessionCount >= Common.MaxSessionCount || Common.SessionCount == Operas.Count)
+                if (Client.Common.SessionCount >= Client.Common.MaxSessionCount || Client.Common.SessionCount == Operas.Count)
                 {
-                    _log.Info($"清理一次窗口; SessionCount:{Common.SessionCount};" +
-                              $" Operas.Count:{Operas.Count}; MaxSessionCount:{Common.MaxSessionCount};");
+                    _log.Info($"清理一次窗口; SessionCount:{Client.Common.SessionCount};" +
+                              $" Operas.Count:{Operas.Count}; MaxSessionCount:{Client.Common.MaxSessionCount};");
                     //超过窗口数 或者 正好
                     Thread.Sleep(4000);
-                    Common.SessionCount = 0;
+                    Client.Common.SessionCount = 0;
                     CloseCefWebViewWnd();
                 }
             });
@@ -170,7 +177,7 @@ namespace WxTools.ViewModel
             }
         }
 
-        //监测窗体，变量状态线程
+        //监测窗体，变量状态,自动更新 线程
         private void CheckHwndStateThread()
         {
             if (_thread != null) return;
@@ -201,9 +208,9 @@ namespace WxTools.ViewModel
                                 }
                                 if (opera.Lw.GetClientSize(opera.Hwnd) == 1)
                                 {
-                                    if (opera.Lw.X() != Common.Width || opera.Lw.Y() != Common.Height)
+                                    if (opera.Lw.X() != Client.Common.Width || opera.Lw.Y() != Client.Common.Height)
                                     {
-                                        opera.Lw.SetWindowSize(opera.Hwnd, Common.Width, Common.Height);
+                                        opera.Lw.SetWindowSize(opera.Hwnd, Client.Common.Width, Client.Common.Height);
                                         _log.Warn("微信窗体大小被用户拖动，已经恢复");
                                     }
                                 }
@@ -220,10 +227,10 @@ namespace WxTools.ViewModel
                         }
 
                         //防止文章窗口打开过久
-                        if (Common.SessionCount > 0 && (DateTime.Now - _lasTime).Seconds > 30)
+                        if (Client.Common.SessionCount > 0 && (DateTime.Now - _lasTime).Seconds > 30)
                         {
                             _log.Warn($"文章窗口打开过久，已经关闭");
-                            Common.SessionCount = 0;
+                            Client.Common.SessionCount = 0;
                             CloseCefWebViewWnd();
                         }
                     }
@@ -234,6 +241,22 @@ namespace WxTools.ViewModel
                 Name = "检测状态改变线程"
             };
             _thread.Start();
+        }
+
+        //检测程序更新
+        private void CheckUpdate()
+        {
+            new Thread(() =>
+            {
+                while (true)
+                {
+                    if (Operas != null && Operas.All(o => o.RunState == RunState.Idle))
+                    {
+                        Client.Common.StartUpdate();
+                    }
+                    Thread.Sleep(60000);
+                }
+            }) {IsBackground = true}.Start();
         }
 
         //执行线程启动
@@ -270,7 +293,7 @@ namespace WxTools.ViewModel
                         {
                             opera.Load(int.Parse(hwnds[j++]));
                             opera.Lw.SetWindowState(opera.Hwnd, 1);
-                            if (!opera.CheckNewMessage())
+                            if (!opera.RunThread())
                             {
                                 _log.Error($"{opera.Hwnd}启动线程出现错误，被跳过");
                             }
@@ -292,13 +315,21 @@ namespace WxTools.ViewModel
             {
                 foreach (var opera in Operas)
                 {
-                    opera.StopCheckNewMessage();
+                    opera.StopThread();
                     opera.Dispose();
                 }
                 Operas.Clear();
                 LwFactory.Clear();
                 GC.Collect();
                 _log.Info("关闭完成");
+            }
+        }
+
+        public void ExecuteUrl(string url)
+        {
+            foreach (var opera in Operas)
+            {
+                opera.GoOnceAction(() => opera.SendMyMessage(url));
             }
         }
 

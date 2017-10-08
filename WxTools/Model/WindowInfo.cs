@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace WxTools.Model
+namespace WxTools.Client.Model
 {
     public class WindowInfo
     {

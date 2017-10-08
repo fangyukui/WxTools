@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Media;
-using WxTools.ViewModel;
+using WxTools.Client.ViewModel;
 
 namespace WxTools
 {

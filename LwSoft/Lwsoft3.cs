@@ -328,7 +328,7 @@ namespace LwSoft
         /// <param name="vk_code">虚拟按键码</param>
         /// <param name="num">按键次数,默认1次</param>
         /// <returns></returns>
-        public int KeyPress(int vk_code, int num)
+        public int KeyPress(int vk_code, int num = 1)
         {
             object[] args =
             {
@@ -796,6 +796,17 @@ namespace LwSoft
             };
             var result = obj.InvokeMember("Delay", BindingFlags.InvokeMethod, null, obj_object, args);
             return this;
+        }
+
+        public int GetScreenHeight()
+        {
+            var result = obj.InvokeMember("GetScreenHeight", BindingFlags.InvokeMethod, null, obj_object, null);
+            return (int)result;
+        }
+        public int GetScreenWidth()
+        {
+            var result = obj.InvokeMember("GetScreenWidth", BindingFlags.InvokeMethod, null, obj_object, null);
+            return (int)result;
         }
 
         #region Adb安卓桥接调试

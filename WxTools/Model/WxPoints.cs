@@ -1,7 +1,7 @@
 ﻿using System.Windows;
-using WxTools.Helper;
+using WxTools.Client.Helper;
 
-namespace WxTools.Model
+namespace WxTools.Client.Model
 {
     public class WxPoints
     {
@@ -31,5 +31,10 @@ namespace WxTools.Model
         /// 发现
         /// </summary>
         public static Point Discover { get; } = PxConvert.To(186, 470);
+
+        /// <summary>
+        /// 聊天位置
+        /// </summary>
+        public static Point Chat{ get; } = PxConvert.To(600, 555);
     }
 }

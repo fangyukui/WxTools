@@ -4,7 +4,7 @@ using System.Windows;
 using log4net;
 using log4net.Config;
 
-namespace WxTools
+namespace WxTools.Client
 {
     /// <summary>
     /// App.xaml 的交互逻辑

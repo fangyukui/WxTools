@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using LwSoft;
 
-namespace WxTools
+namespace WxTools.Client
 {
     public static class LwFactory
     {

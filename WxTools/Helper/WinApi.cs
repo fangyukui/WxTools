@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace WxTools.Helper
+namespace WxTools.Client.Helper
 {
     public class WinApi
     {

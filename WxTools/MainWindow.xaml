@@ -8,7 +8,7 @@
         Topmost="True"
         WindowStartupLocation="CenterScreen"
         Icon="wechat.ico"
-        xmlns:helper="clr-namespace:WxTools.Helper"
+        xmlns:helper1="clr-namespace:WxTools.Client.Helper"
         mc:Ignorable="d"
         MinHeight="200"
         MinWidth="580"
@@ -25,6 +25,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
+            <TextBlock Text="服务器连接" VerticalAlignment="Center" Margin="5,2" Foreground="LightSlateGray"/>
+            <control:BulletCheckBox FocusVisualStyle="{x:Null}" 
+                                    IsChecked="{Binding TcpDal.Connected}"
+                                    Margin="2"/> 
             <TextBlock Text="一键启动/关闭" VerticalAlignment="Center" Margin="5,2" Foreground="LightSlateGray"/>
             <control:BulletCheckBox FocusVisualStyle="{x:Null}" 
                                     IsChecked="{Binding IsChecked,Mode=TwoWay}"
@@ -61,7 +65,7 @@
                                            Margin="2"/>
                             </Border>
                             <ScrollViewer Grid.Row="1" 
-                                          helper:ScrollViewerExtensions.AlwaysScrollToEnd="True"
+                                          helper1:ScrollViewerExtensions.AlwaysScrollToEnd="True"
                                           VerticalScrollBarVisibility="Auto"
                                           Height="Auto" 
                                           Width="Auto">

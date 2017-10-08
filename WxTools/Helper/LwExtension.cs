@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Windows;
 using LwSoft;
 using LwSoft.Enums;
-using WxTools.Model;
+using WxTools.Client.Model;
 
-namespace WxTools.Helper
+namespace WxTools.Client.Helper
 {
     public static class LwExtension
     {
