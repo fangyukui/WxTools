@@ -26,7 +26,7 @@ namespace WxTools.Server.Dal
 
         public void StartServer()
         {
-            _server = new SimpleTcpServer().Start(8910);
+            _server = new SimpleTcpServer().Start(8911);
             _server.DelimiterDataReceived += Received;
         }
 
@@ -84,14 +84,14 @@ namespace WxTools.Server.Dal
                         {
                             if (info != null)
                             {
-                                info.Logs += tcpmsg.Msg;
+                                info.Logs += tcpmsg.Msg + "\r\n";
                                 var lines = info.Logs.Split("\r\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                                 if (lines.Length > 10)
                                 {
                                     StringBuilder strb = new StringBuilder();
                                     for (int i = lines.Length - 10; i < lines.Length; i++)
                                     {
-                                        strb.Append(lines[i]);
+                                        strb.AppendLine(lines[i]);
                                     }
                                     info.Logs = strb.ToString();
                                 }
@@ -111,8 +111,7 @@ namespace WxTools.Server.Dal
                                     PcName = tcpmsg.PcName,
                                     OsName = tcpmsg.OsName,
                                     Screen = tcpmsg.Screen,
-                                    HeartbeatTime = DateTime.Now,
-                                    Logs = "客户端初始化成功"
+                                    HeartbeatTime = DateTime.Now
                                 });
                             });
                         }

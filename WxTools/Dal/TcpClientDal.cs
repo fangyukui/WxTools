@@ -66,7 +66,7 @@ namespace WxTools.Client.Dal
                     try
                     {
                         _ip = LwFactory.GetDefault().GetNetIp();
-                        _client = new SimpleTcpClient().Connect(Common.TcpIp, 8910);
+                        _client = new SimpleTcpClient().Connect(Common.TcpIp, 8911);
                         _client.DelimiterDataReceived -= Received;
                         _client.DelimiterDataReceived += Received;
                         SendLogin();
@@ -79,6 +79,7 @@ namespace WxTools.Client.Dal
                     catch (Exception e)
                     {
                         Connected = false;
+                        _log.Warn("尝试登陆", e);
                         Console.WriteLine("登录失败");
                     }
                     Thread.Sleep(2000);

@@ -82,7 +82,7 @@ namespace WxTools.Client.Dal
             }
             Lw.SetPath(path);
             SetWindowsHandle(hwnd);
-            Log("初始化窗体成功");
+            //Log("初始化窗体成功");
             //绑定
             Lw.BindWindow(this.Hwnd, DisplayBindKey.Gdi, MouseBindKey.Windows,
                 KeypadBindKey.Windows, 32);
@@ -256,7 +256,7 @@ namespace WxTools.Client.Dal
             //找到一个能发送的聊天窗口
             for (int i = 0; i < 7; i++)
             {
-                if (Lw.FindPic(400, 400, 500, 550, "char.bmp", "000000", 0.95, 1))
+                if (Lw.FindPic(220, 400, 500, 550, "char.bmp", "000000", 0.85, 1))
                 {
                     find = true;
                     break;
@@ -269,7 +269,7 @@ namespace WxTools.Client.Dal
             Lw.SendString(message, 3, Hwnd);
             Lw.Delay().KeyPress(13);
 
-            if (Lw.FindPic(600, 80, 820, Client.Common.Height - 165, "dh2.bmp", "000000", 0.95, 1, 0, 1, -100, 13))
+            if (Lw.FindPic(600, 80, Common.Width, Client.Common.Height - 150, "dh2.bmp", "000000", 0.95, 1, 5000, 1, -100, 13))
             {
                 RunState = RunState.Busy;
                 OpenAction();
@@ -319,8 +319,8 @@ namespace WxTools.Client.Dal
         //会话窗口过多，等待处理
         private void WaitSeesion()
         {
-            if (Client.Common.SessionCount > 0)
-                while (Client.Common.SessionCount >= Client.Common.MaxSessionCount)
+            if (Common.SessionCount > 0)
+                while (Common.SessionCount >= Common.MaxSessionCount)
                 {
                     //_log.Info("窗口数较多，等待处理中");
                     //超过窗口数，等待处理
@@ -330,7 +330,7 @@ namespace WxTools.Client.Dal
 
         private void WaitBusy()
         {
-            while (RunState == RunState.Busy)
+            while (RunState == RunState.Busy || Common.SessionCount >= Common.MaxSessionCount)
             {
                 //超过窗口数，等待处理
                 Thread.Sleep(1000);

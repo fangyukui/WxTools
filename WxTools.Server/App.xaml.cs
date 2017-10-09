@@ -11,7 +11,7 @@ namespace WxTools.Server
     /// </summary>
     public partial class App : Application
     {
-        private readonly ILog _log = LogManager.GetLogger(typeof(Client.App));
+        private readonly ILog _log = LogManager.GetLogger(typeof(App));
 
         public App()
         {

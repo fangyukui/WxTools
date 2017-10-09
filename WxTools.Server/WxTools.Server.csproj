@@ -120,10 +120,6 @@
       <Project>{343f577e-6388-442c-b725-2ea6893ab221}</Project>
       <Name>WxTools.Theme</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WxTools\WxTools.Client.csproj">
-      <Project>{F9D00C96-F104-4F1E-BA55-5B6E35B401C0}</Project>
-      <Name>WxTools.Client</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

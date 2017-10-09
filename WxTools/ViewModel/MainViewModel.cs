@@ -74,7 +74,11 @@ namespace WxTools.Client.ViewModel
             Operas = new ObservableCollection<OperaDal>();
             RegisterMessenger();
             CheckUpdate();
-            TcpClientDal.ConnectedAction = UrlQueueThread;
+            TcpClientDal.ConnectedAction = () =>
+            {
+                UrlQueueThread();
+                CheckHwndStateThread();
+            };
             TcpClientDal.Connect();
         }
 
@@ -89,14 +93,24 @@ namespace WxTools.Client.ViewModel
         {
             Instance._isExit = true;
             //Instance.IsChecked = false;
-            foreach (var opera in Instance.Operas)
+            try
             {
-                opera.StopThread();
-                opera.Dispose();
+                foreach (var opera in Instance.Operas)
+                {
+                    opera.StopThread();
+                    opera.Dispose();
+                }
             }
-            Instance.TcpClientDal.Dispose();
-            Instance.Operas.Clear();
-            LwFactory.Clear();
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            finally
+            {
+                Instance.TcpClientDal.Dispose();
+                Instance.Operas.Clear();
+                LwFactory.Clear();
+            }
         });
 
         public RelayCommand OpenWeixinCommand { get; } = new RelayCommand(() =>
@@ -194,7 +208,7 @@ namespace WxTools.Client.ViewModel
             _thread = new Thread(() =>
             {
                 _log.Info("监测线程启动成功");
-                Thread.Sleep(8000);
+                Thread.Sleep(2000);
                 var list = new List<OperaDal>();
                 while (true)
                 {
@@ -233,7 +247,8 @@ namespace WxTools.Client.ViewModel
                             dal.Dispose();
                             Application.Current.Dispatcher.Invoke(() =>
                             {
-                                Operas.Remove(dal);
+                                lock (Operas)
+                                    Operas.Remove(dal);
                             });
                         }
 
@@ -269,7 +284,8 @@ namespace WxTools.Client.ViewModel
                                             {
                                                 _log.Error($"{opera.Hwnd}启动线程出现错误，被跳过");
                                             }*/
-                                            Operas.Add(opera);
+                                            lock (Operas)
+                                                Operas.Add(opera);
                                         }
                                         catch (Exception e)
                                         {
@@ -407,6 +423,7 @@ namespace WxTools.Client.ViewModel
             }*/
         }
 
+        private readonly object _lock = new object();
         private void UrlQueueThread()
         {
             if (_runstate) return;
@@ -419,7 +436,6 @@ namespace WxTools.Client.ViewModel
                         {
                             var url = _urlQueue.Dequeue();
                             int index = -1;
-                            var count = Operas.Count;
                             Task[] tasks = new Task[Common.MaxThreadCount];
                             for (int i = 0; i < tasks.Length; i++)
                             {
@@ -427,10 +443,15 @@ namespace WxTools.Client.ViewModel
                                 {
                                     while (true)
                                     {
-                                        Interlocked.Increment(ref index);
-                                        if (index >= count) return;
-                                        Console.WriteLine($" Operas[{index}]开始执行");
-                                        Operas[index].SendMyMessage(url);
+                                        OperaDal opear;
+                                        lock (_lock)
+                                        {
+                                            index++;
+                                            if (index >= Operas.Count) return;
+                                            _log.Info($"ExecuteUrl Operas[{index}]开始执行");
+                                            opear = Operas[index];
+                                        }
+                                        opear?.SendMyMessage(url);
                                     }
                                 });
                             }

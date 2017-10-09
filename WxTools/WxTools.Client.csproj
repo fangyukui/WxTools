@@ -90,7 +90,6 @@
     </Compile>
     <Compile Include="Common.cs" />
     <Compile Include="Helper\Computer.cs" />
-    <Compile Include="Helper\ScrollViewerExtensions.cs" />
     <Compile Include="Helper\WinApi.cs" />
     <Compile Include="LwFactory.cs" />
     <Compile Include="Helper\LwExtension.cs" />

@@ -17,7 +17,7 @@ namespace LwSoft
             obj = Type.GetTypeFromProgID("lw.lwsoft3");
             if (obj == null)
             {
-                /* String strCmd = $"regsvr32 {System.IO.Path.Combine(Environment.CurrentDirectory, "lw.dll")} /s";
+                 String strCmd = $"regsvr32 {System.IO.Path.Combine(Environment.CurrentDirectory, "lw.dll")} /s";
                  try
                  {
                      Process myProcess = new Process();
@@ -34,14 +34,15 @@ namespace LwSoft
                      obj = Type.GetTypeFromProgID("lw.lwsoft3");
                      if (obj == null)
                      {
-                         MessageBox.Show("插件注册到系统失败！", "提示");
+                         DllRegisterServer();
+                        //MessageBox.Show("插件注册到系统失败！", "提示");
                      }
                  }
                  catch (Exception)
                  {
                      System.Environment.Exit(0);
-                 }*/
-                DllRegisterServer();
+                 }
+               
                 obj = Type.GetTypeFromProgID("lw.lwsoft3");
                 if (obj == null)
                 {

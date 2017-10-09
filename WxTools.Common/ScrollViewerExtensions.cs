@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace WxTools.Client.Helper
+namespace WxTools.Common
 {
     public class ScrollViewerExtensions
     {

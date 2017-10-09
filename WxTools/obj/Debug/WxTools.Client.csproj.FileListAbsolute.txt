@@ -30,7 +30,6 @@ C:\Users\Administrator\Desktop\Project\WxTools\WxTools\obj\Debug\WxTools.Client.
 C:\Users\Administrator\Desktop\Project\WxTools\WxTools\obj\Debug\App.baml
 C:\Users\Administrator\Desktop\Project\WxTools\WxTools\obj\Debug\MainWindow.g.cs
 C:\Users\Administrator\Desktop\Project\WxTools\WxTools\obj\Debug\App.g.cs
-C:\Users\Administrator\Desktop\Project\WxTools\WxTools\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Administrator\Desktop\Project\WxTools\WxTools\obj\Debug\WxTools.Client_MarkupCompile.cache
 C:\Users\Administrator\Desktop\Project\WxTools\WxTools\obj\Debug\WxTools.Client_MarkupCompile.lref
 C:\Users\Administrator\Desktop\Project\WxTools\WxTools\obj\Debug\MainWindow.baml

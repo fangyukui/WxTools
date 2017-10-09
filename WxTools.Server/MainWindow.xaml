@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:helper="clr-namespace:WxTools.Client.Helper;assembly=WxTools.Client"
         xmlns:converters="clr-namespace:WxTools.Server.Converters"
+        xmlns:common="clr-namespace:WxTools.Common;assembly=WxTools.Common"
         mc:Ignorable="d"
         Title="微信服务端" Height="600" Width="825">
     
@@ -76,7 +76,7 @@
                             </DockPanel>
                             <TextBlock Grid.Row="4" Text="日志:" Margin="2,0,10,0"/>
                             <ScrollViewer Grid.Row="5" 
-                                          helper:ScrollViewerExtensions.AlwaysScrollToEnd="True"
+                                          common:ScrollViewerExtensions.AlwaysScrollToEnd="True"
                                           VerticalScrollBarVisibility="Auto"
                                           Height="Auto" 
                                           Width="Auto">

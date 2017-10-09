@@ -9,6 +9,7 @@
         WindowStartupLocation="CenterScreen"
         Icon="wechat.ico"
         xmlns:helper1="clr-namespace:WxTools.Client.Helper"
+        xmlns:common="clr-namespace:WxTools.Common;assembly=WxTools.Common"
         mc:Ignorable="d"
         MinHeight="200"
         MinWidth="580"
@@ -80,7 +81,7 @@
                                            Margin="2"/>
                             </Border>
                             <ScrollViewer Grid.Row="1" 
-                                          helper1:ScrollViewerExtensions.AlwaysScrollToEnd="True"
+                                          common:ScrollViewerExtensions.AlwaysScrollToEnd="True"
                                           VerticalScrollBarVisibility="Auto"
                                           Height="Auto" 
                                           Width="Auto">
