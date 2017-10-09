@@ -42,7 +42,7 @@ namespace WxTools.Server.Dal
                     Msg = url
                 };
                 _server.BroadcastLine(JsonConvert.SerializeObject(tcpmsg));
-                MessageBox.Show("发送成功", "提示");
+                //MessageBox.Show("发送成功", "提示");
             }
             catch (Exception e)
             {

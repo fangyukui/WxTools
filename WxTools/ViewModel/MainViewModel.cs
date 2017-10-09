@@ -93,24 +93,14 @@ namespace WxTools.Client.ViewModel
         {
             Instance._isExit = true;
             //Instance.IsChecked = false;
-            try
+           /* foreach (var opera in Instance.Operas)
             {
-                foreach (var opera in Instance.Operas)
-                {
-                    opera.StopThread();
-                    opera.Dispose();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-            finally
-            {
-                Instance.TcpClientDal.Dispose();
-                Instance.Operas.Clear();
-                LwFactory.Clear();
-            }
+                opera.StopThread();
+                opera.Dispose();
+            }*/
+            Instance.TcpClientDal.Dispose();
+            Instance.Operas.Clear();
+            LwFactory.Clear();
         });
 
         public RelayCommand OpenWeixinCommand { get; } = new RelayCommand(() =>

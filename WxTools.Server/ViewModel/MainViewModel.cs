@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -39,11 +40,13 @@ namespace WxTools.Server.ViewModel
                 "https://mp.weixin.qq.com/s?src=11&timestamp=1507368444&ver=438&signature=82XVDEO4Ms7JSHg6-iPZuLdSG6NhGCiYzmzZSTBn9TLYd-RXmYK8gV9wRcgq9feHnm1fXs5zB1KZnHxzOuoL*ORFxwngLoLo9zWVRAXVOjuwrARnlkFvOcj2cFFcN7qS&new=1";
 
             InitTcp();
-            InitCommand();
             StartHeartbeatThread();
         }
 
-        public RelayCommand SendUrlCommand { get; private set; }
+        public RelayCommand SendUrlCommand => new RelayCommand(() =>
+        {
+            _tcpServerDal.SendUrl(Url);
+        });
 
         private void InitTcp()
         {
@@ -52,19 +55,12 @@ namespace WxTools.Server.ViewModel
             _tcpServerDal.StartServer();
         }
 
-        private void InitCommand()
-        {
-            SendUrlCommand = new RelayCommand(() =>
-            {
-                _tcpServerDal.SendUrl(Url);
-            });
-        }
-
         private void StartHeartbeatThread()
         {
             //心跳包线程
             new Thread(() =>
                 {
+                    var list = new List<ClientInfo>();
                     while (true)
                     {
                         foreach (var client in ClientInfos)
@@ -72,12 +68,16 @@ namespace WxTools.Server.ViewModel
                             if ((client.HeartbeatTime - DateTime.Now).TotalSeconds >= 60)
                             {
                                 _log.Warn("客户端超时" + client.Ip);
-                                Application.Current.Dispatcher.Invoke(() =>
-                                {
-                                    ClientInfos.Remove(client);
-                                });
+                                list.Add(client);
                             }
                         }
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            foreach (var info in list)
+                            {
+                                ClientInfos.Remove(info);
+                            }
+                        });
                         Thread.Sleep(2000);
                         _tcpServerDal.SendHeartbeat();
                     }
