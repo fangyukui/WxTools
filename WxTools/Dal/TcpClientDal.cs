@@ -14,7 +14,7 @@ using WxTools.Common;
 
 namespace WxTools.Client.Dal
 {
-    public class TcpClientDal : INotifyPropertyChanged,IDisposable
+    public class TcpClientDal : INotifyPropertyChanged, IDisposable
     {
         private readonly ILog _log = LogManager.GetLogger(typeof(TcpClientDal));
         private DateTime _heartbeatTime;
@@ -65,13 +65,14 @@ namespace WxTools.Client.Dal
                 {
                     try
                     {
-                        _client = new SimpleTcpClient().Connect("127.0.0.1", 8910);
-                        _client.DelimiterDataReceived += Received;
                         _ip = LwFactory.GetDefault().GetNetIp();
+                        _client = new SimpleTcpClient().Connect(Common.TcpIp, 8910);
+                        _client.DelimiterDataReceived -= Received;
+                        _client.DelimiterDataReceived += Received;
+                        SendLogin();
                         _heartbeatTime = DateTime.Now;
                         Connected = true;
                         ConnectedAction?.Invoke();
-                        SendLogin();
                         Console.WriteLine("登录成功");
                         break;
                     }

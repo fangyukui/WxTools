@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using LwSoft.Enums;
 
@@ -16,29 +17,35 @@ namespace LwSoft
             obj = Type.GetTypeFromProgID("lw.lwsoft3");
             if (obj == null)
             {
-                String strCmd = $"regsvr32 {System.IO.Path.Combine(Environment.CurrentDirectory, "lw.dll")} /s";
-                try
+                /* String strCmd = $"regsvr32 {System.IO.Path.Combine(Environment.CurrentDirectory, "lw.dll")} /s";
+                 try
+                 {
+                     Process myProcess = new Process();
+                     ProcessStartInfo myProcessStartInfo = new ProcessStartInfo("cmd.exe")
+                     {
+                         UseShellExecute = false,
+                         CreateNoWindow = true,
+                         RedirectStandardOutput = true
+                     };
+                     myProcess.StartInfo = myProcessStartInfo;
+                     myProcessStartInfo.Arguments = "/c " + strCmd;
+                     myProcess.Start();
+                     myProcess.Close();
+                     obj = Type.GetTypeFromProgID("lw.lwsoft3");
+                     if (obj == null)
+                     {
+                         MessageBox.Show("插件注册到系统失败！", "提示");
+                     }
+                 }
+                 catch (Exception)
+                 {
+                     System.Environment.Exit(0);
+                 }*/
+                DllRegisterServer();
+                obj = Type.GetTypeFromProgID("lw.lwsoft3");
+                if (obj == null)
                 {
-                    Process myProcess = new Process();
-                    ProcessStartInfo myProcessStartInfo = new ProcessStartInfo("cmd.exe")
-                    {
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true
-                    };
-                    myProcess.StartInfo = myProcessStartInfo;
-                    myProcessStartInfo.Arguments = "/c " + strCmd;
-                    myProcess.Start();
-                    myProcess.Close();
-                    obj = Type.GetTypeFromProgID("lw.lwsoft3");
-                    if (obj == null)
-                    {
-                        MessageBox.Show("插件注册到系统失败！", "提示");
-                    }
-                }
-                catch (Exception)
-                {
-                    System.Environment.Exit(0);
+                    MessageBox.Show("插件注册到系统失败！", "提示");
                 }
             }
             if (obj == null)
@@ -47,6 +54,9 @@ namespace LwSoft
             }
             obj_object = Activator.CreateInstance(obj);
         }
+
+        [DllImport("lw.dll")] public static extern int DllRegisterServer();
+        [DllImport("lw.dll")] public static extern int DllUnregisterServer();
 
         ~Lwsoft3()
         {

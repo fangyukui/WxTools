@@ -25,6 +25,10 @@ namespace WxTools.Client
         //最大支持同时打开{MaxSessionCount}个文章窗口
         public static int MaxSessionCount = 10;
 
+        public static int MaxThreadCount = 20;
+
+        public static string TcpIp = "127.0.0.1";
+
         public static bool? HasNewVersion()
         {
             try

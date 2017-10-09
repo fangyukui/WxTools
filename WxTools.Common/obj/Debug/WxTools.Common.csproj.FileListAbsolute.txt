@@ -4,3 +4,10 @@ C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Common\bin\Debug\WxTools.
 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Common\obj\Debug\WxTools.Common.dll
 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Common\obj\Debug\WxTools.Common.pdb
 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Common\obj\Debug\WxTools.Common.csprojResolveAssemblyReference.cache
+E:\WxTools\WxTools.Common\bin\Debug\WxTools.Common.dll.config
+E:\WxTools\WxTools.Common\bin\Debug\WxTools.Common.dll
+E:\WxTools\WxTools.Common\bin\Debug\WxTools.Common.pdb
+E:\WxTools\WxTools.Common\obj\Debug\WxTools.Common.csprojResolveAssemblyReference.cache
+E:\WxTools\WxTools.Common\obj\Debug\WxTools.Common.csproj.CoreCompileInputs.cache
+E:\WxTools\WxTools.Common\obj\Debug\WxTools.Common.dll
+E:\WxTools\WxTools.Common\obj\Debug\WxTools.Common.pdb

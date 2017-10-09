@@ -191,6 +191,7 @@ namespace WxTools.Client.Dal
         /// </summary>
         public bool RunThread()
         {
+            return true;
             if (ThreadRun)
             {
                 ThreadRun = false;
@@ -236,7 +237,7 @@ namespace WxTools.Client.Dal
                 if (Lw.FindPic(400, 80, 600, Client.Common.Height - 165, "dh.bmp", "000000", 0.95, 1, 0, 1, 100, 13))
                 {
                     //Console.WriteLine($"{_lw.X()},{_lw.Y()}");
-                    OpenAction();
+                    Task.Factory.StartNew(OpenAction);
                 }
                 RecoverAction(2000);
                 RunState = RunState.Idle;
@@ -246,23 +247,25 @@ namespace WxTools.Client.Dal
         //自己发送链接 自己打开
         public void SendMyMessage(string message)
         {
+            WaitBusy();
             Log("开始执行链接");
             RunState = RunState.Busy;
             Point row = WxPoints.FirstRow;
             Lw.ClickOnce(WxPoints.WeiXin).ClickOnce(row).Delay();
+            bool find = false;
             //找到一个能发送的聊天窗口
             for (int i = 0; i < 7; i++)
             {
                 if (Lw.FindPic(400, 400, 500, 550, "char.bmp", "000000", 0.95, 1))
                 {
+                    find = true;
                     break;
                 }
                 row.Offset(0, 80);
                 Lw.ClickOnce(row).Delay();
             }
+            if (!find) return;
             Lw.ClickOnce(WxPoints.Chat);
-            //todo 删除有bug,暂时不删除
-            //Lw.KeyPressEx(65, 2);
             Lw.SendString(message, 3, Hwnd);
             Lw.Delay().KeyPress(13);
 
@@ -288,21 +291,18 @@ namespace WxTools.Client.Dal
 
         private void OpenAction()
         {
-            Task.Factory.StartNew(() =>
+            Thread.Sleep(2000);
+            var hwnd = Lw.FindWindow("图片查看器", "ImagePreviewWnd", null);
+            if (hwnd > 0)
             {
-                Thread.Sleep(2000);
-                var hwnd = Lw.FindWindow("图片查看器", "ImagePreviewWnd", null);
-                if (hwnd > 0)
-                {
-                    Log("发现图片/视频");
-                    WinApi.SendMessage(new IntPtr(hwnd), 0x0010, 0, 0);
-                }
-                else
-                {
-                    WaitSeesion();
-                    Client.Common.Messenger.Notify("CefWebViewWnd");
-                }
-            });
+                Log("发现图片/视频");
+                WinApi.SendMessage(new IntPtr(hwnd), 0x0010, 0, 0);
+            }
+            else
+            {
+                WaitSeesion();
+                Client.Common.Messenger.Notify("CefWebViewWnd");
+            }
         }
 
         //恢复到准备状态 聊天首页
@@ -322,10 +322,19 @@ namespace WxTools.Client.Dal
             if (Client.Common.SessionCount > 0)
                 while (Client.Common.SessionCount >= Client.Common.MaxSessionCount)
                 {
-                    _log.Info("窗口数较多，等待处理中");
+                    //_log.Info("窗口数较多，等待处理中");
                     //超过窗口数，等待处理
                     Thread.Sleep(1000);
                 }
+        }
+
+        private void WaitBusy()
+        {
+            while (RunState == RunState.Busy)
+            {
+                //超过窗口数，等待处理
+                Thread.Sleep(1000);
+            }
         }
 
         public void StopThread()
@@ -341,7 +350,7 @@ namespace WxTools.Client.Dal
             UnBindWindow();
         }
 
-        private void Log(string log)
+        private void Log(string log, bool isUpload = true)
         {
             Logs += $"{DateTime.Now:HH:mm:ss}: {log}\r\n";
             var lines = Logs.Split("\r\n".ToCharArray(),StringSplitOptions.RemoveEmptyEntries);
@@ -354,7 +363,8 @@ namespace WxTools.Client.Dal
                 }
                 Logs = strb.ToString();
             }
-            MainViewModel.Instance.TcpClientDal.SendLog(Logs);
+            if (isUpload)
+                MainViewModel.Instance.TcpClientDal.SendLog(log);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

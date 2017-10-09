@@ -8,9 +8,9 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using log4net;
-using LwSoft;
 using WxTools.Annotations;
 using WxTools.Client.Dal;
 using WxTools.Client.Helper;
@@ -51,6 +51,8 @@ namespace WxTools.Client.ViewModel
 
         private ObservableCollection<OperaDal> _operas;
 
+        private Queue<string> _urlQueue = new Queue<string>();
+
         //private bool _isChecked;
 
         private Thread _thread;
@@ -72,7 +74,7 @@ namespace WxTools.Client.ViewModel
             Operas = new ObservableCollection<OperaDal>();
             RegisterMessenger();
             CheckUpdate();
-            TcpClientDal.ConnectedAction = Run;
+            TcpClientDal.ConnectedAction = UrlQueueThread;
             TcpClientDal.Connect();
         }
 
@@ -130,7 +132,7 @@ namespace WxTools.Client.ViewModel
 
         public RelayCommand RunCommand { get; } = new RelayCommand(() =>
         {
-            Instance.Run();
+            //Instance.Run();
         });
 
         #endregion
@@ -185,7 +187,7 @@ namespace WxTools.Client.ViewModel
             }
         }
 
-        //监测窗体，变量状态,自动更新 线程
+        //监测窗体，变量状态 线程
         private void CheckHwndStateThread()
         {
             if (_thread != null) return;
@@ -238,12 +240,13 @@ namespace WxTools.Client.ViewModel
                         //防止文章窗口打开过久
                         if (Client.Common.SessionCount > 0 && (DateTime.Now - _lasTime).Seconds > 30)
                         {
-                            _log.Warn($"文章窗口打开过久，已经关闭");
+                            _log.Warn("文章窗口打开过久，已经关闭");
                             Client.Common.SessionCount = 0;
                             CloseCefWebViewWnd();
                         }
 
-                        //新开了微信
+                        #region 新的微信
+
                         var hwndstr = LwFactory.GetDefault().EnumWindow(null, "WeChatMainWndForPC", null);
                         var hwnds = hwndstr?.Split(',');
                         if (hwnds?.Length > Operas.Count)
@@ -252,7 +255,7 @@ namespace WxTools.Client.ViewModel
                             {
                                 if (Operas.All(o => o.Hwnd != int.Parse(hwnd)))
                                 {
-                                    _log.Info("新开了微信");
+                                    _log.Info("新的微信");
                                     var newlw = Operas.Count == 0 ? LwFactory.GetDefault() : LwFactory.GetNew();
                                     Application.Current.Dispatcher.Invoke(() =>
                                     {
@@ -262,10 +265,10 @@ namespace WxTools.Client.ViewModel
                                             opera.Hwnd = int.Parse(hwnd);
                                             opera.Load();
                                             opera.Lw.SetWindowState(opera.Hwnd, 1);
-                                            if (!opera.RunThread())
+                                            /*if (!opera.RunThread())
                                             {
                                                 _log.Error($"{opera.Hwnd}启动线程出现错误，被跳过");
-                                            }
+                                            }*/
                                             Operas.Add(opera);
                                         }
                                         catch (Exception e)
@@ -277,6 +280,8 @@ namespace WxTools.Client.ViewModel
                                 }
                             }
                         }
+
+                        #endregion
 
                         if (_isExit) return;
                         if (TcpClientDal.CheckIsConnected())
@@ -295,7 +300,7 @@ namespace WxTools.Client.ViewModel
             })
             {
                 IsBackground = true,
-                Name = "检测状态改变线程"
+                Name = "检测状态线程"
             };
             _thread.Start();
         }
@@ -362,17 +367,17 @@ namespace WxTools.Client.ViewModel
                             opera.Hwnd = int.Parse(hwnds[j++]);
                             opera.Load();
                             opera.Lw.SetWindowState(opera.Hwnd, 1);
-                            if (!opera.RunThread())
-                            {
-                                _log.Error($"{opera.Hwnd}启动线程出现错误，被跳过");
-                            }
+                            /*  if (!opera.RunThread())
+                              {
+                                  _log.Error($"{opera.Hwnd}启动线程出现错误，被跳过");
+                              }*/
                         }
                         catch (Exception e)
                         {
                             _log.Error($"{opera.Hwnd}加载出错", e);
                             MessageBox.Show($"{opera.Hwnd}加载出错", "提示");
                         }
-                    });
+                    }) {Name = "绑定句柄线程"};
                     mythread.SetApartmentState(ApartmentState.STA);
                     mythread.Start();
                 }
@@ -394,10 +399,49 @@ namespace WxTools.Client.ViewModel
 
         public void ExecuteUrl(string url)
         {
-            foreach (var opera in Operas)
+            _urlQueue.Enqueue(url);
+
+            /*foreach (var opera in Operas)
             {
                 opera.GoOnceAction(() => opera.SendMyMessage(url));
-            }
+            }*/
+        }
+
+        private void UrlQueueThread()
+        {
+            if (_runstate) return;
+            _runstate = true;
+            var thread = new Thread(() =>
+                {
+                    while (true)
+                    {
+                        if (_urlQueue.Count > 0)
+                        {
+                            var url = _urlQueue.Dequeue();
+                            int index = -1;
+                            var count = Operas.Count;
+                            Task[] tasks = new Task[Common.MaxThreadCount];
+                            for (int i = 0; i < tasks.Length; i++)
+                            {
+                                tasks[i] = Task.Factory.StartNew(() =>
+                                {
+                                    while (true)
+                                    {
+                                        Interlocked.Increment(ref index);
+                                        if (index >= count) return;
+                                        Console.WriteLine($" Operas[{index}]开始执行");
+                                        Operas[index].SendMyMessage(url);
+                                    }
+                                });
+                            }
+                            Task.WaitAll(tasks);
+                            _log.Info("执行url完毕");
+                        }
+                        Thread.Sleep(500);
+                    }
+                })
+                {IsBackground = true, Name = "Url执行线程"};
+            thread.Start();
         }
 
         #endregion

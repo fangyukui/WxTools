@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
+using System.Reflection;
+using System.Security.Principal;
 using System.Windows;
 using log4net;
 using log4net.Config;
@@ -45,6 +48,46 @@ namespace WxTools.Client
             MessageBox.Show("我们很抱歉，当前应用程序遇到一些问题.请联系管理员." + e.ExceptionObject,
                 "意外的操作", MessageBoxButton.OK, MessageBoxImage.Information);
         }
-        
+
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            CheckAdministrator();
+            //如果不是管理员，程序会直接退出，并使用管理员身份重新运行。  
+            StartupUri = new Uri("MainWindow.xaml", UriKind.RelativeOrAbsolute);
+        }
+
+        /// <summary>
+        /// 检查是否是管理员身份  
+        /// </summary>  
+        private void CheckAdministrator()
+        {
+            var wi = WindowsIdentity.GetCurrent();
+            var wp = new WindowsPrincipal(wi);
+
+            bool runAsAdmin = wp.IsInRole(WindowsBuiltInRole.Administrator);
+
+            if (!runAsAdmin)
+            {
+                var processInfo =
+                    new ProcessStartInfo(Assembly.GetExecutingAssembly().CodeBase)
+                    {
+                        UseShellExecute = true,
+                        Verb = "runas"
+                    };
+
+                try
+                {
+                    Process.Start(processInfo);
+                }
+                catch (Exception)
+                {
+                  
+                }
+                Environment.Exit(0);
+            }
+        }
     }
 }

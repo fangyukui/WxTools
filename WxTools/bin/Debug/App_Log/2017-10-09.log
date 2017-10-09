@@ -1,0 +1,126 @@
+2017-10-09 17:28:38,692 [6] ERROR WxTools.Client.Common - HasNewVersion
+ WxTools.Client.CommonnameSystem.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 121.201.110.147:4542
+
+Server stack trace: 
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Runtime.Remoting.Channels.RemoteConnection.CreateNewSocket(EndPoint ipEndPoint)
+   在 System.Runtime.Remoting.Channels.RemoteConnection.CreateNewSocket()
+   在 System.Runtime.Remoting.Channels.RemoteConnection.GetSocket()
+   在 System.Runtime.Remoting.Channels.SocketCache.GetSocket(String machinePortAndSid, Boolean openNew)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink.SendRequestWithRetry(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink.ProcessMessage(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream, ITransportHeaders& responseHeaders, Stream& responseStream)
+   在 System.Runtime.Remoting.Channels.BinaryClientFormatterSink.SyncProcessMessage(IMessage msg)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 OAUS.Core.IOausService.GetLatestVersion()
+   在 OAUS.Core.VersionHelper.GetLatestVersion(String oausServerIP, Int32 oausServerPort)
+   在 OAUS.Core.VersionHelper.HasNewVersion(String oausServerIP, Int32 oausServerPort)
+   在 WxTools.Client.Common.HasNewVersion() 位置 E:\WxTools\WxTools\Common.cs:行号 36
+2017-10-09 17:38:25,298 [6] ERROR WxTools.Client.Common - HasNewVersion
+ WxTools.Client.CommonnameSystem.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 121.201.110.147:4542
+
+Server stack trace: 
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Runtime.Remoting.Channels.RemoteConnection.CreateNewSocket(EndPoint ipEndPoint)
+   在 System.Runtime.Remoting.Channels.RemoteConnection.CreateNewSocket()
+   在 System.Runtime.Remoting.Channels.RemoteConnection.GetSocket()
+   在 System.Runtime.Remoting.Channels.SocketCache.GetSocket(String machinePortAndSid, Boolean openNew)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink.SendRequestWithRetry(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink.ProcessMessage(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream, ITransportHeaders& responseHeaders, Stream& responseStream)
+   在 System.Runtime.Remoting.Channels.BinaryClientFormatterSink.SyncProcessMessage(IMessage msg)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 OAUS.Core.IOausService.GetLatestVersion()
+   在 OAUS.Core.VersionHelper.GetLatestVersion(String oausServerIP, Int32 oausServerPort)
+   在 OAUS.Core.VersionHelper.HasNewVersion(String oausServerIP, Int32 oausServerPort)
+   在 WxTools.Client.Common.HasNewVersion() 位置 E:\WxTools\WxTools\Common.cs:行号 36
+2017-10-09 17:42:08,323 [6] ERROR WxTools.Client.Common - HasNewVersion
+ WxTools.Client.CommonnameSystem.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 121.201.110.147:4542
+
+Server stack trace: 
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Runtime.Remoting.Channels.RemoteConnection.CreateNewSocket(EndPoint ipEndPoint)
+   在 System.Runtime.Remoting.Channels.RemoteConnection.CreateNewSocket()
+   在 System.Runtime.Remoting.Channels.RemoteConnection.GetSocket()
+   在 System.Runtime.Remoting.Channels.SocketCache.GetSocket(String machinePortAndSid, Boolean openNew)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink.SendRequestWithRetry(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink.ProcessMessage(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream, ITransportHeaders& responseHeaders, Stream& responseStream)
+   在 System.Runtime.Remoting.Channels.BinaryClientFormatterSink.SyncProcessMessage(IMessage msg)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 OAUS.Core.IOausService.GetLatestVersion()
+   在 OAUS.Core.VersionHelper.GetLatestVersion(String oausServerIP, Int32 oausServerPort)
+   在 OAUS.Core.VersionHelper.HasNewVersion(String oausServerIP, Int32 oausServerPort)
+   在 WxTools.Client.Common.HasNewVersion() 位置 E:\WxTools\WxTools\Common.cs:行号 36
+2017-10-09 17:42:21,938 [6] ERROR WxTools.Client.Common - HasNewVersion
+ WxTools.Client.CommonnameSystem.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 121.201.110.147:4542
+
+Server stack trace: 
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Runtime.Remoting.Channels.RemoteConnection.CreateNewSocket(EndPoint ipEndPoint)
+   在 System.Runtime.Remoting.Channels.RemoteConnection.CreateNewSocket()
+   在 System.Runtime.Remoting.Channels.RemoteConnection.GetSocket()
+   在 System.Runtime.Remoting.Channels.SocketCache.GetSocket(String machinePortAndSid, Boolean openNew)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink.SendRequestWithRetry(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink.ProcessMessage(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream, ITransportHeaders& responseHeaders, Stream& responseStream)
+   在 System.Runtime.Remoting.Channels.BinaryClientFormatterSink.SyncProcessMessage(IMessage msg)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 OAUS.Core.IOausService.GetLatestVersion()
+   在 OAUS.Core.VersionHelper.GetLatestVersion(String oausServerIP, Int32 oausServerPort)
+   在 OAUS.Core.VersionHelper.HasNewVersion(String oausServerIP, Int32 oausServerPort)
+   在 WxTools.Client.Common.HasNewVersion() 位置 E:\WxTools\WxTools\Common.cs:行号 36
+2017-10-09 17:42:37,264 [6] ERROR WxTools.Client.Common - HasNewVersion
+ WxTools.Client.CommonnameSystem.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 121.201.110.147:4542
+
+Server stack trace: 
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Runtime.Remoting.Channels.RemoteConnection.CreateNewSocket(EndPoint ipEndPoint)
+   在 System.Runtime.Remoting.Channels.RemoteConnection.CreateNewSocket()
+   在 System.Runtime.Remoting.Channels.RemoteConnection.GetSocket()
+   在 System.Runtime.Remoting.Channels.SocketCache.GetSocket(String machinePortAndSid, Boolean openNew)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink.SendRequestWithRetry(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink.ProcessMessage(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream, ITransportHeaders& responseHeaders, Stream& responseStream)
+   在 System.Runtime.Remoting.Channels.BinaryClientFormatterSink.SyncProcessMessage(IMessage msg)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 OAUS.Core.IOausService.GetLatestVersion()
+   在 OAUS.Core.VersionHelper.GetLatestVersion(String oausServerIP, Int32 oausServerPort)
+   在 OAUS.Core.VersionHelper.HasNewVersion(String oausServerIP, Int32 oausServerPort)
+   在 WxTools.Client.Common.HasNewVersion() 位置 E:\WxTools\WxTools\Common.cs:行号 36
+2017-10-09 17:42:52,787 [6] ERROR WxTools.Client.Common - HasNewVersion
+ WxTools.Client.CommonnameSystem.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 121.201.110.147:4542
+
+Server stack trace: 
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Runtime.Remoting.Channels.RemoteConnection.CreateNewSocket(EndPoint ipEndPoint)
+   在 System.Runtime.Remoting.Channels.RemoteConnection.CreateNewSocket()
+   在 System.Runtime.Remoting.Channels.RemoteConnection.GetSocket()
+   在 System.Runtime.Remoting.Channels.SocketCache.GetSocket(String machinePortAndSid, Boolean openNew)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink.SendRequestWithRetry(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink.ProcessMessage(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream, ITransportHeaders& responseHeaders, Stream& responseStream)
+   在 System.Runtime.Remoting.Channels.BinaryClientFormatterSink.SyncProcessMessage(IMessage msg)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 OAUS.Core.IOausService.GetLatestVersion()
+   在 OAUS.Core.VersionHelper.GetLatestVersion(String oausServerIP, Int32 oausServerPort)
+   在 OAUS.Core.VersionHelper.HasNewVersion(String oausServerIP, Int32 oausServerPort)
+   在 WxTools.Client.Common.HasNewVersion() 位置 E:\WxTools\WxTools\Common.cs:行号 36

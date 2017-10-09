@@ -1,0 +1,44 @@
+2017-10-09 17:12:37,372 [1] ERROR WxTools.Client.App - System.Windows.Markup.XamlParseException: 未能加载文件或程序集“System.Windows.Interactivity, PublicKeyToken=31bf3856ad364e35”或它的某一个依赖项。系统找不到指定的文件。 ---> System.IO.FileNotFoundException: 未能加载文件或程序集“System.Windows.Interactivity, PublicKeyToken=31bf3856ad364e35”或它的某一个依赖项。系统找不到指定的文件。
+   在 System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   在 System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   在 System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   在 System.Reflection.Assembly.Load(AssemblyName assemblyRef)
+   在 System.Windows.Baml2006.Baml2006SchemaContext.ResolveAssembly(BamlAssembly bamlAssembly)
+   在 System.Windows.Baml2006.Baml2006SchemaContext.ResolveBamlTypeToType(BamlType bamlType)
+   在 System.Windows.Baml2006.Baml2006SchemaContext.ResolveBamlType(BamlType bamlType, Int16 typeId)
+   在 System.Windows.Baml2006.Baml2006SchemaContext.GetXamlType(Int16 typeId)
+   在 System.Windows.Baml2006.Baml2006SchemaContext.GetProperty(Int16 propertyId, XamlType parentType)
+   在 System.Windows.Baml2006.Baml2006Reader.Process_PropertyArrayStart()
+   在 System.Windows.Baml2006.Baml2006Reader.Process_OneBamlRecord()
+   在 System.Windows.Baml2006.Baml2006Reader.Process_BamlRecords()
+   在 System.Windows.Baml2006.Baml2006Reader.Read()
+   在 System.Windows.Markup.WpfXamlLoader.TransformNodes(XamlReader xamlReader, XamlObjectWriter xamlWriter, Boolean onlyLoadOneNode, Boolean skipJournaledProperties, Boolean shouldPassLineNumberInfo, IXamlLineInfo xamlLineInfo, IXamlLineInfoConsumer xamlLineInfoConsumer, XamlContextStack`1 stack, IStyleConnector styleConnector)
+   在 System.Windows.Markup.WpfXamlLoader.Load(XamlReader xamlReader, IXamlObjectWriterFactory writerFactory, Boolean skipJournaledProperties, Object rootObject, XamlObjectWriterSettings settings, Uri baseUri)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.Windows.Markup.WpfXamlLoader.Load(XamlReader xamlReader, IXamlObjectWriterFactory writerFactory, Boolean skipJournaledProperties, Object rootObject, XamlObjectWriterSettings settings, Uri baseUri)
+   在 System.Windows.Markup.WpfXamlLoader.LoadBaml(XamlReader xamlReader, Boolean skipJournaledProperties, Object rootObject, XamlAccessLevel accessLevel, Uri baseUri)
+   在 System.Windows.Markup.XamlReader.LoadBaml(Stream stream, ParserContext parserContext, Object parent, Boolean closeStream)
+   在 System.Windows.Application.LoadBamlStreamWithSyncInfo(Stream stream, ParserContext pc)
+   在 System.Windows.Application.LoadComponent(Uri resourceLocator, Boolean bSkipJournaledProperties)
+   在 System.Windows.Application.DoStartup()
+   在 System.Windows.Application.<.ctor>b__1_0(Object unused)
+   在 System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   在 System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+ WxTools.Client.Appname2017-10-09 17:16:26,679 [5] INFO  WxTools.Server.Dal.TcpServerDal - Logout
+ WxTools.Server.Dal.TcpServerDalname2017-10-09 17:16:51,088 [5] INFO  WxTools.Server.Dal.TcpServerDal - Logout
+ WxTools.Server.Dal.TcpServerDalname2017-10-09 17:19:53,342 [1] ERROR WxTools.Client.Dal.TcpClientDal - System.IO.IOException: 无法将数据写入传输连接: 远程主机强迫关闭了一个现有的连接。。 ---> System.Net.Sockets.SocketException: 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.Send(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   在 System.Net.Sockets.NetworkStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.Net.Sockets.NetworkStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   在 SimpleTCP.SimpleTcpClient.Write(Byte[] data)
+   在 SimpleTCP.SimpleTcpClient.Write(String data)
+   在 SimpleTCP.SimpleTcpClient.WriteLine(String data)
+   在 WxTools.Client.Dal.TcpClientDal.SendLogout() 位置 E:\WxTools\WxTools\Dal\TcpClientDal.cs:行号 124
+ WxTools.Client.Dal.TcpClientDalname2017-10-09 17:28:41,941 [4] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-09 17:28:45,394 [4] INFO  WxTools.Server.Dal.TcpServerDal - Logout
+ WxTools.Server.Dal.TcpServerDalname2017-10-09 17:42:36,902 [5] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-09 17:42:38,316 [5] INFO  WxTools.Server.Dal.TcpServerDal - Logout
+ WxTools.Server.Dal.TcpServerDalname2017-10-09 17:42:52,988 [6] INFO  WxTools.Server.Dal.TcpServerDal - Login
+ WxTools.Server.Dal.TcpServerDalname2017-10-09 17:42:56,514 [6] INFO  WxTools.Server.Dal.TcpServerDal - Logout
+ WxTools.Server.Dal.TcpServerDalname

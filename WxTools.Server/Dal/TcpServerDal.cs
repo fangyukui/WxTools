@@ -78,12 +78,25 @@ namespace WxTools.Server.Dal
                     case MsgType.Url:
                         break;
                     case MsgType.Log:
+                        //_log.Info("Log");
                         var info = _clientInfos.FirstOrDefault(c => c.Ip == tcpmsg.Ip);
                         Application.Current.Dispatcher.Invoke(() =>
                         {
-                            if (info != null) info.Logs = tcpmsg.Msg;
+                            if (info != null)
+                            {
+                                info.Logs += tcpmsg.Msg;
+                                var lines = info.Logs.Split("\r\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                                if (lines.Length > 10)
+                                {
+                                    StringBuilder strb = new StringBuilder();
+                                    for (int i = lines.Length - 10; i < lines.Length; i++)
+                                    {
+                                        strb.Append(lines[i]);
+                                    }
+                                    info.Logs = strb.ToString();
+                                }
+                            }
                         });
-                        //_log.Info("Log");
                         break;
                     case MsgType.Login:
                         _log.Info("Login");
