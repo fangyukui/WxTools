@@ -72,6 +72,8 @@ namespace WxTools.Client.Dal
                         SendLogin();
                         _heartbeatTime = DateTime.Now;
                         Connected = true;
+                        if (MainViewModel.Instance.Operas.Count > 0)
+                            SendWxCount(MainViewModel.Instance.Operas.Count);
                         ConnectedAction?.Invoke();
                         Console.WriteLine("登录成功");
                         break;
@@ -142,6 +144,27 @@ namespace WxTools.Client.Dal
                     Action = ActionType.None,
                     IsServer = false,
                     Msg = ""
+                };
+                _client.WriteLine(JsonConvert.SerializeObject(tcpmsg));
+            }
+            catch (Exception)
+            {
+                //_log.Error(e);
+            }
+        }
+
+        //微信数发送
+        public void SendWxCount(int count)
+        {
+            try
+            {
+                var tcpmsg = new TcpMessage
+                {
+                    Ip = _ip,
+                    MsgType = MsgType.WxCount,
+                    Action = ActionType.None,
+                    IsServer = false,
+                    Value = count
                 };
                 _client.WriteLine(JsonConvert.SerializeObject(tcpmsg));
             }

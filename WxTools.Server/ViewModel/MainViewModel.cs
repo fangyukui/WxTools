@@ -2,14 +2,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows;
 using log4net;
-using Newtonsoft.Json;
-using SimpleTCP;
-using WxTools.Common;
 using WxTools.Server.Annotations;
 using WxTools.Server.Dal;
 using WxTools.Theme;
@@ -18,10 +14,33 @@ namespace WxTools.Server.ViewModel
 {
     public class MainViewModel : INotifyPropertyChanged
     {
+        public static MainViewModel Instance { get; } = new MainViewModel();
+
         private readonly ILog _log = LogManager.GetLogger(typeof(MainViewModel));
         private TcpServerDal _tcpServerDal;
         private string _url;
+        private int _wxCount;
         public ObservableCollection<ClientInfo> ClientInfos { get; set; }
+
+        public int WxCount
+        {
+            get => _wxCount;
+            set
+            {
+                if (value == _wxCount) return;
+                _wxCount = value;
+                OnPropertyChanged();
+            }
+        }
+        /* {
+            get
+            {
+                var count = 0;
+                foreach (var clientInfo in ClientInfos)
+                    count += clientInfo.WxCount;
+                return count;
+            }
+        }*/
 
         public string Url
         {

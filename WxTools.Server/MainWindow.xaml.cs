@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Media;
+using WxTools.Server.ViewModel;
 
 namespace WxTools.Server
 {
@@ -15,7 +16,7 @@ namespace WxTools.Server
 
             if (!System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
             {
-                DataContext = new Server.ViewModel.MainViewModel();
+                DataContext = MainViewModel.Instance;
             }
         }
 

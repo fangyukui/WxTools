@@ -17,16 +17,25 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <TextBlock Text="电脑数：" VerticalAlignment="Center" Margin="10,2,0,2"/>
-            <TextBlock Text="{Binding ClientInfos.Count}" VerticalAlignment="Center" Margin="2"/>
+        <StackPanel Grid.Row="0">
+            <DockPanel>
+                <TextBlock Text="电脑总数：" VerticalAlignment="Center" FontSize="16" Margin="10,2,0,2"/>
+                <TextBlock Text="{Binding ClientInfos.Count}" VerticalAlignment="Center" FontSize="16" Margin="2"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="微信总数：" VerticalAlignment="Center" FontSize="16" Margin="10,2,0,2"/>
+                <TextBlock Text="{Binding WxCount}" VerticalAlignment="Center" FontSize="16" Margin="2"/>
+            </DockPanel>
         </StackPanel>
         <Grid Grid.Row="1">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="发送连接" VerticalAlignment="Center" Margin="10,2,0,2"></TextBlock>
-                <TextBox Text="{Binding Url}" Width="500" Margin="10,1"></TextBox>
-                <Button Margin="1" Content="发送" Width="50" Command="{Binding SendUrlCommand}"></Button>
-            </StackPanel>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="发送连接" VerticalAlignment="Center" Margin="10,2,0,2"></TextBlock>
+            <TextBox Grid.Column="1" Text="{Binding Url}" Height="80" Margin="10,1" MaxLines="10" TextWrapping="Wrap"></TextBox>
+            <Button Grid.Column="2" Margin="2" Content="发送" Width="60" Command="{Binding SendUrlCommand}" ></Button>
         </Grid>
         <ItemsControl Grid.Row="2" ItemsSource="{Binding ClientInfos}" Margin="2">
             <ItemsControl.ItemsPanel>
@@ -43,6 +52,7 @@
                             BorderBrush="#FF89D95E" Width="220" Height="250">
                         <Grid>
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
@@ -73,9 +83,15 @@
                                 <TextBlock Text="{Binding Screen,Converter={StaticResource PointToStrConverter}}" 
                                            Foreground="DarkSlateGray"
                                            HorizontalAlignment="Center" Margin="2"/>
+                            </DockPanel> 
+                            <DockPanel Grid.Row="4">
+                                <TextBlock Text="微信数:" Margin="2,0,10,0"/>
+                                <TextBlock Text="{Binding WxCount}" 
+                                           Foreground="DarkSlateGray"
+                                           HorizontalAlignment="Center" Margin="2"/>
                             </DockPanel>
-                            <TextBlock Grid.Row="4" Text="日志:" Margin="2,0,10,0"/>
-                            <ScrollViewer Grid.Row="5" 
+                            <TextBlock Grid.Row="5" Text="日志:" Margin="2,0,10,0"/>
+                            <ScrollViewer Grid.Row="6" 
                                           common:ScrollViewerExtensions.AlwaysScrollToEnd="True"
                                           VerticalScrollBarVisibility="Auto"
                                           Height="Auto" 

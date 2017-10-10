@@ -206,6 +206,7 @@ namespace WxTools.Client.ViewModel
                     Thread.Sleep(2000);
                     if (TcpClientDal.Connected)
                     {
+                        bool wxAddOrRemove = false;
                         foreach (var opera in Operas)
                         {
                             if (opera.Lw.GetWindowState(opera.Hwnd, 0) == 0)
@@ -239,6 +240,7 @@ namespace WxTools.Client.ViewModel
                             {
                                 lock (Operas)
                                     Operas.Remove(dal);
+                                wxAddOrRemove = true;
                             });
                         }
 
@@ -260,6 +262,7 @@ namespace WxTools.Client.ViewModel
                             {
                                 if (Operas.All(o => o.Hwnd != int.Parse(hwnd)))
                                 {
+                                    wxAddOrRemove = true;
                                     _log.Info("新的微信");
                                     var newlw = Operas.Count == 0 ? LwFactory.GetDefault() : LwFactory.GetNew();
                                     Application.Current.Dispatcher.Invoke(() =>
@@ -300,6 +303,10 @@ namespace WxTools.Client.ViewModel
                             //服务器被断开
                             TcpClientDal.Connect();
                             Thread.Sleep(5000);
+                        }
+                        if (wxAddOrRemove)
+                        {
+                            TcpClientDal.SendWxCount(Operas.Count);
                         }
                     }
                 }
@@ -447,6 +454,7 @@ namespace WxTools.Client.ViewModel
                             }
                             Task.WaitAll(tasks);
                             _log.Info("执行url完毕");
+                            TcpClientDal.SendLog("--全部完成--");
                         }
                         Thread.Sleep(500);
                     }

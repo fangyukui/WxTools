@@ -12,6 +12,7 @@ namespace WxTools.Common
         public Point Screen { get; set; } = new Point();
         public ActionType Action { get; set; } = ActionType.None;
         public string Msg { get; set; } = "";
+        public int Value { get; set; }
         public string Ip { get; set; } = "";
     }
 
@@ -28,6 +29,7 @@ namespace WxTools.Common
         Url,
         Login,
         Logout,
-        Heartbeat
+        Heartbeat,
+        WxCount
     }
 }

@@ -9,6 +9,7 @@ using log4net;
 using Newtonsoft.Json;
 using SimpleTCP;
 using WxTools.Common;
+using WxTools.Server.ViewModel;
 
 namespace WxTools.Server.Dal
 {
@@ -121,7 +122,11 @@ namespace WxTools.Server.Dal
                         var logoutInfo = _clientInfos.FirstOrDefault(c => c.Ip == tcpmsg.Ip);
                         Application.Current.Dispatcher.Invoke(() =>
                         {
-                            if (logoutInfo != null) _clientInfos.Remove(logoutInfo);
+                            if (logoutInfo != null)
+                            {
+                                _clientInfos.Remove(logoutInfo);
+                                RefreshWxCount();
+                            }
                         });
                         break;
                     case MsgType.Heartbeat:
@@ -132,12 +137,31 @@ namespace WxTools.Server.Dal
                             if (heartbeatInfo != null) heartbeatInfo.HeartbeatTime = DateTime.Now;
                         });
                         break;
+                    case MsgType.WxCount:
+                        var wxCountInfo = _clientInfos.FirstOrDefault(c => c.Ip == tcpmsg.Ip);
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            if (wxCountInfo != null)
+                            {
+                                wxCountInfo.WxCount = tcpmsg.Value;
+                                RefreshWxCount();
+                            }
+                        });
+                        break;
                 }
             }
             catch (Exception e)
             {
                 _log.Error(e);
             }
+        }
+
+        private void RefreshWxCount()
+        {
+            var count = 0;
+            foreach (var clientInfo in MainViewModel.Instance.ClientInfos)
+                count += clientInfo.WxCount;
+            MainViewModel.Instance.WxCount = count;
         }
     }
 }

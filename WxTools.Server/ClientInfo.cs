@@ -15,6 +15,7 @@ namespace WxTools.Server
         private string _logs;
         private string _ip;
         public DateTime HeartbeatTime;
+        private int _wxCount;
 
         public string Ip
         {
@@ -69,6 +70,17 @@ namespace WxTools.Server
             {
                 if (value == _logs) return;
                 _logs = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int WxCount
+        {
+            get => _wxCount;
+            set
+            {
+                if (value == _wxCount) return;
+                _wxCount = value;
                 OnPropertyChanged();
             }
         }

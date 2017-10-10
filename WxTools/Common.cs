@@ -27,7 +27,8 @@ namespace WxTools.Client
 
         public static int MaxThreadCount = 20;
 
-        public static string TcpIp = "127.0.0.1";
+        //public static string TcpIp = "127.0.0.1";
+        public static string TcpIp = "49.4.133.41";
 
         public static bool? HasNewVersion()
         {

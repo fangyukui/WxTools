@@ -1,0 +1,96 @@
+2017-10-10 20:31:09,102 [7] INFO  WxTools.Client.Common - 进入自动更新
+ WxTools.Client.Commonname2017-10-10 20:31:38,455 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 20:32:33,354 [7] INFO  WxTools.Client.Common - 进入自动更新
+ WxTools.Client.Commonname2017-10-10 20:32:54,196 [6] INFO  WxTools.Client.Common - 进入自动更新
+ WxTools.Client.Commonname2017-10-10 20:33:02,619 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 20:33:30,747 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 新的微信
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 20:33:38,897 [检测状态线程] WARN  WxTools.Client.ViewModel.MainViewModel - 微信窗体大小被用户拖动，已经恢复
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 20:33:40,949 [检测状态线程] WARN  WxTools.Client.ViewModel.MainViewModel - 微信窗体大小被用户拖动，已经恢复
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 20:33:57,013 [9] INFO  WxTools.Client.Dal.TcpClientDal - 执行URl
+ WxTools.Client.Dal.TcpClientDalname2017-10-10 20:33:57,235 [5] INFO  WxTools.Client.ViewModel.MainViewModel - ExecuteUrl Operas[0]开始执行
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 20:34:00,606 [5] INFO  WxTools.Client.ViewModel.MainViewModel - 清理一次窗口; SessionCount:1; Operas.Count:1; MaxSessionCount:10;
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 20:34:04,610 [Url执行线程] INFO  WxTools.Client.ViewModel.MainViewModel - 执行url完毕
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 20:53:21,754 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 20:53:25,770 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 新的微信
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:04:30,065 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:04:34,083 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 新的微信
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:05:07,707 [12] INFO  WxTools.Client.Dal.TcpClientDal - 执行URl
+ WxTools.Client.Dal.TcpClientDalname2017-10-10 21:05:08,074 [7] INFO  WxTools.Client.ViewModel.MainViewModel - ExecuteUrl Operas[0]开始执行
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:05:11,378 [7] INFO  WxTools.Client.ViewModel.MainViewModel - 清理一次窗口; SessionCount:1; Operas.Count:1; MaxSessionCount:10;
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:05:15,384 [Url执行线程] INFO  WxTools.Client.ViewModel.MainViewModel - 执行url完毕
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:19:31,220 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:20:13,054 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:20:17,070 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 新的微信
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:20:29,697 [检测状态线程] WARN  WxTools.Client.ViewModel.MainViewModel - 微信被窗体最小化了，已经恢复，hwnd=198404
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:20:31,699 [检测状态线程] WARN  WxTools.Client.ViewModel.MainViewModel - 微信被窗体最小化了，已经恢复，hwnd=198404
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:21:12,740 [12] INFO  WxTools.Client.Dal.TcpClientDal - 执行URl
+ WxTools.Client.Dal.TcpClientDalname2017-10-10 21:21:13,053 [6] INFO  WxTools.Client.ViewModel.MainViewModel - ExecuteUrl Operas[0]开始执行
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:21:16,866 [6] INFO  WxTools.Client.ViewModel.MainViewModel - 清理一次窗口; SessionCount:1; Operas.Count:1; MaxSessionCount:10;
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:21:20,868 [Url执行线程] INFO  WxTools.Client.ViewModel.MainViewModel - 执行url完毕
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:22:00,836 [6] INFO  WxTools.Client.Common - 进入自动更新
+ WxTools.Client.Commonname2017-10-10 21:22:08,374 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:22:12,606 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 新的微信
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:23:10,617 [10] INFO  WxTools.Client.Dal.TcpClientDal - 执行URl
+ WxTools.Client.Dal.TcpClientDalname2017-10-10 21:23:10,874 [8] INFO  WxTools.Client.ViewModel.MainViewModel - ExecuteUrl Operas[0]开始执行
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:23:14,672 [8] INFO  WxTools.Client.ViewModel.MainViewModel - 清理一次窗口; SessionCount:1; Operas.Count:1; MaxSessionCount:10;
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:23:18,681 [Url执行线程] INFO  WxTools.Client.ViewModel.MainViewModel - 执行url完毕
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:26:10,919 [检测状态线程] WARN  WxTools.Client.ViewModel.MainViewModel - 微信被窗体最小化了，已经恢复，hwnd=198404
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:26:12,922 [检测状态线程] WARN  WxTools.Client.ViewModel.MainViewModel - 微信被窗体最小化了，已经恢复，hwnd=198404
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:27:06,124 [5] INFO  WxTools.Client.Common - 进入自动更新
+ WxTools.Client.Commonname2017-10-10 21:27:13,446 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:27:17,462 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 新的微信
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:27:27,568 [检测状态线程] WARN  WxTools.Client.ViewModel.MainViewModel - 微信被窗体最小化了，已经恢复，hwnd=198404
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 21:28:37,611 [检测状态线程] WARN  WxTools.Client.ViewModel.MainViewModel - 微信被窗体最小化了，已经恢复，hwnd=198404
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:11:02,165 [6] INFO  WxTools.Client.Common - 进入自动更新
+ WxTools.Client.Commonname2017-10-10 22:11:22,072 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:11:26,086 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 新的微信
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:12:08,327 [检测状态线程] WARN  WxTools.Client.ViewModel.MainViewModel - 微信被窗体最小化了，已经恢复，hwnd=198404
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:12:49,048 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:13:01,028 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 新的微信
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:15:26,252 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:15:30,268 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 新的微信
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:16:54,505 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:16:58,523 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 新的微信
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:20:57,526 [6] INFO  WxTools.Client.Common - 进入自动更新
+ WxTools.Client.Commonname2017-10-10 22:21:04,732 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:21:08,747 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 新的微信
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:21:49,651 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:21:53,667 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 新的微信
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:22:58,837 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:23:02,852 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 新的微信
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:26:09,844 [6] INFO  WxTools.Client.Common - 进入自动更新
+ WxTools.Client.Commonname2017-10-10 22:26:19,282 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:26:23,298 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 新的微信
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:27:32,520 [9] INFO  WxTools.Client.Dal.TcpClientDal - 执行URl
+ WxTools.Client.Dal.TcpClientDalname2017-10-10 22:27:32,784 [7] INFO  WxTools.Client.ViewModel.MainViewModel - ExecuteUrl Operas[0]开始执行
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:27:36,597 [7] INFO  WxTools.Client.ViewModel.MainViewModel - 清理一次窗口; SessionCount:1; Operas.Count:1; MaxSessionCount:10;
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:27:40,616 [Url执行线程] INFO  WxTools.Client.ViewModel.MainViewModel - 执行url完毕
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:27:57,378 [检测状态线程] WARN  WxTools.Client.ViewModel.MainViewModel - 微信被窗体最小化了，已经恢复，hwnd=198404
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:52:02,907 [7] INFO  WxTools.Client.Common - 进入自动更新
+ WxTools.Client.Commonname2017-10-10 22:52:10,261 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:52:14,278 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 新的微信
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:52:23,962 [9] INFO  WxTools.Client.Dal.TcpClientDal - 执行URl
+ WxTools.Client.Dal.TcpClientDalname2017-10-10 22:52:24,258 [7] INFO  WxTools.Client.ViewModel.MainViewModel - ExecuteUrl Operas[0]开始执行
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:52:33,473 [Url执行线程] INFO  WxTools.Client.ViewModel.MainViewModel - 执行url完毕
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:54:10,699 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:54:14,714 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 新的微信
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:54:17,351 [12] INFO  WxTools.Client.Dal.TcpClientDal - 执行URl
+ WxTools.Client.Dal.TcpClientDalname2017-10-10 22:54:17,696 [6] INFO  WxTools.Client.ViewModel.MainViewModel - ExecuteUrl Operas[0]开始执行
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:54:32,738 [Url执行线程] INFO  WxTools.Client.ViewModel.MainViewModel - 执行url完毕
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:55:44,353 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:55:44,401 [12] INFO  WxTools.Client.Dal.TcpClientDal - 执行URl
+ WxTools.Client.Dal.TcpClientDalname2017-10-10 22:55:44,848 [Url执行线程] INFO  WxTools.Client.ViewModel.MainViewModel - 执行url完毕
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:55:48,374 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 新的微信
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:55:57,938 [12] INFO  WxTools.Client.Dal.TcpClientDal - 执行URl
+ WxTools.Client.Dal.TcpClientDalname2017-10-10 22:55:58,353 [7] INFO  WxTools.Client.ViewModel.MainViewModel - ExecuteUrl Operas[0]开始执行
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:56:06,785 [7] INFO  WxTools.Client.ViewModel.MainViewModel - 清理一次窗口; SessionCount:1; Operas.Count:1; MaxSessionCount:10;
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:56:10,946 [Url执行线程] INFO  WxTools.Client.ViewModel.MainViewModel - 执行url完毕
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:56:54,665 [6] INFO  WxTools.Client.Common - 进入自动更新
+ WxTools.Client.Commonname2017-10-10 22:57:01,939 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:57:05,954 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 新的微信
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:57:12,185 [9] INFO  WxTools.Client.Dal.TcpClientDal - 执行URl
+ WxTools.Client.Dal.TcpClientDalname2017-10-10 22:57:12,436 [7] INFO  WxTools.Client.ViewModel.MainViewModel - ExecuteUrl Operas[0]开始执行
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:57:20,112 [7] INFO  WxTools.Client.ViewModel.MainViewModel - 清理一次窗口; SessionCount:1; Operas.Count:1; MaxSessionCount:10;
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:57:24,119 [Url执行线程] INFO  WxTools.Client.ViewModel.MainViewModel - 执行url完毕
+ WxTools.Client.ViewModel.MainViewModelname2017-10-10 22:57:44,126 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 新的微信
+ WxTools.Client.ViewModel.MainViewModelname

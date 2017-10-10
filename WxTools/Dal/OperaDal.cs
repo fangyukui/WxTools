@@ -250,15 +250,19 @@ namespace WxTools.Client.Dal
             WaitBusy();
             Log("开始执行链接");
             RunState = RunState.Busy;
+            Lw.ClickOnce(WxPoints.WeiXin);
+            MoveUpQuick();
+            Thread.Sleep(1000);
             Point row = WxPoints.FirstRow;
             Lw.ClickOnce(WxPoints.WeiXin).ClickOnce(row).Delay();
             bool find = false;
             //找到一个能发送的聊天窗口
             for (int i = 0; i < 7; i++)
             {
-                if (Lw.FindPic(220, 400, 500, 550, "char.bmp", "000000", 0.85, 1))
+                if (Lw.FindPic(220, 400, 500, 550, "char2.bmp|char.bmp", "000000", 0.75, 1, 100))
                 {
                     find = true;
+                    Thread.Sleep(500);
                     break;
                 }
                 row.Offset(0, 80);
