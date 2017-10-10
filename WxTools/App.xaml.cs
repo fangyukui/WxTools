@@ -6,6 +6,7 @@ using System.Security.Principal;
 using System.Windows;
 using log4net;
 using log4net.Config;
+using WxTools.Client.Helper;
 
 namespace WxTools.Client
 {
@@ -26,6 +27,9 @@ namespace WxTools.Client
         {
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.Current.DispatcherUnhandledException += Application_DispatcherUnhandledException;
+
+            //禁止休眠
+            SystemSleepManagement.PreventSleep(true);
         }
 
         private static void InitLog4Net()
