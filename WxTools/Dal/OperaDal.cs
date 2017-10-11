@@ -183,9 +183,10 @@ namespace WxTools.Client.Dal
 
             if (Lw.FindPic(600, 80, Common.Width, Client.Common.Height - 150, "dh2.bmp", "000000", 0.95, 1, 5000, 1, -100, 13))
             {
-                RunState = RunState.Busy;
+                RunState = RunState.Idle;
                 OpenAction();
                 Log($"[{index}]链接执行完毕");
+                return;
             }
             RunState = RunState.Idle;
             Log($"[{index}]执行失败");

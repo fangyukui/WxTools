@@ -32,15 +32,6 @@ namespace WxTools.Server.ViewModel
                 OnPropertyChanged();
             }
         }
-        /* {
-            get
-            {
-                var count = 0;
-                foreach (var clientInfo in ClientInfos)
-                    count += clientInfo.WxCount;
-                return count;
-            }
-        }*/
 
         public string Url
         {
@@ -90,13 +81,15 @@ namespace WxTools.Server.ViewModel
                                 list.Add(client);
                             }
                         }
-                        Application.Current.Dispatcher.Invoke(() =>
+
+                        foreach (var info in list)
                         {
-                            foreach (var info in list)
+                            Application.Current.Dispatcher.Invoke(() =>
                             {
                                 ClientInfos.Remove(info);
-                            }
-                        });
+                            });
+                        }
+                       
                         Thread.Sleep(2000);
                         _tcpServerDal.SendHeartbeat();
                     }

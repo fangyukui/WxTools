@@ -363,7 +363,7 @@ namespace WxTools.Client.ViewModel
                             _log.Info("执行url完毕");
                             TcpClientDal.SendLog("--全部完成--");
                         }
-                        Thread.Sleep(500);
+                        Thread.Sleep(50);
                     }
                 })
                 {IsBackground = true, Name = "Url执行线程"};
