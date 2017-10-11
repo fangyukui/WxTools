@@ -34,7 +34,7 @@ namespace WxTools.Client
         {
             try
             {
-                return VersionHelper.HasNewVersion("121.201.110.147", 4540);
+                return VersionHelper.HasNewVersion(TcpIp, 4540);
             }
             catch (Exception e)
             {

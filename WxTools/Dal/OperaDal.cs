@@ -4,7 +4,6 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using log4net;
 using LwSoft;
@@ -51,7 +50,6 @@ namespace WxTools.Client.Dal
 
         public RunState RunState { get; private set; } = RunState.Idle;
 
-        private CancellationTokenSource _source;
         private string _logs;
         private string _name;
 
@@ -154,112 +152,22 @@ namespace WxTools.Client.Dal
             Log("解除绑定");
         }
 
-        /// <summary>
-        /// 进入微信聊天第一行
-        /// </summary>
-        public void ClickFirstRow()
-        {
-            Lw.ClickOnce(WxPoints.WeiXin)
-                .Delay()
-                .ClickOnce(WxPoints.FirstRow);
-        }
-
-        /// <summary>
-        /// 截图
-        /// </summary>
-        /// <param name="fileName"></param>
-        public void Capture(string fileName = null)
-        {
-            Lw.Capture(0, 0, Client.Common.Width, Client.Common.Height,
-                fileName ?? DateTime.Now.Ticks + ".bmp");
-        }
-
-        /// <summary>
-        /// 找图并点击
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="isClick"></param>
-        /// <param name="dir"></param>
-        public void FindPic(string name, bool isClick = true, int dir = 0)
-        {
-            Lw.FindPic(0, 0, Client.Common.Width, Client.Common.Height - 50,
-                name, "000000", 0.8, dir, 0, isClick ? 1 : 0);
-        }
-
-        /// <summary>
-        /// 启动消息检测线程
-        /// </summary>
-        public bool RunThread()
-        {
-            return true;
-            if (ThreadRun)
-            {
-                ThreadRun = false;
-                _source.Cancel();
-                return false;
-            }
-
-            if (Lw.IsBind(Hwnd) <= 0)
-            {
-                ThreadRun = false;
-                Log("未绑定！退出");
-                return false;
-            }
-
-            ThreadRun = true;
-            _source = new CancellationTokenSource();
-            Task.Factory.StartNew(() =>
-            {
-                //进入聊天首页
-                RecoverAction();
-                while (!_source.IsCancellationRequested)
-                {
-                    WaitSeesion();
-                    //判断新的消息
-                    CheckNewMessage();
-                    Thread.Sleep(1000);
-                }
-                //SendMyMessage("https://mp.weixin.qq.com/s?src=11&timestamp=1507368444&ver=438&signature=82XVDEO4Ms7JSHg6-iPZuLdSG6NhGCiYzmzZSTBn9TLYd-RXmYK8gV9wRcgq9feHnm1fXs5zB1KZnHxzOuoL*ORFxwngLoLo9zWVRAXVOjuwrARnlkFvOcj2cFFcN7qS&new=1");
-            }, _source.Token);
-
-            return true;
-        }
-
-        private void CheckNewMessage()
-        {
-            //判断新的消息
-            if (Lw.FindPic(70, 50, 160, Client.Common.Height, "new.bmp", "000000", 0.85, 0, 0, 1))
-            {
-                RunState = RunState.Busy;
-                Log("发现新消息");
-                //找到会话消息
-                Thread.Sleep(2000);
-                if (Lw.FindPic(400, 80, 600, Client.Common.Height - 165, "dh.bmp", "000000", 0.95, 1, 0, 1, 100, 13))
-                {
-                    //Console.WriteLine($"{_lw.X()},{_lw.Y()}");
-                    Task.Factory.StartNew(OpenAction);
-                }
-                RecoverAction(2000);
-                RunState = RunState.Idle;
-            }
-        }
-
         //自己发送链接 自己打开
-        public void SendMyMessage(string message)
+        public void SendMyMessage(string message, int index)
         {
             WaitBusy();
-            Log("开始执行链接");
+            Log($"[{index}]开始执行链接");
             RunState = RunState.Busy;
             Lw.ClickOnce(WxPoints.WeiXin);
             MoveUpQuick();
-            Thread.Sleep(1000);
+            Thread.Sleep(200);
             Point row = WxPoints.FirstRow;
             Lw.ClickOnce(WxPoints.WeiXin).ClickOnce(row).Delay();
             bool find = false;
             //找到一个能发送的聊天窗口
             for (int i = 0; i < 7; i++)
             {
-                if (Lw.FindPic(220, 400, 500, 550, "char2.bmp|char.bmp", "000000", 0.75, 1, 100))
+                if (Lw.FindPic(220, 400, 500, 550, "char2.bmp|char.bmp", "000000", 0.75, 1))
                 {
                     find = true;
                     Thread.Sleep(500);
@@ -277,20 +185,10 @@ namespace WxTools.Client.Dal
             {
                 RunState = RunState.Busy;
                 OpenAction();
+                Log($"[{index}]链接执行完毕");
             }
             RunState = RunState.Idle;
-            Log("链接执行完毕");
-        }
-
-        public void GoOnceAction(Action action)
-        {
-            Task.Factory.StartNew(() =>
-            {
-                //进入聊天首页
-                RecoverAction();
-                WaitSeesion();
-                action();
-            });
+            Log($"[{index}]执行失败");
         }
 
         private void OpenAction()
@@ -307,17 +205,6 @@ namespace WxTools.Client.Dal
                 WaitSeesion();
                 Client.Common.Messenger.Notify("CefWebViewWnd");
             }
-        }
-
-        //恢复到准备状态 聊天首页
-        private void RecoverAction(int sleep = 1000)
-        {
-            Thread.Sleep(sleep);
-            Lw.ClickOnce(WxPoints.WeiXin)
-                .ClickOnce(WxPoints.EndRow)
-                .Delay()
-                .ClickOnce(WxPoints.WeiXin);
-            MoveUpQuick();
         }
 
         //会话窗口过多，等待处理
@@ -341,16 +228,9 @@ namespace WxTools.Client.Dal
             }
         }
 
-        public void StopThread()
-        {
-            ThreadRun = false;
-            _source?.Cancel();
-        }
-
         public void Dispose()
         {
             ThreadRun = false;
-            _source?.Cancel();
             UnBindWindow();
         }
 

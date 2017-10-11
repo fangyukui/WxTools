@@ -36,24 +36,11 @@ namespace WxTools.Client.ViewModel
             }
         }
 
-       /* public bool IsChecked
-        {
-            get => _isChecked;
-            set
-            {
-                if (value == _isChecked) return;
-                _isChecked = value;
-                OnPropertyChanged();
-            }
-        }*/
-
         private readonly ILog _log = LogManager.GetLogger(typeof(MainViewModel));
 
         private ObservableCollection<OperaDal> _operas;
 
-        private Queue<string> _urlQueue = new Queue<string>();
-
-        //private bool _isChecked;
+        private readonly Queue<string> _urlQueue = new Queue<string>();
 
         private Thread _thread;
 
@@ -158,19 +145,19 @@ namespace WxTools.Client.ViewModel
         //注册消息监听
         private void RegisterMessenger()
         {
-            Client.Common.Messenger.Register("CefWebViewWnd", () =>
+            Common.Messenger.Register("CefWebViewWnd", () =>
             {
                 _lasTime = DateTime.Now;
                 //Interlocked.Increment(ref Common.SessionCount);
-                Client.Common.SessionCount += 1;
+                Common.SessionCount += 1;
 
-                if (Client.Common.SessionCount >= Client.Common.MaxSessionCount || Client.Common.SessionCount == Operas.Count)
+                if (Common.SessionCount >= Common.MaxSessionCount || Common.SessionCount == Operas.Count)
                 {
-                    _log.Info($"清理一次窗口; SessionCount:{Client.Common.SessionCount};" +
-                              $" Operas.Count:{Operas.Count}; MaxSessionCount:{Client.Common.MaxSessionCount};");
+                    _log.Info($"清理一次窗口; SessionCount:{Common.SessionCount};" +
+                              $" Operas.Count:{Operas.Count}; MaxSessionCount:{Common.MaxSessionCount};");
                     //超过窗口数 或者 正好
                     Thread.Sleep(4000);
-                    Client.Common.SessionCount = 0;
+                    Common.SessionCount = 0;
                     CloseCefWebViewWnd();
                 }
             });
@@ -273,10 +260,6 @@ namespace WxTools.Client.ViewModel
                                             opera.Hwnd = int.Parse(hwnd);
                                             opera.Load();
                                             opera.Lw.SetWindowState(opera.Hwnd, 1);
-                                            /*if (!opera.RunThread())
-                                            {
-                                                _log.Error($"{opera.Hwnd}启动线程出现错误，被跳过");
-                                            }*/
                                             lock (Operas)
                                                 Operas.Add(opera);
                                         }
@@ -304,6 +287,8 @@ namespace WxTools.Client.ViewModel
                             TcpClientDal.Connect();
                             Thread.Sleep(5000);
                         }
+
+                        //通知服务器微信数量
                         if (wxAddOrRemove)
                         {
                             TcpClientDal.SendWxCount(Operas.Count);
@@ -328,96 +313,16 @@ namespace WxTools.Client.ViewModel
                     if (_isExit) return;
                     if (Operas != null && Operas.All(o => o.RunState == RunState.Idle))
                     {
-                        Client.Common.StartUpdate();
+                        Common.StartUpdate();
                     }
                     Thread.Sleep(60000);
                 }
             }) {IsBackground = true}.Start();
         }
 
-        //执行线程启动
-        private void Run()
-        {
-            if (TcpClientDal.Connected)
-            {
-                if (_runstate) return;
-                _runstate = true;
-                //开启状态监测线程
-                CheckHwndStateThread();
-                var lw = LwFactory.GetDefault();
-                var hwndstr = lw.EnumWindow(null, "WeChatMainWndForPC", null);
-                var hwnds = hwndstr?.Split(',');
-                if (hwnds == null || hwnds.Length == 0)
-                {
-                    _log.Info("未找到微信");
-                    /*IsChecked = false;
-                    MessageBox.Show("未找到微信(先运行微信)", "提示");*/
-                    return;
-                }
-                //默认添加一个
-                if (Operas.Count == 0)
-                    Application.Current.Dispatcher.Invoke(() =>
-                    {
-                        Operas.Add(new OperaDal(LwFactory.GetDefault()));
-                    });
-                if (hwnds.Length != Operas.Count)
-                {
-                    for (int i = 0; i < hwnds.Length - 1; i++)
-                    {
-                        Application.Current.Dispatcher.Invoke(() =>
-                        {
-                            Operas.Add(new OperaDal(LwFactory.GetNew()));
-                        });
-                    }
-                }
-                var j = 0;
-                foreach (var opera in Operas)
-                {
-                    var mythread = new Thread(() =>
-                    {
-                        try
-                        {
-                            opera.Hwnd = int.Parse(hwnds[j++]);
-                            opera.Load();
-                            opera.Lw.SetWindowState(opera.Hwnd, 1);
-                            /*  if (!opera.RunThread())
-                              {
-                                  _log.Error($"{opera.Hwnd}启动线程出现错误，被跳过");
-                              }*/
-                        }
-                        catch (Exception e)
-                        {
-                            _log.Error($"{opera.Hwnd}加载出错", e);
-                            MessageBox.Show($"{opera.Hwnd}加载出错", "提示");
-                        }
-                    }) {Name = "绑定句柄线程"};
-                    mythread.SetApartmentState(ApartmentState.STA);
-                    mythread.Start();
-                }
-                _log.Info("启动完成");
-            }
-            else
-            {
-                foreach (var opera in Operas)
-                {
-                    opera.StopThread();
-                    opera.Dispose();
-                }
-                Operas.Clear();
-                LwFactory.Clear();
-                GC.Collect();
-                _log.Info("关闭完成");
-            }
-        }
-
         public void ExecuteUrl(string url)
         {
             _urlQueue.Enqueue(url);
-
-            /*foreach (var opera in Operas)
-            {
-                opera.GoOnceAction(() => opera.SendMyMessage(url));
-            }*/
         }
 
         private readonly object _lock = new object();
@@ -441,14 +346,16 @@ namespace WxTools.Client.ViewModel
                                     while (true)
                                     {
                                         OperaDal opear;
+                                        int ic;
                                         lock (_lock)
                                         {
                                             index++;
                                             if (index >= Operas.Count) return;
                                             _log.Info($"ExecuteUrl Operas[{index}]开始执行");
                                             opear = Operas[index];
+                                            ic = index;
                                         }
-                                        opear?.SendMyMessage(url);
+                                        opear?.SendMyMessage(url, ic);
                                     }
                                 });
                             }
