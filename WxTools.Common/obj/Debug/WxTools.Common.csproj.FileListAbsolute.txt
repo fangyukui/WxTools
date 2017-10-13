@@ -11,3 +11,4 @@ E:\WxTools\WxTools.Common\obj\Debug\WxTools.Common.csprojResolveAssemblyReferenc
 E:\WxTools\WxTools.Common\obj\Debug\WxTools.Common.csproj.CoreCompileInputs.cache
 E:\WxTools\WxTools.Common\obj\Debug\WxTools.Common.dll
 E:\WxTools\WxTools.Common\obj\Debug\WxTools.Common.pdb
+C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Common\obj\Debug\WxTools.Common.csproj.CoreCompileInputs.cache

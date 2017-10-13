@@ -143,4 +143,51 @@ Exception rethrown at [0]:
  WxTools.Client.Dal.TcpClientDalname2017-10-11 22:39:30,570 [7] INFO  WxTools.Client.ViewModel.MainViewModel - ExecuteUrl Operas[0]开始执行
  WxTools.Client.ViewModel.MainViewModelname2017-10-11 22:39:37,953 [7] INFO  WxTools.Client.ViewModel.MainViewModel - 清理一次窗口; SessionCount:1; Operas.Count:1; MaxSessionCount:10;
  WxTools.Client.ViewModel.MainViewModelname2017-10-11 22:39:41,960 [Url执行线程] INFO  WxTools.Client.ViewModel.MainViewModel - 执行url完毕
+ WxTools.Client.ViewModel.MainViewModelname2017-10-11 22:50:45,127 [5] ERROR WxTools.Client.Common - HasNewVersion
+ WxTools.Client.CommonnameSystem.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:4542
+
+Server stack trace: 
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Runtime.Remoting.Channels.RemoteConnection.CreateNewSocket(EndPoint ipEndPoint)
+   在 System.Runtime.Remoting.Channels.RemoteConnection.CreateNewSocket()
+   在 System.Runtime.Remoting.Channels.RemoteConnection.GetSocket()
+   在 System.Runtime.Remoting.Channels.SocketCache.GetSocket(String machinePortAndSid, Boolean openNew)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink.SendRequestWithRetry(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink.ProcessMessage(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream, ITransportHeaders& responseHeaders, Stream& responseStream)
+   在 System.Runtime.Remoting.Channels.BinaryClientFormatterSink.SyncProcessMessage(IMessage msg)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 OAUS.Core.IOausService.GetLatestVersion()
+   在 OAUS.Core.VersionHelper.GetLatestVersion(String oausServerIP, Int32 oausServerPort)
+   在 OAUS.Core.VersionHelper.HasNewVersion(String oausServerIP, Int32 oausServerPort)
+   在 WxTools.Client.Common.HasNewVersion() 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools\Common.cs:行号 37
+2017-10-11 22:50:45,724 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-11 22:51:50,276 [6] ERROR WxTools.Client.Common - HasNewVersion
+ WxTools.Client.CommonnameSystem.Net.Sockets.SocketException (0x80004005): 由于目标计算机积极拒绝，无法连接。 127.0.0.1:4542
+
+Server stack trace: 
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Runtime.Remoting.Channels.RemoteConnection.CreateNewSocket(EndPoint ipEndPoint)
+   在 System.Runtime.Remoting.Channels.RemoteConnection.CreateNewSocket()
+   在 System.Runtime.Remoting.Channels.RemoteConnection.GetSocket()
+   在 System.Runtime.Remoting.Channels.SocketCache.GetSocket(String machinePortAndSid, Boolean openNew)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink.SendRequestWithRetry(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink.ProcessMessage(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream, ITransportHeaders& responseHeaders, Stream& responseStream)
+   在 System.Runtime.Remoting.Channels.BinaryClientFormatterSink.SyncProcessMessage(IMessage msg)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 OAUS.Core.IOausService.GetLatestVersion()
+   在 OAUS.Core.VersionHelper.GetLatestVersion(String oausServerIP, Int32 oausServerPort)
+   在 OAUS.Core.VersionHelper.HasNewVersion(String oausServerIP, Int32 oausServerPort)
+   在 WxTools.Client.Common.HasNewVersion() 位置 C:\Users\Administrator\Desktop\Project\WxTools\WxTools\Common.cs:行号 37
+2017-10-11 22:51:50,765 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-11 22:59:09,586 [6] INFO  WxTools.Client.Common - 进入自动更新
+ WxTools.Client.Commonname2017-10-11 22:59:16,918 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-11 22:59:27,313 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
  WxTools.Client.ViewModel.MainViewModelname

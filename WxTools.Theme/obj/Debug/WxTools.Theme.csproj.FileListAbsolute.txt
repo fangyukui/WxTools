@@ -257,3 +257,4 @@ E:\WxTools\WxTools.Theme\obj\Debug\WxTools.Theme.csproj.GenerateResource.Cache
 E:\WxTools\WxTools.Theme\obj\Debug\WxTools.Theme.csproj.CoreCompileInputs.cache
 E:\WxTools\WxTools.Theme\obj\Debug\WxTools.Theme.dll
 E:\WxTools\WxTools.Theme\obj\Debug\WxTools.Theme.pdb
+C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Theme\obj\Debug\WxTools.Theme.csproj.CoreCompileInputs.cache

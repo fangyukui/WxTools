@@ -9,3 +9,4 @@ E:\WxTools\LwSoft\obj\Debug\LwSoft.csprojResolveAssemblyReference.cache
 E:\WxTools\LwSoft\obj\Debug\LwSoft.csproj.CoreCompileInputs.cache
 E:\WxTools\LwSoft\obj\Debug\LwSoft.dll
 E:\WxTools\LwSoft\obj\Debug\LwSoft.pdb
+C:\Users\Administrator\Desktop\Project\WxTools\LwSoft\obj\Debug\LwSoft.csproj.CoreCompileInputs.cache

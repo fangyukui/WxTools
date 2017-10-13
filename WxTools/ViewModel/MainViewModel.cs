@@ -97,20 +97,14 @@ namespace WxTools.Client.ViewModel
             {
                 try
                 {
-                    var strCmd = new StringBuilder("cd \"C:\\Program Files (x86)\\Tencent\\WeChat\"&start ");
-                    for (int i = 0; i < 5; i++)
-                    {
-                        strCmd.Append("WeChat.exe&");
-                    }
                     Process myProcess = new Process();
-                    ProcessStartInfo myProcessStartInfo = new ProcessStartInfo("cmd.exe")
+                    ProcessStartInfo myProcessStartInfo = new ProcessStartInfo("duokai.exe")
                     {
                         UseShellExecute = false,
                         CreateNoWindow = true,
                         RedirectStandardOutput = true
                     };
                     myProcess.StartInfo = myProcessStartInfo;
-                    myProcessStartInfo.Arguments = "/c " + strCmd.ToString().TrimEnd('&');
                     myProcess.Start();
                     myProcess.Close();
                 }
@@ -196,10 +190,15 @@ namespace WxTools.Client.ViewModel
                         bool wxAddOrRemove = false;
                         foreach (var opera in Operas)
                         {
-                            if (opera.Lw.GetWindowState(opera.Hwnd, 0) == 0)
+                            if (opera.Hwnd == 0)
+                                _log.Error("句柄为0");
+                            if (opera.Hwnd != 0 && opera.Lw.GetWindowState(opera.Hwnd, 0) == 0)
                             {
                                 //窗体不存在
-                                list.Add(opera);
+                                if (String.IsNullOrEmpty(opera.Lw.GetWindowClass(opera.Hwnd)))
+                                {
+                                    list.Add(opera);
+                                }
                             }
                             else
                             {
@@ -313,6 +312,8 @@ namespace WxTools.Client.ViewModel
                     if (_isExit) return;
                     if (Operas != null && Operas.All(o => o.RunState == RunState.Idle))
                     {
+                        //这个延时可以防止TCP连接网络出错
+                        Thread.Sleep(5000);
                         Common.StartUpdate();
                     }
                     Thread.Sleep(60000);
@@ -338,7 +339,9 @@ namespace WxTools.Client.ViewModel
                         {
                             var url = _urlQueue.Dequeue();
                             int index = -1;
-                            Task[] tasks = new Task[Common.MaxThreadCount];
+                            var max = Operas.Count < Common.MaxThreadCount ? Operas.Count : Common.MaxThreadCount;
+                            
+                            Task[] tasks = new Task[max];
                             for (int i = 0; i < tasks.Length; i++)
                             {
                                 tasks[i] = Task.Factory.StartNew(() =>

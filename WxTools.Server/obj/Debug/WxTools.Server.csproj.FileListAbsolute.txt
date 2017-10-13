@@ -53,3 +53,4 @@ E:\WxTools\WxTools.Server\obj\Debug\WxTools.Server.csproj.GenerateResource.Cache
 E:\WxTools\WxTools.Server\obj\Debug\WxTools.Server.csproj.CoreCompileInputs.cache
 E:\WxTools\WxTools.Server\obj\Debug\WxTools.Server.exe
 E:\WxTools\WxTools.Server\obj\Debug\WxTools.Server.pdb
+C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\obj\Debug\WxTools.Server.csproj.CoreCompileInputs.cache

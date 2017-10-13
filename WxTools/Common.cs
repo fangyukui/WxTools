@@ -50,7 +50,7 @@ namespace WxTools.Client
                 var has = HasNewVersion();
                 if (has == true)
                 {
-                    Log.Info("进入自动更新");
+                   Log.Info("进入自动更新");
                    Application.Current.Dispatcher.Invoke(() =>
                     {
                         string updateExePath = AppDomain.CurrentDomain.BaseDirectory + "AutoUpdater\\AutoUpdater.exe";

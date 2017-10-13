@@ -55,7 +55,18 @@ namespace WxTools.Server.ViewModel
 
         public RelayCommand SendUrlCommand => new RelayCommand(() =>
         {
+            if (String.IsNullOrEmpty(Url))
+            {
+                MessageBox.Show("请输入链接", "提示");
+                return;
+            }
+            if (!Url.StartsWith("http://") || !Url.StartsWith("https://"))
+            {
+                MessageBox.Show("请正确的链接", "提示");
+                return;
+            }
             _tcpServerDal.SendUrl(Url);
+            MessageBox.Show("发送成功", "提示");
         });
 
         private void InitTcp()
@@ -75,7 +86,7 @@ namespace WxTools.Server.ViewModel
                     {
                         foreach (var client in ClientInfos)
                         {
-                            if ((client.HeartbeatTime - DateTime.Now).TotalSeconds >= 60)
+                            if ((DateTime.Now - client.HeartbeatTime).TotalSeconds >= 60)
                             {
                                 _log.Warn("客户端超时" + client.Ip);
                                 list.Add(client);
@@ -87,6 +98,7 @@ namespace WxTools.Server.ViewModel
                             Application.Current.Dispatcher.Invoke(() =>
                             {
                                 ClientInfos.Remove(info);
+                                WxCount -= info.WxCount;
                             });
                         }
                        

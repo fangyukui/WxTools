@@ -54,3 +54,11 @@
 
 2017/10/11 22:38:54:Update completed！
 
+2017/10/11 22:59:11:Update starting. There is 1 files to be updated ......
+
+2017/10/11 22:59:13:Update completed！
+
+2017/10/13 20:36:17:Update starting. There is 2 files to be updated ......
+
+2017/10/13 20:36:19:Update completed！
+
