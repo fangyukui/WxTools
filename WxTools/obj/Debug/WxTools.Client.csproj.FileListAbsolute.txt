@@ -79,3 +79,6 @@ E:\WxTools\WxTools\obj\Debug\WxTools.Client.csproj.CoreCompileInputs.cache
 E:\WxTools\WxTools\obj\Debug\WxTools.Client.exe
 E:\WxTools\WxTools\obj\Debug\WxTools.Client.pdb
 C:\Users\Administrator\Desktop\Project\WxTools\WxTools\obj\Debug\WxTools.Client.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\Project\WxTools\WxTools\bin\Debug\ESBasic.dll
+C:\Users\Administrator\Desktop\Project\WxTools\WxTools\bin\Debug\ESFramework.dll
+C:\Users\Administrator\Desktop\Project\WxTools\WxTools\bin\Debug\OAUS.Core.dll

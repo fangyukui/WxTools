@@ -65,7 +65,7 @@ namespace WxTools.Client.Dal
                 {
                     try
                     {
-                        _ip = LwFactory.GetDefault().GetNetIp();
+                        _ip = LwFactory.Default.GetNetIp();
                         _client = new SimpleTcpClient().Connect(Common.TcpIp, 8911);
                         _client.DelimiterDataReceived -= Received;
                         _client.DelimiterDataReceived += Received;
@@ -74,6 +74,7 @@ namespace WxTools.Client.Dal
                         Connected = true;
                         if (MainViewModel.Instance.Operas.Count > 0)
                             SendWxCount(MainViewModel.Instance.Operas.Count);
+                        SendLog("客户端初始化成功");
                         ConnectedAction?.Invoke();
                         Console.WriteLine("登录成功");
                         break;
@@ -95,7 +96,7 @@ namespace WxTools.Client.Dal
             try
             {
                 Computer computer = new Computer();
-                var lw = LwFactory.GetDefault();
+                var lw = LwFactory.Default;
                 var tcpmsg = new TcpMessage
                 {
                     MsgType = MsgType.Login,

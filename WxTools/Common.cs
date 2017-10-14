@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using log4net;
 using OAUS.Core;
+using WxTools.Client.Model;
 using WxTools.Theme;
 
 namespace WxTools.Client
@@ -14,7 +16,7 @@ namespace WxTools.Client
         //消息通知
         public static Messenger Messenger = new Messenger();
 
-        //微信的窗体大小，统一
+        //微信的窗体大小
         public static int Width = 888;
 
         public static int Height = 625;
@@ -26,6 +28,9 @@ namespace WxTools.Client
         public static int MaxSessionCount = 10;
 
         public static int MaxThreadCount = 20;
+
+        //运行状态
+        public static RunState RunState = RunState.Idle;
 
         //public static string TcpIp = "127.0.0.1";
         public static string TcpIp = "49.4.133.41";
@@ -50,8 +55,10 @@ namespace WxTools.Client
                 var has = HasNewVersion();
                 if (has == true)
                 {
-                   Log.Info("进入自动更新");
-                   Application.Current.Dispatcher.Invoke(() =>
+                    Log.Info("进入自动更新");
+                    //这个延时可以防止TCP连接网络出错
+                    Thread.Sleep(3000);
+                    Application.Current.Dispatcher.Invoke(() =>
                     {
                         string updateExePath = AppDomain.CurrentDomain.BaseDirectory + "AutoUpdater\\AutoUpdater.exe";
                         System.Diagnostics.Process.Start(updateExePath);

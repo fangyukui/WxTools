@@ -87,7 +87,7 @@ namespace WxTools.Server.Dal
                             {
                                 info.Logs += tcpmsg.Msg + "\r\n";
                                 var lines = info.Logs.Split("\r\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-                                if (lines.Length > 10)
+                                if (lines.Length > 20)
                                 {
                                     StringBuilder strb = new StringBuilder();
                                     for (int i = lines.Length - 10; i < lines.Length; i++)

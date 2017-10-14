@@ -80,15 +80,16 @@ namespace WxTools.Client.Dal
             }
             Lw.SetPath(path);
             SetWindowsHandle(hwnd);
-            //Log("初始化窗体成功");
+            _log.Info("初始化窗体成功");
+            Log("初始化窗体成功", false);
             //绑定
             Lw.BindWindow(this.Hwnd, DisplayBindKey.Gdi, MouseBindKey.Windows,
                 KeypadBindKey.Windows, 32);
             //设置窗体大小
             Lw.SetWindowSize(this.Hwnd, Client.Common.Width, Client.Common.Height);
-            Log("绑定成功");
+            Lw.SetWindowState(this.Hwnd, 1);
+            Log("绑定成功", false);
             //关闭错误消息
-            Lw.SetShowErrorMsg(0);
             Lw.SetShowErrorMsg(0);
         }
 
@@ -149,7 +150,8 @@ namespace WxTools.Client.Dal
         public void UnBindWindow()
         {
             Lw.UnBindWindow();
-            Log("解除绑定");
+            _log.Info("解除绑定");
+            Log("解除绑定", false);
         }
 
         //自己发送链接 自己打开
@@ -163,6 +165,8 @@ namespace WxTools.Client.Dal
             Thread.Sleep(200);
             Point row = WxPoints.FirstRow;
             Lw.ClickOnce(WxPoints.WeiXin).ClickOnce(row).Delay();
+
+            WaitSeesion();
             bool find = false;
             //找到一个能发送的聊天窗口
             for (int i = 0; i < 7; i++)
@@ -181,15 +185,16 @@ namespace WxTools.Client.Dal
             Lw.SendString(message, 3, Hwnd);
             Lw.Delay().KeyPress(13);
 
+            WaitSeesion();
             if (Lw.FindPic(600, 80, Common.Width, Client.Common.Height - 150, "dh2.bmp", "000000", 0.95, 1, 5000, 1, -100, 13))
             {
-                RunState = RunState.Idle;
                 OpenAction();
                 Log($"[{index}]链接执行完毕");
+                RunState = RunState.Idle;
                 return;
             }
-            RunState = RunState.Idle;
             Log($"[{index}]执行失败");
+            RunState = RunState.Idle;
         }
 
         private void OpenAction()
@@ -203,7 +208,6 @@ namespace WxTools.Client.Dal
             }
             else
             {
-                WaitSeesion();
                 Client.Common.Messenger.Notify("CefWebViewWnd");
             }
         }
@@ -211,21 +215,19 @@ namespace WxTools.Client.Dal
         //会话窗口过多，等待处理
         private void WaitSeesion()
         {
-            if (Common.SessionCount > 0)
-                while (Common.SessionCount >= Common.MaxSessionCount)
-                {
-                    //_log.Info("窗口数较多，等待处理中");
-                    //超过窗口数，等待处理
-                    Thread.Sleep(1000);
-                }
+            while (Common.RunState == RunState.Busy)
+            {
+                //超过窗口数，等待处理
+                Thread.Sleep(200);
+            }
         }
 
         private void WaitBusy()
         {
-            while (RunState == RunState.Busy || Common.SessionCount >= Common.MaxSessionCount)
+            while (this.RunState == RunState.Busy || Common.RunState == RunState.Busy)
             {
                 //超过窗口数，等待处理
-                Thread.Sleep(1000);
+                Thread.Sleep(200);
             }
         }
 

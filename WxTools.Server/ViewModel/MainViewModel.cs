@@ -60,7 +60,7 @@ namespace WxTools.Server.ViewModel
                 MessageBox.Show("请输入链接", "提示");
                 return;
             }
-            if (!Url.StartsWith("http://") || !Url.StartsWith("https://"))
+            if (!Url.StartsWith("http://") && !Url.StartsWith("https://"))
             {
                 MessageBox.Show("请正确的链接", "提示");
                 return;

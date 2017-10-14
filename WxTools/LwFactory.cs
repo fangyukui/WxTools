@@ -7,6 +7,9 @@ namespace WxTools.Client
     {
         public static List<Lwsoft3> LwList = new List<Lwsoft3>();
         private static int _index = -1;
+        private static readonly object Lock = new object();
+
+        public static Lwsoft3 Default => GetLw(0);
 
         public static Lwsoft3 GetLw(int i)
         {
@@ -15,11 +18,6 @@ namespace WxTools.Client
                 LwList.Add(new Lwsoft3());
             }
             return LwList[i];
-        }
-
-        public static Lwsoft3 GetDefault()
-        {
-            return GetLw(0);
         }
 
         public static Lwsoft3 GetNew()
@@ -38,12 +36,15 @@ namespace WxTools.Client
 
         public static Lwsoft3 GetNextLwsoft()
         {
-            _index++;
-            if (_index >= LwList.Count)
+            lock (Lock)
             {
-                _index = 0;
+                _index++;
+                if (_index >= LwList.Count)
+                {
+                    _index = 0;
+                }
+                return LwList[_index];
             }
-            return LwList[_index];
         }
     }
 }
