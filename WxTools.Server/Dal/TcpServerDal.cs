@@ -17,6 +17,7 @@ namespace WxTools.Server.Dal
     {
         private readonly ILog _log = LogManager.GetLogger(typeof(TcpServerDal));
         private SimpleTcpServer _server;
+        private int _port;
 
         private readonly ObservableCollection<ClientInfo> _clientInfos;
 
@@ -27,8 +28,21 @@ namespace WxTools.Server.Dal
 
         public void StartServer()
         {
+            InitData();
             _server = new SimpleTcpServer().Start(8911);
             _server.DelimiterDataReceived += Received;
+        }
+
+        private void InitData()
+        {
+            try
+            {
+                _port = AppConfig.GetValue("Server_Port", 4540);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("配置文件出错，请检查");
+            }
         }
 
         public void SendUrl(string url)
