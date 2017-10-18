@@ -4,6 +4,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using log4net;
 using LwSoft;
@@ -155,18 +156,19 @@ namespace WxTools.Client.Dal
         }
 
         //自己发送链接 自己打开
-        public void SendMyMessage(string message, int index)
+        public async Task SendMyMessage(string message, int index)
         {
-            WaitBusy();
+            await WaitBusy();
+
             Log($"[{index}]开始执行链接");
             RunState = RunState.Busy;
             Lw.ClickOnce(WxPoints.WeiXin);
             MoveUpQuick();
-            Thread.Sleep(200);
+            await Task.Delay(200);
             Point row = WxPoints.FirstRow;
             Lw.ClickOnce(WxPoints.WeiXin).ClickOnce(row).Delay();
 
-            WaitSeesion();
+            await WaitSeesion();
             bool find = false;
             //找到一个能发送的聊天窗口
             for (int i = 0; i < 7; i++)
@@ -174,7 +176,7 @@ namespace WxTools.Client.Dal
                 if (Lw.FindPic(220, 400, 500, 550, "char2.bmp|char.bmp", "000000", 0.75, 1))
                 {
                     find = true;
-                    Thread.Sleep(500);
+                    await Task.Delay(500);
                     break;
                 }
                 row.Offset(0, 80);
@@ -185,10 +187,10 @@ namespace WxTools.Client.Dal
             Lw.SendString(message, 3, Hwnd);
             Lw.Delay().KeyPress(13);
 
-            WaitSeesion();
+            await WaitSeesion();
             if (Lw.FindPic(600, 80, Common.Width, Client.Common.Height - 150, "dh2.bmp", "000000", 0.95, 1, 5000, 1, -100, 13))
             {
-                OpenAction();
+                await OpenAction();
                 Log($"[{index}]链接执行完毕");
                 RunState = RunState.Idle;
                 return;
@@ -197,9 +199,9 @@ namespace WxTools.Client.Dal
             RunState = RunState.Idle;
         }
 
-        private void OpenAction()
+        private async Task OpenAction()
         {
-            Thread.Sleep(2000);
+            await Task.Delay(2000);
             var hwnd = Lw.FindWindow("图片查看器", "ImagePreviewWnd", null);
             if (hwnd > 0)
             {
@@ -208,26 +210,26 @@ namespace WxTools.Client.Dal
             }
             else
             {
-                Client.Common.Messenger.Notify("CefWebViewWnd");
+                Common.Messenger.Notify("CefWebViewWnd");
             }
         }
 
         //会话窗口过多，等待处理
-        private void WaitSeesion()
+        private async Task WaitSeesion()
         {
             while (Common.RunState == RunState.Busy)
             {
                 //超过窗口数，等待处理
-                Thread.Sleep(200);
+                await Task.Delay(200);
             }
         }
 
-        private void WaitBusy()
+        private async Task WaitBusy()
         {
             while (this.RunState == RunState.Busy || Common.RunState == RunState.Busy)
             {
                 //超过窗口数，等待处理
-                Thread.Sleep(200);
+                await Task.Delay(200);
             }
         }
 

@@ -49,16 +49,16 @@ namespace WxTools.Client
             }
         }
 
-        public static void StartUpdate()
+        public static async Task StartUpdate()
         {
-            Task.Factory.StartNew(() =>
+            await Task.Run(async() =>
             {
                 var has = HasNewVersion();
                 if (has == true)
                 {
                     Log.Info("进入自动更新");
                     //这个延时可以防止TCP连接网络出错
-                    Thread.Sleep(3000);
+                    await Task.Delay(3000);
                     Application.Current.Dispatcher.Invoke(() =>
                     {
                         string updateExePath = AppDomain.CurrentDomain.BaseDirectory + "AutoUpdater\\AutoUpdater.exe";

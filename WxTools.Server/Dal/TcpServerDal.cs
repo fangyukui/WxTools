@@ -13,7 +13,7 @@ using WxTools.Server.ViewModel;
 
 namespace WxTools.Server.Dal
 {
-    public class TcpServerDal
+    public class TcpServerDal : IDisposable
     {
         private readonly ILog _log = LogManager.GetLogger(typeof(TcpServerDal));
         private SimpleTcpServer _server;
@@ -29,7 +29,7 @@ namespace WxTools.Server.Dal
         public void StartServer()
         {
             InitData();
-            _server = new SimpleTcpServer().Start(8911);
+            _server = new SimpleTcpServer().Start(_port);
             _server.DelimiterDataReceived += Received;
         }
 
@@ -37,7 +37,7 @@ namespace WxTools.Server.Dal
         {
             try
             {
-                _port = AppConfig.GetValue("Server_Port", 4540);
+                _port = AppConfig.GetValue("Server_Port", 8911);
             }
             catch (Exception e)
             {
@@ -45,7 +45,7 @@ namespace WxTools.Server.Dal
             }
         }
 
-        public void SendUrl(string url)
+        public async Task SendUrl(string url)
         {
             try
             {
@@ -56,8 +56,7 @@ namespace WxTools.Server.Dal
                     IsServer = true,
                     Msg = url
                 };
-                _server.BroadcastLine(JsonConvert.SerializeObject(tcpmsg));
-                //MessageBox.Show("发送成功", "提示");
+                await Task.Run(() => _server.BroadcastLine(JsonConvert.SerializeObject(tcpmsg)));
             }
             catch (Exception e)
             {
@@ -65,7 +64,7 @@ namespace WxTools.Server.Dal
             }
         }
 
-        public void SendHeartbeat()
+        public async Task SendHeartbeat()
         {
             try
             {
@@ -75,7 +74,7 @@ namespace WxTools.Server.Dal
                     Action = ActionType.None,
                     IsServer = false,
                 };
-                _server.BroadcastLine(JsonConvert.SerializeObject(tcpmsg));
+                await Task.Run(() => _server.BroadcastLine(JsonConvert.SerializeObject(tcpmsg)));
             }
             catch (Exception)
             {
@@ -176,6 +175,11 @@ namespace WxTools.Server.Dal
             foreach (var clientInfo in MainViewModel.Instance.ClientInfos)
                 count += clientInfo.WxCount;
             MainViewModel.Instance.WxCount = count;
+        }
+
+        public void Dispose()
+        {
+            _server.Stop();
         }
     }
 }

@@ -10,3 +10,9 @@ E:\WxTools\LwSoft\obj\Debug\LwSoft.csproj.CoreCompileInputs.cache
 E:\WxTools\LwSoft\obj\Debug\LwSoft.dll
 E:\WxTools\LwSoft\obj\Debug\LwSoft.pdb
 C:\Users\Administrator\Desktop\Project\WxTools\LwSoft\obj\Debug\LwSoft.csproj.CoreCompileInputs.cache
+F:\WxTools\LwSoft\bin\Debug\LwSoft.dll
+F:\WxTools\LwSoft\bin\Debug\LwSoft.pdb
+F:\WxTools\LwSoft\obj\Debug\LwSoft.csprojResolveAssemblyReference.cache
+F:\WxTools\LwSoft\obj\Debug\LwSoft.csproj.CoreCompileInputs.cache
+F:\WxTools\LwSoft\obj\Debug\LwSoft.dll
+F:\WxTools\LwSoft\obj\Debug\LwSoft.pdb

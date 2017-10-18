@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using log4net;
 using WxTools.Server.Annotations;
@@ -20,6 +20,7 @@ namespace WxTools.Server.ViewModel
         private TcpServerDal _tcpServerDal;
         private string _url;
         private int _wxCount;
+        private bool _isExit;
         public ObservableCollection<ClientInfo> ClientInfos { get; set; }
 
         public int WxCount
@@ -53,7 +54,15 @@ namespace WxTools.Server.ViewModel
             StartHeartbeatThread();
         }
 
-        public RelayCommand SendUrlCommand => new RelayCommand(() =>
+        private void InitTcp()
+        {
+            ClientInfos = new ObservableCollection<ClientInfo>();
+            _tcpServerDal = new TcpServerDal(ClientInfos);
+            _tcpServerDal.StartServer();
+        }
+
+
+        public RelayCommand SendUrlCommand => new RelayCommand(async() =>
         {
             if (String.IsNullOrEmpty(Url))
             {
@@ -65,48 +74,51 @@ namespace WxTools.Server.ViewModel
                 MessageBox.Show("请正确的链接", "提示");
                 return;
             }
-            _tcpServerDal.SendUrl(Url);
+            await _tcpServerDal.SendUrl(Url);
             MessageBox.Show("发送成功", "提示");
         });
 
-        private void InitTcp()
+        /// <summary>
+        /// 窗体关闭事件
+        /// </summary>
+        public RelayCommand ClosedCommand => new RelayCommand(() =>
         {
-            ClientInfos = new ObservableCollection<ClientInfo>();
-            _tcpServerDal = new TcpServerDal(ClientInfos);
-            _tcpServerDal.StartServer();
-        }
+            _isExit = true;
+            _tcpServerDal.Dispose();
+        });
+
+       
 
         private void StartHeartbeatThread()
         {
             //心跳包线程
-            new Thread(() =>
+            Task.Run(async () =>
+            {
+                var list = new List<ClientInfo>();
+                while (!_isExit)
                 {
-                    var list = new List<ClientInfo>();
-                    while (true)
+                    foreach (var client in ClientInfos)
                     {
-                        foreach (var client in ClientInfos)
+                        if ((DateTime.Now - client.HeartbeatTime).TotalSeconds >= 60)
                         {
-                            if ((DateTime.Now - client.HeartbeatTime).TotalSeconds >= 60)
-                            {
-                                _log.Warn("客户端超时" + client.Ip);
-                                list.Add(client);
-                            }
+                            _log.Warn("客户端超时" + client.Ip);
+                            list.Add(client);
                         }
-
-                        foreach (var info in list)
-                        {
-                            Application.Current.Dispatcher.Invoke(() =>
-                            {
-                                ClientInfos.Remove(info);
-                                WxCount -= info.WxCount;
-                            });
-                        }
-                       
-                        Thread.Sleep(2000);
-                        _tcpServerDal.SendHeartbeat();
                     }
-                })
-                { IsBackground = true, Name = "心跳包线程" }.Start();
+
+                    foreach (var info in list)
+                    {
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            ClientInfos.Remove(info);
+                            WxCount -= info.WxCount;
+                        });
+                    }
+
+                    await Task.Delay(2000);
+                    await _tcpServerDal.SendHeartbeat();
+                }
+            });
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

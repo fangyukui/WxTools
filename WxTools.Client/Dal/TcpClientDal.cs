@@ -59,7 +59,7 @@ namespace WxTools.Client.Dal
         {
             if (_connecting) return;
             _connecting = true;
-            Task.Factory.StartNew(() =>
+            Task.Run(async() =>
             {
                 while (!Connected)
                 {
@@ -85,7 +85,7 @@ namespace WxTools.Client.Dal
                         _log.Warn("尝试登陆", e);
                         Console.WriteLine("登录失败");
                     }
-                    Thread.Sleep(2000);
+                    await Task.Delay(2000);
                 }
                 _connecting = false;
             });

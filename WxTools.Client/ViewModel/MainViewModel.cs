@@ -6,7 +6,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using log4net;
@@ -136,19 +135,22 @@ namespace WxTools.Client.ViewModel
 
         #region 方法
 
-        private void InitData()
+        private async void InitData()
         {
-            try
+            await Task.Run(() =>
             {
-                Common.TcpIp = AppConfig.GetValue("Server_IP", "49.4.133.41");
-                Common.TcpPort = AppConfig.GetValue("Server_Port", 8911);
-                Common.MaxSessionCount = AppConfig.GetValue("MaxSessionCount", 10);
-                Common.MaxThreadCount = AppConfig.GetValue("MaxThreadCount", 20);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("配置文件出错，请检查");
-            }
+                try
+                {
+                    Common.TcpIp = AppConfig.GetValue("Server_IP", "49.4.133.41");
+                    Common.TcpPort = AppConfig.GetValue("Server_Port", 8911);
+                    Common.MaxSessionCount = AppConfig.GetValue("MaxSessionCount", 10);
+                    Common.MaxThreadCount = AppConfig.GetValue("MaxThreadCount", 20);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("配置文件出错，请检查");
+                }
+            });
         }
 
         //执行链接操作
@@ -171,7 +173,7 @@ namespace WxTools.Client.ViewModel
                     _log.Info($"清理一次窗口; SessionCount:{Common.SessionCount};" +
                               $" Operas.Count:{Operas.Count}; MaxSessionCount:{Common.MaxSessionCount};");
                     //超过窗口数 或者 正好
-                    Thread.Sleep(4000);
+                    Task.Delay(4000).Wait();
                     CloseCefWebViewWnd();
                     Common.SessionCount = 0;
                     Common.RunState = RunState.Idle;
@@ -221,14 +223,14 @@ namespace WxTools.Client.ViewModel
         //监测窗体，变量状态 线程
         private void StartCheckStateThread()
         {
-            new Thread(() =>
+            Task.Run(async () =>
             {
                 _log.Info("监测线程启动成功");
-                Thread.Sleep(2000);
+                await Task.Delay(2000);
                 var list = new List<OperaDal>();
                 while (!_isExit)
                 {
-                    Thread.Sleep(2000);
+                    await Task.Delay(2000);
                     //服务器连接成功时才进行这些检查
                     if (TcpClientDal.Connected)
                     {
@@ -250,8 +252,8 @@ namespace WxTools.Client.ViewModel
                                 if (opera.Lw.GetWindowState(opera.Hwnd, 3) == 1)
                                 {
                                     //窗体最小化了
-                                    _log.Warn($"微信被窗体最小化了，已经恢复，hwnd={opera.Hwnd}");
                                     opera.Lw.SetWindowState(opera.Hwnd, 7);
+                                    _log.Warn($"微信被窗体最小化了，已经恢复，hwnd={opera.Hwnd}");
                                 }
                                 if (opera.Lw.GetClientSize(opera.Hwnd) == 1)
                                 {
@@ -324,7 +326,7 @@ namespace WxTools.Client.ViewModel
                         {
                             //服务器被断开
                             TcpClientDal.Connect();
-                            Thread.Sleep(5000);
+                            await Task.Delay(5000);
                         }
 
                         //通知服务器微信数量
@@ -334,71 +336,67 @@ namespace WxTools.Client.ViewModel
                         }
                     }
                 }
-            })
-            {
-                IsBackground = true,
-                Name = "检测状态线程"
-            }.Start();
+            });
         }
 
         //检测程序更新
         private void StartCheckUpdateThread()
         {
-            new Thread(() =>
+            Task.Run(async() =>
             {
                 while (!_isExit)
                 {
                     if (Operas != null && Operas.All(o => o.RunState == RunState.Idle))
                     {
-                        Common.StartUpdate();
+                        await Common.StartUpdate();
                     }
-                    Thread.Sleep(60000);
+                    await Task.Delay(60000);
                 }
-            }) {IsBackground = true}.Start();
+            });
         }
 
         //链接队列处理线程
         private void StartUrlQueueThread()
         {
-            new Thread(() =>
+            Task.Run(async() =>
+            {
+                while (!_isExit)
                 {
-                    while (!_isExit)
+                    if (_urlQueue.Count > 0)
                     {
-                        if (_urlQueue.Count > 0)
-                        {
-                            var url = _urlQueue.Dequeue();
-                            int index = -1;
-                            var max = Operas.Count < Common.MaxThreadCount ? Operas.Count : Common.MaxThreadCount;
+                        var url = _urlQueue.Dequeue();
+                        int index = -1;
+                        var max = Operas.Count < Common.MaxThreadCount ? Operas.Count : Common.MaxThreadCount;
 
-                            Task[] tasks = new Task[max];
-                            for (int i = 0; i < tasks.Length; i++)
+                        Task[] tasks = new Task[max];
+                        for (int i = 0; i < tasks.Length; i++)
+                        {
+                            tasks[i] = Task.Run(async () =>
                             {
-                                tasks[i] = Task.Factory.StartNew(() =>
+                                while (!_isExit)
                                 {
-                                    while (true)
+                                    OperaDal opear;
+                                    int ic;
+                                    lock (_lock)
                                     {
-                                        OperaDal opear;
-                                        int ic;
-                                        lock (_lock)
-                                        {
-                                            index++;
-                                            if (index >= Operas.Count) return;
-                                            _log.Info($"ExecuteUrl Operas[{index}]开始执行");
-                                            opear = Operas[index];
-                                            ic = index;
-                                        }
-                                        opear?.SendMyMessage(url, ic);
+                                        index++;
+                                        if (index >= Operas.Count) return;
+                                        _log.Info($"ExecuteUrl Operas[{index}]开始执行");
+                                        opear = Operas[index];
+                                        ic = index;
                                     }
-                                });
-                            }
-                            Task.WaitAll(tasks);
-                            _log.Info("--全部完成--");
-                            TcpClientDal.SendLog("--全部完成--");
+                                    if (opear != null)
+                                        await opear.SendMyMessage(url, ic);
+                                }
+                            });
                         }
-                        Thread.Sleep(50);
+                        Task.WaitAll(tasks);
+                        _log.Info("--全部完成--");
+                        TcpClientDal.SendLog("--全部完成--");
                     }
-                })
-                {IsBackground = true, Name = "Url执行线程"}.Start();
+                    await Task.Delay(50);
+                }
+            });
         }
 
         #endregion

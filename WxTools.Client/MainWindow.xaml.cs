@@ -1,8 +1,6 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
 using WxTools.Client.ViewModel;
-using WxTools.Common;
 
 namespace WxTools.Client
 {

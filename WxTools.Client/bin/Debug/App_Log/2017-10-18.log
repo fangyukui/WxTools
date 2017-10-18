@@ -1,0 +1,56 @@
+2017-10-18 16:55:16,405 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-18 16:55:20,415 [检测状态线程] INFO  WxTools.Client.ViewModel.MainViewModel - 新的微信
+ WxTools.Client.ViewModel.MainViewModelname2017-10-18 16:55:20,416 [1] INFO  WxTools.Client.Dal.OperaDal - 初始化窗体成功
+ WxTools.Client.Dal.OperaDalname2017-10-18 16:55:22,518 [检测状态线程] WARN  WxTools.Client.ViewModel.MainViewModel - 微信窗体大小被用户拖动，已经恢复
+ WxTools.Client.ViewModel.MainViewModelname2017-10-18 17:40:43,925 [5] ERROR WxTools.Client.Common - HasNewVersion
+ WxTools.Client.CommonnameSystem.UriFormatException: 无效的 URI: 未能分析主机名。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Uri..ctor(String uriString)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink..ctor(String channelURI, TcpClientChannel channel)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSinkProvider.CreateSink(IChannelSender channel, String url, Object remoteChannelData)
+   在 System.Runtime.Remoting.Channels.BinaryClientFormatterSinkProvider.CreateSink(IChannelSender channel, String url, Object remoteChannelData)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientChannel.CreateMessageSink(String url, Object remoteChannelData, String& objectURI)
+   在 System.Runtime.Remoting.RemotingConfigHandler.FindDelayLoadChannelForCreateMessageSink(String url, Object data, String& objectURI)
+   在 System.Runtime.Remoting.RemotingServices.CreateChannelSink(String url, Object data, IMessageSink& chnlSink)
+   在 System.Runtime.Remoting.RemotingServices.Unmarshal(Type classToProxy, String url, Object data)
+   在 System.Activator.GetObject(Type type, String url, Object state)
+   在 System.Activator.GetObject(Type type, String url)
+   在 OAUS.Core.VersionHelper.GetLatestVersion(String oausServerIP, Int32 oausServerPort)
+   在 OAUS.Core.VersionHelper.HasNewVersion(String oausServerIP, Int32 oausServerPort)
+   在 WxTools.Client.Common.HasNewVersion() 位置 F:\WxTools\WxTools.Client\Common.cs:行号 43
+2017-10-18 17:40:46,789 [4] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-18 17:41:36,638 [5] ERROR WxTools.Client.Common - HasNewVersion
+ WxTools.Client.CommonnameSystem.UriFormatException: 无效的 URI: 未能分析主机名。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Uri..ctor(String uriString)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink..ctor(String channelURI, TcpClientChannel channel)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSinkProvider.CreateSink(IChannelSender channel, String url, Object remoteChannelData)
+   在 System.Runtime.Remoting.Channels.BinaryClientFormatterSinkProvider.CreateSink(IChannelSender channel, String url, Object remoteChannelData)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientChannel.CreateMessageSink(String url, Object remoteChannelData, String& objectURI)
+   在 System.Runtime.Remoting.RemotingConfigHandler.FindDelayLoadChannelForCreateMessageSink(String url, Object data, String& objectURI)
+   在 System.Runtime.Remoting.RemotingServices.CreateChannelSink(String url, Object data, IMessageSink& chnlSink)
+   在 System.Runtime.Remoting.RemotingServices.Unmarshal(Type classToProxy, String url, Object data)
+   在 System.Activator.GetObject(Type type, String url, Object state)
+   在 System.Activator.GetObject(Type type, String url)
+   在 OAUS.Core.VersionHelper.GetLatestVersion(String oausServerIP, Int32 oausServerPort)
+   在 OAUS.Core.VersionHelper.HasNewVersion(String oausServerIP, Int32 oausServerPort)
+   在 WxTools.Client.Common.HasNewVersion() 位置 F:\WxTools\WxTools.Client\Common.cs:行号 43
+2017-10-18 17:41:41,416 [6] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname2017-10-18 17:50:24,574 [7] ERROR WxTools.Client.Common - HasNewVersion
+ WxTools.Client.CommonnameSystem.UriFormatException: 无效的 URI: 未能分析主机名。
+   在 System.Uri.CreateThis(String uri, Boolean dontEscape, UriKind uriKind)
+   在 System.Uri..ctor(String uriString)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSink..ctor(String channelURI, TcpClientChannel channel)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientTransportSinkProvider.CreateSink(IChannelSender channel, String url, Object remoteChannelData)
+   在 System.Runtime.Remoting.Channels.BinaryClientFormatterSinkProvider.CreateSink(IChannelSender channel, String url, Object remoteChannelData)
+   在 System.Runtime.Remoting.Channels.Tcp.TcpClientChannel.CreateMessageSink(String url, Object remoteChannelData, String& objectURI)
+   在 System.Runtime.Remoting.RemotingConfigHandler.FindDelayLoadChannelForCreateMessageSink(String url, Object data, String& objectURI)
+   在 System.Runtime.Remoting.RemotingServices.CreateChannelSink(String url, Object data, IMessageSink& chnlSink)
+   在 System.Runtime.Remoting.RemotingServices.Unmarshal(Type classToProxy, String url, Object data)
+   在 System.Activator.GetObject(Type type, String url, Object state)
+   在 System.Activator.GetObject(Type type, String url)
+   在 OAUS.Core.VersionHelper.GetLatestVersion(String oausServerIP, Int32 oausServerPort)
+   在 OAUS.Core.VersionHelper.HasNewVersion(String oausServerIP, Int32 oausServerPort)
+   在 WxTools.Client.Common.HasNewVersion() 位置 F:\WxTools\WxTools.Client\Common.cs:行号 43
+2017-10-18 17:50:27,227 [5] INFO  WxTools.Client.ViewModel.MainViewModel - 监测线程启动成功
+ WxTools.Client.ViewModel.MainViewModelname

@@ -12,3 +12,10 @@ E:\WxTools\WxTools.Common\obj\Debug\WxTools.Common.csproj.CoreCompileInputs.cach
 E:\WxTools\WxTools.Common\obj\Debug\WxTools.Common.dll
 E:\WxTools\WxTools.Common\obj\Debug\WxTools.Common.pdb
 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Common\obj\Debug\WxTools.Common.csproj.CoreCompileInputs.cache
+F:\WxTools\WxTools.Common\bin\Debug\WxTools.Common.dll.config
+F:\WxTools\WxTools.Common\bin\Debug\WxTools.Common.dll
+F:\WxTools\WxTools.Common\bin\Debug\WxTools.Common.pdb
+F:\WxTools\WxTools.Common\obj\Debug\WxTools.Common.csprojResolveAssemblyReference.cache
+F:\WxTools\WxTools.Common\obj\Debug\WxTools.Common.csproj.CoreCompileInputs.cache
+F:\WxTools\WxTools.Common\obj\Debug\WxTools.Common.dll
+F:\WxTools\WxTools.Common\obj\Debug\WxTools.Common.pdb

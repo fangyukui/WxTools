@@ -5,26 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:converters="clr-namespace:WxTools.Server.Converters"
         xmlns:common="clr-namespace:WxTools.Common;assembly=WxTools.Common"
-        mc:Ignorable="d"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d" Icon="wechat.ico"
         Title="微信服务端" Height="600" Width="825">
     
     <Window.Resources>
         <converters:PointToStrConverter x:Key="PointToStrConverter"/>
     </Window.Resources>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closed">
+            <i:InvokeCommandAction Command="{Binding ClosedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
     <Grid x:Name="GridRoot" Loaded="GridRoot_OnLoaded">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
             <DockPanel>
                 <TextBlock Text="电脑总数：" VerticalAlignment="Center" FontSize="16" Margin="10,2,0,2"/>
-                <TextBlock Text="{Binding ClientInfos.Count}" VerticalAlignment="Center" FontSize="16" Margin="2"/>
+                <TextBlock Text="{Binding ClientInfos.Count}" VerticalAlignment="Center" FontSize="16" Margin="2" MinWidth="50"/>
             </DockPanel>
             <DockPanel>
                 <TextBlock Text="微信总数：" VerticalAlignment="Center" FontSize="16" Margin="10,2,0,2"/>
-                <TextBlock Text="{Binding WxCount}" VerticalAlignment="Center" FontSize="16" Margin="2"/>
+                <TextBlock Text="{Binding WxCount}" VerticalAlignment="Center" FontSize="16" Margin="2" MinWidth="50"/>
             </DockPanel>
         </StackPanel>
         <Grid Grid.Row="1">
@@ -33,7 +41,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="发送连接" VerticalAlignment="Center" Margin="10,2,0,2"></TextBlock>
+            <TextBlock Grid.Column="0" Text="发送连接" VerticalAlignment="Center" FontSize="16" Margin="10,2,0,2"></TextBlock>
             <TextBox Grid.Column="1" Text="{Binding Url}" Height="80" Margin="10,1" MaxLines="10" TextWrapping="Wrap"></TextBox>
             <Button Grid.Column="2" Margin="2" Content="发送" Width="60" Command="{Binding SendUrlCommand}" ></Button>
         </Grid>
