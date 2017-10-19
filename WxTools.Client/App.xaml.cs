@@ -7,6 +7,8 @@ using System.Windows;
 using log4net;
 using log4net.Config;
 using WxTools.Client.Helper;
+using WxTools.Client.ViewModel;
+using WxTools.Common.Enums;
 
 namespace WxTools.Client
 {
@@ -40,6 +42,7 @@ namespace WxTools.Client
       
         private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
+            MainViewModel.Instance.TaskState = RunState.Error;
             _log.Error(e.Exception);
             MessageBox.Show("我们很抱歉，当前应用程序遇到一些问题.." + e.Exception,
                 "意外的操作", MessageBoxButton.OK, MessageBoxImage.Information);//这里通常需要给用户一些较为友好的提示，并且后续可能的操作
@@ -48,6 +51,7 @@ namespace WxTools.Client
 
         void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
+            MainViewModel.Instance.TaskState = RunState.Error;
             _log.Error(e.ExceptionObject);
             MessageBox.Show("我们很抱歉，当前应用程序遇到一些问题.请联系管理员." + e.ExceptionObject,
                 "意外的操作", MessageBoxButton.OK, MessageBoxImage.Information);

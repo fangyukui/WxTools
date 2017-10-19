@@ -8,6 +8,7 @@
         WindowStartupLocation="CenterScreen"
         Icon="wechat.ico"
         xmlns:common="clr-namespace:WxTools.Common;assembly=WxTools.Common"
+        xmlns:converters="clr-namespace:WxTools.Common.Converters;assembly=WxTools.Common"
         mc:Ignorable="d"
         MinHeight="200"
         MinWidth="580"
@@ -23,6 +24,7 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
+        <converters:EnumToDescConverter x:Key="EnumToDesc"/>
     </Window.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closed">
@@ -32,6 +34,7 @@
 
     <Grid x:Name="GridRoot" Loaded="GridRoot_OnLoaded">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -43,8 +46,26 @@
             <TextBlock Text="要求分辨率: 1920*1080；微信不可最小化；" Foreground="Red" VerticalAlignment="Center" Margin="20,0"/>
             <Button Content="多开微信" Command="{Binding OpenWeixinCommand}" Margin="2"></Button>
         </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBlock Text="任务状态：" VerticalAlignment="Center" Margin="5,2"/>
+            <TextBlock Text="{Binding TaskState,Converter={StaticResource EnumToDesc}}" VerticalAlignment="Center" Margin="2" Foreground="DarkCyan"/>
+            
+            <TextBlock Text="服务器IP：" VerticalAlignment="Center" Margin="8,2"/>
+            <TextBlock Text="{Binding TcpIp}" VerticalAlignment="Center" Margin="2"/>
 
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" BorderThickness="0">
+            <TextBlock Text="端口：" VerticalAlignment="Center" Margin="8,2"/>
+            <TextBlock Text="{Binding TcpPort}" VerticalAlignment="Center" Margin="2"/>
+
+            <TextBlock Text="最大线程数：" VerticalAlignment="Center" Margin="8,2"/>
+            <TextBlock Text="{Binding MaxSessionCount}" VerticalAlignment="Center" Margin="2"/>
+
+            <TextBlock Text="会话数：" VerticalAlignment="Center" Margin="8,2"/>
+            <TextBlock Text="{Binding SessionCount}" VerticalAlignment="Center"/>
+            <TextBlock Text="/" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding MaxThreadCount}" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" BorderThickness="0">
            <ItemsControl ItemsSource="{Binding Operas,Mode=TwoWay}" Margin="2">
                <ItemsControl.ItemsPanel>
                    <ItemsPanelTemplate>

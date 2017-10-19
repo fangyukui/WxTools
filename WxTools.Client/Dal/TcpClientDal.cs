@@ -11,6 +11,7 @@ using WxTools.Annotations;
 using WxTools.Client.Helper;
 using WxTools.Client.ViewModel;
 using WxTools.Common;
+using WxTools.Common.Model;
 
 namespace WxTools.Client.Dal
 {
@@ -66,7 +67,7 @@ namespace WxTools.Client.Dal
                     try
                     {
                         _ip = LwFactory.Default.GetNetIp();
-                        _client = new SimpleTcpClient().Connect(Common.TcpIp,Common.TcpPort);
+                        _client = new SimpleTcpClient().Connect(MainViewModel.Instance.TcpIp, MainViewModel.Instance.TcpPort);
                         _client.DelimiterDataReceived -= Received;
                         _client.DelimiterDataReceived += Received;
                         SendLogin();
@@ -143,6 +144,7 @@ namespace WxTools.Client.Dal
                     Ip = _ip,
                     MsgType = MsgType.Heartbeat,
                     Action = ActionType.None,
+                    TaskState = MainViewModel.Instance.TaskState,
                     IsServer = false,
                     Msg = ""
                 };

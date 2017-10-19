@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using log4net;
+using WxTools.Common.Enums;
 using WxTools.Server.Annotations;
 using WxTools.Server.Dal;
 using WxTools.Theme;
@@ -21,6 +22,7 @@ namespace WxTools.Server.ViewModel
         private string _url;
         private int _wxCount;
         private bool _isExit;
+        private RunState _taskState;
         public ObservableCollection<ClientInfo> ClientInfos { get; set; }
 
         public int WxCount
@@ -41,6 +43,17 @@ namespace WxTools.Server.ViewModel
             {
                 if (value == _url) return;
                 _url = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public RunState TaskState
+        {
+            get => _taskState;
+            set
+            {
+                if (value == _taskState) return;
+                _taskState = value;
                 OnPropertyChanged();
             }
         }
@@ -74,6 +87,7 @@ namespace WxTools.Server.ViewModel
                 MessageBox.Show("请正确的链接", "提示");
                 return;
             }
+            _log.Info("发送URL：" + Url);
             await _tcpServerDal.SendUrl(Url);
             MessageBox.Show("发送成功", "提示");
         });

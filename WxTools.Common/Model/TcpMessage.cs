@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
+using WxTools.Common.Enums;
 
-namespace WxTools.Common
+namespace WxTools.Common.Model
 {
     public class TcpMessage
     {
@@ -14,6 +15,7 @@ namespace WxTools.Common
         public string Msg { get; set; } = "";
         public int Value { get; set; }
         public string Ip { get; set; } = "";
+        public RunState TaskState { get; set; }
     }
 
     public enum ActionType

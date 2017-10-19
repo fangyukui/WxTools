@@ -15,6 +15,7 @@ using WxTools.Client.Dal;
 using WxTools.Client.Helper;
 using WxTools.Client.Model;
 using WxTools.Common;
+using WxTools.Common.Enums;
 using WxTools.Theme;
 
 namespace WxTools.Client.ViewModel
@@ -33,7 +34,7 @@ namespace WxTools.Client.ViewModel
 
         private DateTime _lasTime;
 
-        private bool _runstate;
+        private bool _runOnce;
 
         private bool _isExit;
 
@@ -44,6 +45,13 @@ namespace WxTools.Client.ViewModel
         #region 属性
 
         private ObservableCollection<OperaDal> _operas;
+        private int _sessionCount;
+        private int _maxSessionCount;
+        private int _maxThreadCount;
+        private RunState _runState;
+        private RunState _taskState;
+        private string _tcpIp;
+        private int _tcpPort;
 
         public ObservableCollection<OperaDal> Operas
         {
@@ -52,6 +60,87 @@ namespace WxTools.Client.ViewModel
             {
                 if (Equals(value, _operas)) return;
                 _operas = value;
+                OnPropertyChanged();
+            }
+        }
+
+        //当前打开的文章窗口个数
+        public int SessionCount
+        {
+            get => _sessionCount;
+            set
+            {
+                if (value == _sessionCount) return;
+                _sessionCount = value;
+                OnPropertyChanged();
+            }
+        }
+
+        //最大支持同时打开{MaxSessionCount}个文章窗口
+        public int MaxSessionCount
+        {
+            get => _maxSessionCount;
+            set
+            {
+                if (value == _maxSessionCount) return;
+                _maxSessionCount = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int MaxThreadCount
+        {
+            get => _maxThreadCount;
+            set
+            {
+                if (value == _maxThreadCount) return;
+                _maxThreadCount = value;
+                OnPropertyChanged();
+            }
+        }
+
+        //运行状态 用于控制线程
+        public RunState RunState
+        {
+            get => _runState;
+            set
+            {
+                if (value == _runState) return;
+                _runState = value;
+                OnPropertyChanged();
+            }
+        }
+
+        //任务状态 用于界面显示
+        public RunState TaskState
+        {
+            get => _taskState;
+            set
+            {
+                if (value == _taskState) return;
+                _taskState = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string TcpIp
+        {
+            get => _tcpIp;
+            set
+            {
+                if (value == _tcpIp) return;
+                _tcpIp = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int TcpPort
+        {
+            get => _tcpPort;
+            set
+            {
+                if (value == _tcpPort) return;
+                _tcpPort = value;
                 OnPropertyChanged();
             }
         }
@@ -71,8 +160,9 @@ namespace WxTools.Client.ViewModel
             TcpClientDal.ConnectedAction = () =>
             {
                 //只运行一次
-                if (_runstate) return;
-                _runstate = true;
+                if (_runOnce) return;
+                _runOnce = true;
+                TaskState = RunState.Idle;
                 StartUrlQueueThread();
                 StartCheckStateThread();
             };
@@ -141,10 +231,10 @@ namespace WxTools.Client.ViewModel
             {
                 try
                 {
-                    Common.TcpIp = AppConfig.GetValue("Server_IP", "49.4.133.41");
-                    Common.TcpPort = AppConfig.GetValue("Server_Port", 8911);
-                    Common.MaxSessionCount = AppConfig.GetValue("MaxSessionCount", 10);
-                    Common.MaxThreadCount = AppConfig.GetValue("MaxThreadCount", 20);
+                    TcpIp = AppConfig.GetValue("Server_IP", "49.4.133.41");
+                    TcpPort = AppConfig.GetValue("Server_Port", 8911);
+                    MaxSessionCount = AppConfig.GetValue("MaxSessionCount", 10);
+                    MaxThreadCount = AppConfig.GetValue("MaxThreadCount", 20);
                 }
                 catch (Exception e)
                 {
@@ -165,18 +255,18 @@ namespace WxTools.Client.ViewModel
             Common.Messenger.Register("CefWebViewWnd", () =>
             {
                 _lasTime = DateTime.Now;
-                Common.SessionCount += 1;
+                SessionCount += 1;
 
-                if (Common.SessionCount >= Common.MaxSessionCount || Common.SessionCount == Operas.Count)
+                if (SessionCount >= MaxSessionCount || SessionCount == Operas.Count)
                 {
-                    Common.RunState = RunState.Busy;
-                    _log.Info($"清理一次窗口; SessionCount:{Common.SessionCount};" +
-                              $" Operas.Count:{Operas.Count}; MaxSessionCount:{Common.MaxSessionCount};");
+                    RunState = RunState.Busy;
+                    _log.Info($"清理一次窗口; SessionCount:{SessionCount};" +
+                              $" Operas.Count:{Operas.Count}; MaxSessionCount:{MaxSessionCount};");
                     //超过窗口数 或者 正好
                     Task.Delay(4000).Wait();
                     CloseCefWebViewWnd();
-                    Common.SessionCount = 0;
-                    Common.RunState = RunState.Idle;
+                    SessionCount = 0;
+                    RunState = RunState.Idle;
                 }
             });
         }
@@ -278,11 +368,11 @@ namespace WxTools.Client.ViewModel
                         }
 
                         //防止文章窗口打开过久
-                        if (Common.SessionCount > 0 && (DateTime.Now - _lasTime).Seconds > 30)
+                        if (SessionCount > 0 && (DateTime.Now - _lasTime).Seconds > 30)
                         {
                             _log.Warn("文章窗口打开过久，已经关闭");
                             CloseCefWebViewWnd();
-                            Common.SessionCount = 0;
+                            SessionCount = 0;
                         }
 
                         #region 新的微信
@@ -362,12 +452,12 @@ namespace WxTools.Client.ViewModel
             {
                 while (!_isExit)
                 {
-                    if (_urlQueue.Count > 0)
+                    if (_urlQueue.Count > 0 && Operas.Count > 0)
                     {
                         var url = _urlQueue.Dequeue();
                         int index = -1;
-                        var max = Operas.Count < Common.MaxThreadCount ? Operas.Count : Common.MaxThreadCount;
-
+                        var max = Operas.Count < MaxThreadCount ? Operas.Count : MaxThreadCount;
+                        TaskState = RunState.Busy;
                         Task[] tasks = new Task[max];
                         for (int i = 0; i < tasks.Length; i++)
                         {
@@ -391,6 +481,7 @@ namespace WxTools.Client.ViewModel
                             });
                         }
                         Task.WaitAll(tasks);
+                        TaskState = RunState.Idle;
                         _log.Info("--全部完成--");
                         TcpClientDal.SendLog("--全部完成--");
                     }

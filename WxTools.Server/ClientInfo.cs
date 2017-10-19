@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
+using WxTools.Common.Enums;
 using WxTools.Server.Annotations;
 
 namespace WxTools.Server
@@ -16,6 +17,7 @@ namespace WxTools.Server
         private string _ip;
         public DateTime HeartbeatTime;
         private int _wxCount;
+        private RunState _taskState;
 
         public string Ip
         {
@@ -81,6 +83,17 @@ namespace WxTools.Server
             {
                 if (value == _wxCount) return;
                 _wxCount = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public RunState TaskState
+        {
+            get => _taskState;
+            set
+            {
+                if (value == _taskState) return;
+                _taskState = value;
                 OnPropertyChanged();
             }
         }

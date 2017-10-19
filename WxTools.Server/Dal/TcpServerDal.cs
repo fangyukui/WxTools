@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
@@ -9,6 +8,7 @@ using log4net;
 using Newtonsoft.Json;
 using SimpleTCP;
 using WxTools.Common;
+using WxTools.Common.Model;
 using WxTools.Server.ViewModel;
 
 namespace WxTools.Server.Dal
@@ -41,6 +41,7 @@ namespace WxTools.Server.Dal
             }
             catch (Exception e)
             {
+                _log.Error(e);
                 MessageBox.Show("配置文件出错，请检查");
             }
         }
@@ -113,7 +114,7 @@ namespace WxTools.Server.Dal
                         });
                         break;
                     case MsgType.Login:
-                        _log.Info("Login");
+                        _log.Info("Login:"+ tcpmsg.Ip);
                         if (_clientInfos.All(c => c.Ip != tcpmsg.Ip))
                         {
                             Application.Current.Dispatcher.Invoke(() =>
@@ -131,7 +132,7 @@ namespace WxTools.Server.Dal
                         }
                         break;
                     case MsgType.Logout:
-                        _log.Info("Logout");
+                        _log.Info("Logout:" + tcpmsg.Ip);
                         var logoutInfo = _clientInfos.FirstOrDefault(c => c.Ip == tcpmsg.Ip);
                         Application.Current.Dispatcher.Invoke(() =>
                         {
@@ -147,7 +148,11 @@ namespace WxTools.Server.Dal
                         var heartbeatInfo = _clientInfos.FirstOrDefault(c => c.Ip == tcpmsg.Ip);
                         Application.Current.Dispatcher.Invoke(() =>
                         {
-                            if (heartbeatInfo != null) heartbeatInfo.HeartbeatTime = DateTime.Now;
+                            if (heartbeatInfo != null)
+                            {
+                                heartbeatInfo.HeartbeatTime = DateTime.Now;
+                                heartbeatInfo.TaskState = tcpmsg.TaskState;
+                            }
                         });
                         break;
                     case MsgType.WxCount:

@@ -96,7 +96,6 @@
     <Compile Include="LwFactory.cs" />
     <Compile Include="Helper\LwExtension.cs" />
     <Compile Include="Helper\PxConvert.cs" />
-    <Compile Include="Model\RunState.cs" />
     <Compile Include="Model\WindowInfo.cs" />
     <Compile Include="Model\WxPoints.cs" />
     <Compile Include="Dal\OperaDal.cs" />

@@ -13,6 +13,7 @@ using WxTools.Annotations;
 using WxTools.Client.Helper;
 using WxTools.Client.Model;
 using WxTools.Client.ViewModel;
+using WxTools.Common.Enums;
 
 namespace WxTools.Client.Dal
 {
@@ -217,7 +218,7 @@ namespace WxTools.Client.Dal
         //会话窗口过多，等待处理
         private async Task WaitSeesion()
         {
-            while (Common.RunState == RunState.Busy)
+            while (MainViewModel.Instance.RunState == RunState.Busy)
             {
                 //超过窗口数，等待处理
                 await Task.Delay(200);
@@ -226,7 +227,7 @@ namespace WxTools.Client.Dal
 
         private async Task WaitBusy()
         {
-            while (this.RunState == RunState.Busy || Common.RunState == RunState.Busy)
+            while (this.RunState == RunState.Busy || MainViewModel.Instance.RunState == RunState.Busy)
             {
                 //超过窗口数，等待处理
                 await Task.Delay(200);

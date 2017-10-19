@@ -5,6 +5,7 @@ using System.Windows;
 using log4net;
 using OAUS.Core;
 using WxTools.Client.Model;
+using WxTools.Client.ViewModel;
 using WxTools.Theme;
 
 namespace WxTools.Client
@@ -21,26 +22,11 @@ namespace WxTools.Client
 
         public static int Height = 625;
 
-        //当前打开的文章窗口个数
-        public static int SessionCount;
-
-        //最大支持同时打开{MaxSessionCount}个文章窗口
-        public static int MaxSessionCount;
-
-        public static int MaxThreadCount;
-
-        //运行状态
-        public static RunState RunState = RunState.Idle;
-
-        public static string TcpIp;
-
-        public static int TcpPort;
-
         public static bool? HasNewVersion()
         {
             try
             {
-                return VersionHelper.HasNewVersion(TcpIp, 4540);
+                return VersionHelper.HasNewVersion(MainViewModel.Instance.TcpIp, 4540);
             }
             catch (Exception e)
             {
