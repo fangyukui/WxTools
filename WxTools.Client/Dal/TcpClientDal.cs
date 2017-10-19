@@ -83,8 +83,7 @@ namespace WxTools.Client.Dal
                     catch (Exception e)
                     {
                         Connected = false;
-                        _log.Warn("尝试登陆", e);
-                        Console.WriteLine("登录失败");
+                        //_log.Warn("尝试登陆", e);
                     }
                     await Task.Delay(2000);
                 }

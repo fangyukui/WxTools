@@ -57,12 +57,12 @@
             <TextBlock Text="{Binding TcpPort}" VerticalAlignment="Center" Margin="2"/>
 
             <TextBlock Text="最大线程数：" VerticalAlignment="Center" Margin="8,2"/>
-            <TextBlock Text="{Binding MaxSessionCount}" VerticalAlignment="Center" Margin="2"/>
+            <TextBlock Text="{Binding MaxThreadCount}" VerticalAlignment="Center" Margin="2"/>
 
             <TextBlock Text="会话数：" VerticalAlignment="Center" Margin="8,2"/>
             <TextBlock Text="{Binding SessionCount}" VerticalAlignment="Center"/>
             <TextBlock Text="/" VerticalAlignment="Center"/>
-            <TextBlock Text="{Binding MaxThreadCount}" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding MaxSessionCount}" VerticalAlignment="Center"/>
         </StackPanel>
 
         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" BorderThickness="0">

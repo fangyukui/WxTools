@@ -93,3 +93,5 @@ F:\WxTools\WxTools.Server\obj\Debug\WxTools.Server.csproj.GenerateResource.Cache
 F:\WxTools\WxTools.Server\obj\Debug\WxTools.Server.csproj.CoreCompileInputs.cache
 F:\WxTools\WxTools.Server\obj\Debug\WxTools.Server.exe
 F:\WxTools\WxTools.Server\obj\Debug\WxTools.Server.pdb
+C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Server\bin\Debug\System.Windows.Interactivity.xml

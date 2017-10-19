@@ -36,7 +36,8 @@ namespace WxTools.Client
 
         private static void InitLog4Net()
         {
-            var logCfg = new FileInfo(AppDomain.CurrentDomain.BaseDirectory + "log4net.config");
+            var appName = Path.GetFileName(Assembly.GetEntryAssembly().GetName().Name);
+            var logCfg = new FileInfo(AppDomain.CurrentDomain.BaseDirectory + appName + ".exe.config");
             XmlConfigurator.ConfigureAndWatch(logCfg);
         }
       

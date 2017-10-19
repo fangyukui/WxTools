@@ -82,7 +82,6 @@ C:\Users\Administrator\Desktop\Project\WxTools\WxTools\obj\Debug\WxTools.Client.
 C:\Users\Administrator\Desktop\Project\WxTools\WxTools\bin\Debug\ESBasic.dll
 C:\Users\Administrator\Desktop\Project\WxTools\WxTools\bin\Debug\ESFramework.dll
 C:\Users\Administrator\Desktop\Project\WxTools\WxTools\bin\Debug\OAUS.Core.dll
-C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Client\bin\Debug\log4net.config
 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Client\bin\Debug\WxTools.Client.exe.config
 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Client\bin\Debug\WxTools.Client.exe
 C:\Users\Administrator\Desktop\Project\WxTools\WxTools.Client\bin\Debug\WxTools.Client.pdb

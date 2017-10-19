@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Windows;
 using log4net;
 using log4net.Config;
@@ -27,7 +28,8 @@ namespace WxTools.Server
 
         private static void InitLog4Net()
         {
-            var logCfg = new FileInfo(AppDomain.CurrentDomain.BaseDirectory + "log4net.config");
+            var appName = Path.GetFileName(Assembly.GetEntryAssembly().GetName().Name);
+            var logCfg = new FileInfo(AppDomain.CurrentDomain.BaseDirectory + appName + ".exe.config");
             XmlConfigurator.ConfigureAndWatch(logCfg);
         }
 
