@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using WxTools.Common.Enums;
 
 namespace WxTools.Common.Model
 {

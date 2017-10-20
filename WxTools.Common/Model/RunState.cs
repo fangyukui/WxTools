@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace WxTools.Common.Enums
+namespace WxTools.Common.Model
 {
     public enum RunState
     {

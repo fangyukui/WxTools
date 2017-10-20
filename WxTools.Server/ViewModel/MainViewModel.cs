@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using log4net;
-using WxTools.Common.Enums;
+using WxTools.Common.Model;
 using WxTools.Server.Annotations;
 using WxTools.Server.Dal;
 using WxTools.Theme;

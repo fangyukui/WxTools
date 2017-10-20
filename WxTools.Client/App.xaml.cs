@@ -8,7 +8,7 @@ using log4net;
 using log4net.Config;
 using WxTools.Client.Helper;
 using WxTools.Client.ViewModel;
-using WxTools.Common.Enums;
+using WxTools.Common.Model;
 
 namespace WxTools.Client
 {

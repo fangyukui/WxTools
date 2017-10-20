@@ -13,7 +13,7 @@ using WxTools.Annotations;
 using WxTools.Client.Helper;
 using WxTools.Client.Model;
 using WxTools.Client.ViewModel;
-using WxTools.Common.Enums;
+using WxTools.Common.Model;
 
 namespace WxTools.Client.Dal
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Data;
-using WxTools.Common.Enums;
+using WxTools.Common.Model;
 
 namespace WxTools.Common.Converters
 {

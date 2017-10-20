@@ -15,7 +15,7 @@ using WxTools.Client.Dal;
 using WxTools.Client.Helper;
 using WxTools.Client.Model;
 using WxTools.Common;
-using WxTools.Common.Enums;
+using WxTools.Common.Model;
 using WxTools.Theme;
 
 namespace WxTools.Client.ViewModel
@@ -151,7 +151,10 @@ namespace WxTools.Client.ViewModel
 
         public MainViewModel()
         {
-            InitData();
+            //数据加载
+            if (!InitData()) return;
+            //环境监测
+            if (!CheckEnvironment()) return;
             Operas = new ObservableCollection<OperaDal>();
             RegisterMessenger();
 
@@ -225,22 +228,43 @@ namespace WxTools.Client.ViewModel
 
         #region 方法
 
-        private async void InitData()
+        private bool InitData()
         {
-            await Task.Run(() =>
+            try
             {
-                try
+                TcpIp = AppConfig.GetValue("Server_IP", "49.4.133.41");
+                TcpPort = AppConfig.GetValue("Server_Port", 8911);
+                MaxSessionCount = AppConfig.GetValue("MaxSessionCount", 10);
+                MaxThreadCount = AppConfig.GetValue("MaxThreadCount", 20);
+                return true;
+            }
+            catch (Exception e)
+            {
+                _log.Error(e);
+                MessageBox.Show("配置文件出错，请检查", "错误");
+            }
+            return false;
+        }
+
+        private bool CheckEnvironment()
+        {
+            try
+            {
+                var lw = LwFactory.Default;
+                var width = lw.GetScreenWidth();
+                var height = lw.GetScreenHeight();
+                if (width != 1920 && height != 1080)
                 {
-                    TcpIp = AppConfig.GetValue("Server_IP", "49.4.133.41");
-                    TcpPort = AppConfig.GetValue("Server_Port", 8911);
-                    MaxSessionCount = AppConfig.GetValue("MaxSessionCount", 10);
-                    MaxThreadCount = AppConfig.GetValue("MaxThreadCount", 20);
+                    MessageBox.Show($"只支持1920*1080分辨率，当前分辨率({width}*{height})不正确", "错误");
                 }
-                catch (Exception e)
-                {
-                    MessageBox.Show("配置文件出错，请检查");
-                }
-            });
+                return true;
+            }
+            catch (Exception e)
+            {
+                _log.Error(e);
+                MessageBox.Show(e.Message, "错误");
+                return false;
+            }
         }
 
         //执行链接操作
@@ -436,7 +460,7 @@ namespace WxTools.Client.ViewModel
             {
                 while (!_isExit)
                 {
-                    if (Operas != null && Operas.All(o => o.RunState == RunState.Idle))
+                    if (Operas != null && (RunState == RunState.Idle || RunState == RunState.Ready))
                     {
                         await Common.StartUpdate();
                     }
@@ -471,9 +495,9 @@ namespace WxTools.Client.ViewModel
                                     {
                                         index++;
                                         if (index >= Operas.Count) return;
-                                        _log.Info($"ExecuteUrl Operas[{index}]开始执行");
+                                        _log.Info($"ExecuteUrl Operas[{index + 1}]开始执行");
                                         opear = Operas[index];
-                                        ic = index;
+                                        ic = index + 1;
                                     }
                                     if (opear != null)
                                         await opear.SendMyMessage(url, ic);

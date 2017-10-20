@@ -43,7 +43,7 @@
             <TextBlock Style="{StaticResource StateStyle}" VerticalAlignment="Center" Margin="5,2"/>
             <TextBlock Text="微信数：" VerticalAlignment="Center" Margin="10,2,0,2"/>
             <TextBlock Text="{Binding Operas.Count}" VerticalAlignment="Center" Margin="2"/>
-            <TextBlock Text="要求分辨率: 1920*1080；微信不可最小化；" Foreground="Red" VerticalAlignment="Center" Margin="20,0"/>
+            <TextBlock Text="要求分辨率: 1920*1080；微信不可最小化；" Foreground="Chocolate" VerticalAlignment="Center" Margin="20,0"/>
             <Button Content="多开微信" Command="{Binding OpenWeixinCommand}" Margin="2"></Button>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal">

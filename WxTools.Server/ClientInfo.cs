@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
-using WxTools.Common.Enums;
+using WxTools.Common.Model;
 using WxTools.Server.Annotations;
 
 namespace WxTools.Server
