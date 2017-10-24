@@ -98,9 +98,9 @@
     <Compile Include="Helper\PxConvert.cs" />
     <Compile Include="Model\WindowInfo.cs" />
     <Compile Include="Model\WxPoints.cs" />
-    <Compile Include="Dal\OperaDal.cs" />
+    <Compile Include="Bll\OperaBll.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="Dal\TcpClientDal.cs" />
+    <Compile Include="Bll\TcpClientDal.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

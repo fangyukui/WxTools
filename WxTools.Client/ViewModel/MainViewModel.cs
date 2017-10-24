@@ -11,6 +11,7 @@ using System.Windows;
 using log4net;
 using LwSoft;
 using WxTools.Annotations;
+using WxTools.Client.Bll;
 using WxTools.Client.Dal;
 using WxTools.Client.Helper;
 using WxTools.Client.Model;
@@ -44,7 +45,7 @@ namespace WxTools.Client.ViewModel
 
         #region 属性
 
-        private ObservableCollection<OperaDal> _operas;
+        private ObservableCollection<OperaBll> _operas;
         private int _sessionCount;
         private int _maxSessionCount;
         private int _maxThreadCount;
@@ -53,7 +54,7 @@ namespace WxTools.Client.ViewModel
         private string _tcpIp;
         private int _tcpPort;
 
-        public ObservableCollection<OperaDal> Operas
+        public ObservableCollection<OperaBll> Operas
         {
             get => _operas;
             set
@@ -155,7 +156,7 @@ namespace WxTools.Client.ViewModel
             if (!InitData()) return;
             //环境监测
             if (!CheckEnvironment()) return;
-            Operas = new ObservableCollection<OperaDal>();
+            Operas = new ObservableCollection<OperaBll>();
             RegisterMessenger();
 
             //开启线程
@@ -310,9 +311,9 @@ namespace WxTools.Client.ViewModel
             }
         }
 
-        private OperaDal CreateAndLoadOperaDal(Lwsoft3 lw, int hwnd)
+        private OperaBll CreateAndLoadOperaDal(Lwsoft3 lw, int hwnd)
         {
-            var opera = new OperaDal(lw) { Hwnd = hwnd };
+            var opera = new OperaBll(lw) { Hwnd = hwnd };
             opera.Load();
             return opera;
         }
@@ -341,7 +342,7 @@ namespace WxTools.Client.ViewModel
             {
                 _log.Info("监测线程启动成功");
                 await Task.Delay(2000);
-                var list = new List<OperaDal>();
+                var list = new List<OperaBll>();
                 while (!_isExit)
                 {
                     await Task.Delay(2000);
@@ -489,7 +490,7 @@ namespace WxTools.Client.ViewModel
                             {
                                 while (!_isExit)
                                 {
-                                    OperaDal opear;
+                                    OperaBll opear;
                                     int ic;
                                     lock (_lock)
                                     {

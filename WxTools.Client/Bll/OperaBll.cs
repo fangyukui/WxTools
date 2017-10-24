@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using log4net;
@@ -15,9 +14,9 @@ using WxTools.Client.Model;
 using WxTools.Client.ViewModel;
 using WxTools.Common.Model;
 
-namespace WxTools.Client.Dal
+namespace WxTools.Client.Bll
 {
-    public class OperaDal : INotifyPropertyChanged, IDisposable
+    public class OperaBll : INotifyPropertyChanged, IDisposable
     {
         public readonly Lwsoft3 Lw;
         //主窗口
@@ -55,9 +54,9 @@ namespace WxTools.Client.Dal
         private string _logs;
         private string _name;
 
-        private readonly ILog _log = LogManager.GetLogger(typeof(OperaDal));
+        private readonly ILog _log = LogManager.GetLogger(typeof(OperaBll));
 
-        public OperaDal(Lwsoft3 lw)
+        public OperaBll(Lwsoft3 lw)
         {
             Lw = lw;
         }
